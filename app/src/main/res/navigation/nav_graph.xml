@@ -3,4 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment"/>
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.ics4ui_app.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_calendarView"
+            app:destination="@id/calendarView" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEventFragment"
+        android:name="com.example.ics4ui_app.AddEventFragment"
+        android:label="fragment_add_event"
+        tools:layout="@layout/fragment_add_event" />
+    <fragment
+        android:id="@+id/calendarView"
+        android:name="com.example.ics4ui_app.CalendarView"
+        android:label="fragment_calendar_view"
+        tools:layout="@layout/fragment_calendar_view" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.ics4ui_app.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" />
+    <fragment
+        android:id="@+id/dayFragment"
+        android:name="com.example.ics4ui_app.DayFragment"
+        android:label="fragment_day"
+        tools:layout="@layout/fragment_day" />
+    <fragment
+        android:id="@+id/filterSearch"
+        android:name="com.example.ics4ui_app.FilterSearch"
+        android:label="fragment_filter_search"
+        tools:layout="@layout/fragment_filter_search" />
+</navigation>
