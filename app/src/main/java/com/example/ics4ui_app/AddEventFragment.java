@@ -2,11 +2,16 @@ package com.example.ics4ui_app;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,15 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class AddEventFragment extends Fragment {
+
+    TextView titleText;
+    String title;
+    String description;
+    String location;
+    String group;
+    List<Event> listOfEvents = new ArrayList<>();
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +72,25 @@ public class AddEventFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View AddEventFragmentLayout = inflater.inflate(R.layout.fragment_add_event,container,false);
+        titleText = AddEventFragmentLayout.findViewById(R.id.addEventTitle);
+        return AddEventFragmentLayout;
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_event, container, false);
+
+    }
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.createEventButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                title = titleText.getText().toString();
+                var newEvent = new Event();
+                newEvent.title = title;
+                listOfEvents.push(newEvent);
+                titleText.setText(listOfEvents.get(0).title);
+            }
+        });
     }
 }
