@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +24,14 @@ import java.util.List;
 public class AddEventFragment extends Fragment {
 
     TextView titleText;
+    EditText titleInput;
+    EditText descriptionInput;
     String title;
     String description;
     String location;
     String group;
-    List<Event> listOfEvents = new ArrayList<>();
+    Integer i=0;
+    List<Event> listOfEvents = new ArrayList<Event>();
 
 
 
@@ -72,12 +78,12 @@ public class AddEventFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View AddEventFragmentLayout = inflater.inflate(R.layout.fragment_add_event,container,false);
         titleText = AddEventFragmentLayout.findViewById(R.id.addEventTitle);
+        titleInput = AddEventFragmentLayout.findViewById(R.id.titleTextInput);
+        descriptionInput = AddEventFragmentLayout.findViewById(R.id.descriptionTextInput);
         return AddEventFragmentLayout;
-
-
-        // Inflate the layout for this fragment
 
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -85,11 +91,15 @@ public class AddEventFragment extends Fragment {
         view.findViewById(R.id.createEventButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                title = titleText.getText().toString();
-                var newEvent = new Event();
+                title = titleInput.getText().toString();
+                description = descriptionInput.getText().toString();
+                Event newEvent = new Event();
                 newEvent.title = title;
-                listOfEvents.push(newEvent);
-                titleText.setText(listOfEvents.get(0).title);
+                newEvent.description = description;
+                listOfEvents.add(newEvent);
+                //titleText.setText((listOfEvents.get(0).title).toString());
+                titleText.setText(listOfEvents.get(i).title+" "+listOfEvents.get(i).description);
+                i++;
             }
         });
     }
