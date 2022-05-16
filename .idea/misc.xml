@@ -5,11 +5,18 @@
       <map>
         <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-APP/app/src/main/res/layout/fragment_add_event.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-APP/app/src/main/res/layout/fragment_home.xml" value="0.16847826086956522" />
+<<<<<<< Updated upstream
         <entry key="..\:/Users/theoh/OneDrive/Documents/GitHub/ICS4UI-Android/app/src/main/res/layout/activity_main.xml" value="0.35190217391304346" />
         <entry key="..\:/Users/theoh/OneDrive/Documents/GitHub/ICS4UI-Android/app/src/main/res/layout/fragment_add_event.xml" value="0.35190217391304346" />
         <entry key="..\:/Users/theoh/OneDrive/Documents/GitHub/ICS4UI-Android/app/src/main/res/layout/fragment_home.xml" value="0.35190217391304346" />
         <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/fragment_calendar_view.xml" value="0.2776268115942029" />
+=======
+        <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.14189453125000004" />
+        <entry key="app/src/main/res/layout/fragment_calendar_view.xml" value="0.14175724637681159" />
+        <entry key="app/src/main/res/layout/fragment_day.xml" value="0.13949432373046874" />
+        <entry key="app/src/main/res/layout/fragment_event.xml" value="0.14175724637681159" />
+>>>>>>> Stashed changes
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1785" />
       </map>
     </option>
