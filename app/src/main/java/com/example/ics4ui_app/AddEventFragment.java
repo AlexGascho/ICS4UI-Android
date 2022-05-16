@@ -2,11 +2,19 @@ package com.example.ics4ui_app;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +22,18 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class AddEventFragment extends Fragment {
+
+    TextView titleText;
+    EditText titleInput;
+    EditText descriptionInput;
+    String title;
+    String description;
+    String location;
+    String group;
+    Integer i=0;
+    List<Event> listOfEvents = new ArrayList<Event>();
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +79,28 @@ public class AddEventFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_event, container, false);
+        View AddEventFragmentLayout = inflater.inflate(R.layout.fragment_add_event,container,false);
+        titleText = AddEventFragmentLayout.findViewById(R.id.addEventTitle);
+        titleInput = AddEventFragmentLayout.findViewById(R.id.titleTextInput);
+        descriptionInput = AddEventFragmentLayout.findViewById(R.id.descriptionTextInput);
+        return AddEventFragmentLayout;
+
+    }
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.createEventButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                title = titleInput.getText().toString();
+                description = descriptionInput.getText().toString();
+                Event newEvent = new Event();
+                newEvent.title = title;
+                newEvent.description = description;
+                listOfEvents.add(newEvent);
+                //titleText.setText((listOfEvents.get(0).title).toString());
+                titleText.setText(listOfEvents.get(i).title+" "+listOfEvents.get(i).description);
+                i++;
+            }
+        });
     }
 }

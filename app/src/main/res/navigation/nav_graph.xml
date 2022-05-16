@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_homeFragment_to_calendarView"
             app:destination="@id/calendarView" />
+        <action
+            android:id="@+id/action_homeFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"
