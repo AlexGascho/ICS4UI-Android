@@ -13,3 +13,5 @@
 .cxx
 local.properties
 .idea/misc.xml
+.idea/deploymentTargetDropDown.xml
+*.xml
