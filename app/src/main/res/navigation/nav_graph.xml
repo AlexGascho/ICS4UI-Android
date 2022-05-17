@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/addEventFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.ics4ui_app.HomeFragment"
@@ -35,7 +35,11 @@
         android:id="@+id/dayFragment"
         android:name="com.example.ics4ui_app.DayFragment"
         android:label="fragment_day"
-        tools:layout="@layout/fragment_day" />
+        tools:layout="@layout/fragment_day" >
+        <action
+            android:id="@+id/action_dayFragment_to_calendarView"
+            app:destination="@id/calendarView" />
+    </fragment>
     <fragment
         android:id="@+id/filterSearch"
         android:name="com.example.ics4ui_app.FilterSearch"
