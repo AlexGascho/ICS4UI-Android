@@ -13,8 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-<<<<<<< Updated upstream
+        
         <EditText
             android:id="@+id/descriptionTextInput"
             android:layout_width="213dp"
