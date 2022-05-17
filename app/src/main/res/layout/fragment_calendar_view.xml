@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,19 +11,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp">
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="INVALID CHARACTER"
-            android:textColor="@color/black"
-            android:background="@null"
-            android:textStyle="bold"
-            android:onClick="previousMonthAction"
-            android:textSize="20sp" />
+        android:orientation="horizontal">
+
 
         <TextView
             android:id="@+id/monthYearTextView"
@@ -30,22 +22,32 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="March 2022"
-            android:textSize="20sp"
             android:textAlignment="center"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@null"
+            android:src=""
+            android:onClick="previousMonthAction"
+            android:text="<"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="INVALID CHARACTER"
-            android:textColor="@color/black"
+            android:layout_weight="0.5"
             android:background="@null"
-            android:textStyle="bold"
             android:onClick="nextMonthAction"
+            android:text=">"
+            android:textColor="@color/black"
             android:textSize="20sp"
-            />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -57,7 +59,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sun"
+            android:text="S"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -65,7 +67,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Mon"
+            android:text="M"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -73,7 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tues"
+            android:text="T"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -81,7 +83,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Wed"
+            android:text="W"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -89,7 +91,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Thur"
+            android:text="T"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -97,7 +99,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Fri"
+            android:text="F"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -105,7 +107,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sat"
+            android:text="S"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -118,6 +120,7 @@
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 
 
 </LinearLayout>
