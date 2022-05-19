@@ -76,10 +76,15 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
         monthYearText = findViewById(R.id.monthYearTextView);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void previousMonthAction(View view){
-
+        selectedDate = selectedDate.minusMonths(1);
+        setMonthView();
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void nextMonthAction(View view){
+        selectedDate = selectedDate.plusMonths(1);
+        setMonthView();
 
     }
 

@@ -26,14 +26,14 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <ImageButton
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:background="@null"
-            android:src=""
             android:onClick="previousMonthAction"
-            android:text="<"
+            android:src=""
+            android:text="back"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -44,10 +44,19 @@
             android:layout_weight="0.5"
             android:background="@null"
             android:onClick="nextMonthAction"
-            android:text=">"
+            android:text="next"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="Add.png"
+            />
 
     </LinearLayout>
 
