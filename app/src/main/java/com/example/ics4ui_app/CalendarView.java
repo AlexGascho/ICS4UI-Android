@@ -42,7 +42,10 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
         ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
 
         CalendarDaySpacing calendarDaySpacing = new CalendarDaySpacing(daysInMonth, this);
-        //RecyclerView.LayoutManager layoutManager = new GridLayoutManager();
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),7);
+        calendarRecyclerView.setLayoutManager(layoutManager);
+        calendarRecyclerView.setAdapter(calendarDaySpacing);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

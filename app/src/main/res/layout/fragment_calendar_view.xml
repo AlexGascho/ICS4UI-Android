@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#536863"
     android:orientation="vertical"
     tools:context=".CalendarView">
 
@@ -20,43 +20,37 @@
             android:id="@+id/monthYearTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="0.5"
             android:text="March 2022"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="#F9FFEE"
             android:textSize="20sp" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:background="@null"
-            android:onClick="previousMonthAction"
-            android:src=""
-            android:text="back"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:background="@null"
-            android:onClick="nextMonthAction"
-            android:text="next"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="Add.png"
-            />
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:onClick="previousMonthAction"
+            android:src="@drawable/arrows__left_" />
+
+        <ImageButton
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:onClick="nextMonthAction"
+            android:src="@drawable/arrows__right_" />
+
+        <ImageButton
+            android:layout_height="match_parent"
+            android:src="@drawable/filter"
+            android:layout_width="10dp"
+            android:layout_weight="0.25"/>
+
+        <ImageButton
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/add"
+            android:layout_weight="0.25"/>
 
     </LinearLayout>
 
@@ -64,63 +58,69 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="S"
-            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="16sp"/>
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="M"
-            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="16sp"/>
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="T"
-            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="16sp"/>
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="W"
-            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="16sp"/>
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="T"
-            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="16sp"/>
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="F"
-            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="16sp"/>
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="S"
-            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="16sp"/>
-
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
 
 
     </LinearLayout>
@@ -128,8 +128,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="match_parent"
+        android:background="#536863" />
 
 
 </LinearLayout>
