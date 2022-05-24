@@ -57,12 +57,12 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
         LocalDate firstOfMonth = selectedDate.withDayOfMonth(1);
         int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
 
-        for(int i = 0; i <= 42; i++){
+        for(int i = 1; i <= 42; i++){
             if(i <= dayOfWeek || i > daysInMonth + dayOfWeek){
                 daysInMonthArray.add(" ");
             }
             else {
-                daysInMonthArray.add(String.valueOf(i + dayOfWeek));
+                daysInMonthArray.add(String.valueOf(i - dayOfWeek));
             }
         }
         return daysInMonthArray;
