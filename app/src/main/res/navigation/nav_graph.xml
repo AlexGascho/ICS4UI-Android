@@ -30,7 +30,11 @@
         android:id="@+id/eventFragment"
         android:name="com.example.ics4ui_app.EventFragment"
         android:label="fragment_event"
-        tools:layout="@layout/fragment_event" />
+        tools:layout="@layout/fragment_event" >
+        <action
+            android:id="@+id/action_eventFragment_to_dayFragment"
+            app:destination="@id/dayFragment" />
+    </fragment>
     <fragment
         android:id="@+id/dayFragment"
         android:name="com.example.ics4ui_app.DayFragment"
