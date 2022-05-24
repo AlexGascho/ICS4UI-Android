@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class CalendarDaySpacing extends RecyclerView.Adapter<CalendarViewHolder>
 {
+    //insane code
     private final ArrayList<String> daysOfMonth;
     private final OnItemListener onItemListener;
 
