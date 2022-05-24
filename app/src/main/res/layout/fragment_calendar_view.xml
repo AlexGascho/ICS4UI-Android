@@ -27,42 +27,30 @@
             android:textSize="20sp" />
 
         <ImageButton
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:onClick="previousMonthAction"
-            android:src="@drawable/arrows__left_"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"/>
+            android:src="@drawable/Arrow_left_pog" />
 
         <ImageButton
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:onClick="nextMonthAction"
-            android:src="@drawable/arrows__right_"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"/>
+            android:src="@drawable/arrows__right_" />
 
         <ImageButton
             android:layout_height="match_parent"
             android:src="@drawable/filter"
-            android:layout_width="0dp"
-            android:layout_weight="0.25"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"/>
+            android:layout_width="10dp"
+            android:layout_weight="0.25" />
 
         <ImageButton
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:src="@drawable/add"
-            android:layout_weight="0.25"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"/>
+            android:layout_weight="0.25" />
 
     </LinearLayout>
 
