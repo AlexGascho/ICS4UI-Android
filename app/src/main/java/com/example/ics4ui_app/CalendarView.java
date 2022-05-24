@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavHost;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,7 +35,6 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
         initWidgets();
         selectedDate = LocalDate.now();
         setMonthView();
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -89,6 +90,10 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
         selectedDate = selectedDate.plusMonths(1);
         setMonthView();
 
+    }
+
+    public void addEventAction(View view){
+        NavHostFragment.findNavController().navigate(R.id.action_calendarView_to_addEventFragment);
     }
 
     @Override

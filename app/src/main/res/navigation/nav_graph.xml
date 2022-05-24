@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/addEventFragment">
+    app:startDestination="@id/calendarView">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.ics4ui_app.HomeFragment"
@@ -12,9 +12,6 @@
         <action
             android:id="@+id/action_homeFragment_to_calendarView"
             app:destination="@id/calendarView" />
-        <action
-            android:id="@+id/action_homeFragment_to_addEventFragment"
-            app:destination="@id/addEventFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"
@@ -25,7 +22,11 @@
         android:id="@+id/calendarView"
         android:name="com.example.ics4ui_app.CalendarView"
         android:label="fragment_calendar_view"
-        tools:layout="@layout/fragment_calendar_view" />
+        tools:layout="@layout/fragment_calendar_view" >
+        <action
+            android:id="@+id/action_calendarView_to_addEventFragment"
+            app:destination="@id/addEventFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.example.ics4ui_app.EventFragment"

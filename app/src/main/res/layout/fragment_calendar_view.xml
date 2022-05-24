@@ -56,6 +56,7 @@
             android:scaleType="fitCenter"/>
 
         <ImageButton
+            android:OnClick="addEventAction"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/add"
