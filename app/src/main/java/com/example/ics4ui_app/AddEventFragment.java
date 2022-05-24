@@ -26,10 +26,8 @@ public class AddEventFragment extends Fragment {
     TextView titleText;
     EditText titleInput;
     EditText descriptionInput;
-    String title;
-    String description;
-    String location;
-    String group;
+    EditText locationInput;
+    EditText groupInput;
     Integer i=0;
     List<Event> listOfEvents = new ArrayList<Event>();
 
@@ -83,6 +81,8 @@ public class AddEventFragment extends Fragment {
         titleText = AddEventFragmentLayout.findViewById(R.id.addEventTitle);
         titleInput = AddEventFragmentLayout.findViewById(R.id.titleTextInput);
         descriptionInput = AddEventFragmentLayout.findViewById(R.id.descriptionTextInput);
+        locationInput = AddEventFragmentLayout.findViewById(R.id.locationTextInput);
+        groupInput = AddEventFragmentLayout.findViewById(R.id.groupTextInput);
         return AddEventFragmentLayout;
 
     }
@@ -91,14 +91,14 @@ public class AddEventFragment extends Fragment {
         view.findViewById(R.id.createEventButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                title = titleInput.getText().toString();
-                description = descriptionInput.getText().toString();
                 Event newEvent = new Event();
-                newEvent.title = title;
-                newEvent.description = description;
+                newEvent.title = titleInput.getText().toString();
+                newEvent.description = descriptionInput.getText().toString();
+                newEvent.location = locationInput.getText().toString();
+                newEvent.group = groupInput.getText().toString();
                 listOfEvents.add(newEvent);
-                //titleText.setText((listOfEvents.get(0).title).toString());
-                titleText.setText(listOfEvents.get(i).title+" "+listOfEvents.get(i).description);
+
+                titleText.setText(listOfEvents.get(i).title+" "+listOfEvents.get(i).description+" "+listOfEvents.get(i).location+" "+listOfEvents.get(i).group);
                 i++;
             }
         });
