@@ -30,7 +30,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
-            android:onClick="previousMonthAction"
             android:src="@drawable/arrows__left_"
             android:adjustViewBounds="true"
             android:padding="20dp"
@@ -40,7 +39,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
-            android:onClick="nextMonthAction"
             android:src="@drawable/arrows__right_"
             android:adjustViewBounds="true"
             android:padding="20dp"
@@ -56,7 +54,6 @@
             android:scaleType="fitCenter"/>
 
         <ImageButton
-            android:OnClick="addEventAction"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/add"

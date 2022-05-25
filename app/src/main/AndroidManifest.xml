@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ICS4UIAPP">
         <activity
-            android:name=".CalendarView"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="ICS4UI Android"
             android:theme="@style/Theme.ICS4UIAPP">

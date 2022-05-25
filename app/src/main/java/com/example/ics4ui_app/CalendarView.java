@@ -93,7 +93,7 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
     }
 
     public void addEventAction(View view){
-        NavHostFragment.findNavController().navigate(R.id.action_calendarView_to_addEventFragment);
+
     }
 
     @Override
