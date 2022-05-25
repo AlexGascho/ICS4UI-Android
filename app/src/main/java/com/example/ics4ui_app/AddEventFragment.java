@@ -1,5 +1,6 @@
 package com.example.ics4ui_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -101,7 +102,7 @@ public class AddEventFragment extends Fragment {
 
                 titleText.setText(listOfEvents.get(i).title+" "+listOfEvents.get(i).description+" "+listOfEvents.get(i).location+" "+listOfEvents.get(i).group);
                 i++;
-                NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_addEventFragment_to_calendarView);
+
             }
         });
     }
