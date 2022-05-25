@@ -31,7 +31,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:onClick="previousMonthAction"
-            android:src="@drawable/Arrow_left_pog" />
+            android:src="@drawable/arrows__left_" />
 
         <ImageButton
             android:layout_width="10dp"
