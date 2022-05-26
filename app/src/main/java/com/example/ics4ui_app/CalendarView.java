@@ -1,18 +1,19 @@
 package com.example.ics4ui_app;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavHost;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.time.LocalDate;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 
 //pls fix work yes
 public class CalendarView extends AppCompatActivity implements CalendarDaySpacing.OnItemListener{
+    private ImageButton addEventImageButton;
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
@@ -35,6 +37,18 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
         initWidgets();
         selectedDate = LocalDate.now();
         setMonthView();
+
+        addEventImageButton = (ImageButton) findViewById(R.id.addEventImageButton);
+        addEventImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                openAddEventFragment();
+            }
+        });
+    }
+    public void openAddEventFragment() {
+        Intent intent = new Intent(this, AddEventFragment.class);
+        startActivity(intent);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -89,10 +103,6 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
     public void nextMonthAction(View view){
         selectedDate = selectedDate.plusMonths(1);
         setMonthView();
-
-    }
-
-    public void addEventAction(View view){
 
     }
 

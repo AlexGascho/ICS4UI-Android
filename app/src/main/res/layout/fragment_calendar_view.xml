@@ -24,33 +24,34 @@
             android:text="March 2022"
             android:textAlignment="center"
             android:textColor="#F9FFEE"
-            android:textSize="20sp" />
+            android:textSize="23sp" />
 
         <ImageButton
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.25"
+            android:layout_width="0.1dp"
+            android:layout_height="27dp"
+            android:layout_weight="0.1"
             android:onClick="previousMonthAction"
-            android:src="@drawable/arrows__left_" />
+            android:src="@drawable/arrows_left_final" />
 
         <ImageButton
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.25"
+            android:layout_width="0.1dp"
+            android:layout_height="27dp"
+            android:layout_weight="0.1"
             android:onClick="nextMonthAction"
-            android:src="@drawable/arrows__right_" />
+            android:src="@drawable/arrow_right_final" />
 
         <ImageButton
-            android:layout_height="match_parent"
-            android:src="@drawable/filter"
-            android:layout_width="10dp"
-            android:layout_weight="0.25" />
+            android:layout_height="27dp"
+            android:src="@drawable/search"
+            android:layout_width="0.1dp"
+            android:layout_weight="0.1" />
 
         <ImageButton
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/add"
-            android:layout_weight="0.25" />
+            android:id="@+id/addEventImageButton"
+            android:layout_width="0.1dp"
+            android:layout_height="27dp"
+            android:src="@drawable/add_button"
+            android:layout_weight="0.1" />
 
     </LinearLayout>
 
