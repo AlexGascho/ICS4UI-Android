@@ -1,12 +1,12 @@
 package com.example.ics4ui_app;
 
 public class Time {
-    int day;
-    int month;
-    int year;
-    int hour;
-    int minute;
-    String nameOfMonth;
+    public int day;
+    public int month;
+    public int year;
+    public int hour;
+    public int minute;
+    public String nameOfMonth;
     static void getDayOfWeek(){
 
     }
