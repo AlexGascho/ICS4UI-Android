@@ -1,23 +1,18 @@
 package com.example.ics4ui_app;
 
-import android.content.Intent;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.time.LocalDate;
-import java.time.Year;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -41,14 +36,11 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
         addEventImageButton = (ImageButton) findViewById(R.id.addEventImageButton);
         addEventImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                openAddEventFragment();
+            public void onClick(View view){
+                Navigation.findNavController(view).navigate(R.id.action_calendarView_to_addEventFragment);
+//                startActivity(new Intent(CalendarView.this, AddEventFragment.class));
             }
         });
-    }
-    public void openAddEventFragment() {
-        Intent intent = new Intent(this, AddEventFragment.class);
-        startActivity(intent);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
