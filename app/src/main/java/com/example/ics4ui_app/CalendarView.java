@@ -3,12 +3,13 @@ package com.example.ics4ui_app;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.Navigation;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 //pls fix work yes
 public class CalendarView extends AppCompatActivity implements CalendarDaySpacing.OnItemListener{
@@ -23,6 +25,8 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
+
+    static List<Event> listOfEvents = new ArrayList<Event>();
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -33,14 +37,19 @@ public class CalendarView extends AppCompatActivity implements CalendarDaySpacin
         selectedDate = LocalDate.now();
         setMonthView();
 
-        addEventImageButton = (ImageButton) findViewById(R.id.addEventImageButton);
+        addEventImageButton = (ImageButton)findViewById(R.id.addEventImageButton);
+
         addEventImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                Navigation.findNavController(view).navigate(R.id.action_calendarView_to_addEventFragment);
-//                startActivity(new Intent(CalendarView.this, AddEventFragment.class));
+            public void onClick(View view) {
+                FragmentContainerView fragmentContainerView = (FragmentContainerView) findViewById(R.id.fragment_container);
+                fragmentContainerView.setVisibility(View.VISIBLE);
+
+                FrameLayout frameLayout = (FrameLayout) findViewById(R.id.add_event_container);
+                frameLayout.setVisibility(View.VISIBLE);
             }
         });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

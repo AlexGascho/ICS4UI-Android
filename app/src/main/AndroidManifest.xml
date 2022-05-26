@@ -22,7 +22,14 @@
         </activity>
         <activity
             android:name=".CalendarView"
-            android:label="Calendar">
+            android:label="Calendar"
+            android:exported="true"
+            android:theme="@style/Theme.ICS4UIAPP">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
     </application>
 

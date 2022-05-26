@@ -11,12 +11,8 @@ import androidx.navigation.Navigation;
 
 import com.example.ics4ui_app.databinding.ActivityMainBinding;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-    static List<Event> listOfEvents = new ArrayList<Event>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
         startActivityView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, CalendarView.class));
+                Intent intent = new Intent(MainActivity.this, CalendarView.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
     }

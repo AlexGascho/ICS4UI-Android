@@ -1,14 +1,12 @@
 package com.example.ics4ui_app;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,8 +67,6 @@ public class DayFragment extends Fragment {
         view.findViewById(R.id.day_close).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(DayFragment.this)
-                        .navigate(R.id.action_dayFragment_to_calendarView);
             }
         });
     }
