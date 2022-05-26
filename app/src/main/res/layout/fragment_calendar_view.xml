@@ -47,6 +47,7 @@
             android:layout_weight="0.1" />
 
         <ImageButton
+            android:id="@+id/addEventImageButton"
             android:layout_width="0.1dp"
             android:layout_height="27dp"
             android:src="@drawable/add_button"
