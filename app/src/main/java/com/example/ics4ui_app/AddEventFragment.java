@@ -31,9 +31,6 @@ public class AddEventFragment extends Fragment {
     EditText locationInput;
     EditText groupInput;
     Integer i=0;
-    List<Event> listOfEvents = new ArrayList<Event>();
-
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,9 +95,9 @@ public class AddEventFragment extends Fragment {
                 newEvent.description = descriptionInput.getText().toString();
                 newEvent.location = locationInput.getText().toString();
                 newEvent.group = groupInput.getText().toString();
-                listOfEvents.add(newEvent);
+                MainActivity.listOfEvents.add(newEvent);
 
-                titleText.setText(listOfEvents.get(i).title+" "+listOfEvents.get(i).description+" "+listOfEvents.get(i).location+" "+listOfEvents.get(i).group);
+                titleText.setText(MainActivity.listOfEvents.get(i).title+" "+MainActivity.listOfEvents.get(i).description+" "+MainActivity.listOfEvents.get(i).location+" "+MainActivity.listOfEvents.get(i).group);
                 i++;
 
             }
