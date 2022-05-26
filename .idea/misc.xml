@@ -3,14 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.3463541666666667" />
         <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-APP/app/src/main/res/layout/fragment_add_event.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-APP/app/src/main/res/layout/fragment_home.xml" value="0.16847826086956522" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2535" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.13630523681640622" />
         <entry key="app/src/main/res/layout/fragment_calendar_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1785" />
       </map>
     </option>

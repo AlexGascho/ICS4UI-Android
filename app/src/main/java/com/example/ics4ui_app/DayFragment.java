@@ -2,7 +2,9 @@ package com.example.ics4ui_app;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,5 +62,16 @@ public class DayFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_day, container, false);
+
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        view.findViewById(R.id.day_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(DayFragment.this)
+                        .navigate(R.id.action_dayFragment_to_calendarView);
+            }
+        });
     }
 }

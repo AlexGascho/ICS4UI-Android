@@ -1,12 +1,24 @@
 package com.example.ics4ui_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +26,13 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class AddEventFragment extends Fragment {
+
+    TextView titleText;
+    EditText titleInput;
+    EditText descriptionInput;
+    EditText locationInput;
+    EditText groupInput;
+    Integer i=0;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +78,31 @@ public class AddEventFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_event, container, false);
+        View AddEventFragmentLayout = inflater.inflate(R.layout.fragment_add_event,container,false);
+        titleText = AddEventFragmentLayout.findViewById(R.id.addEventTitle);
+        titleInput = AddEventFragmentLayout.findViewById(R.id.titleTextInput);
+        descriptionInput = AddEventFragmentLayout.findViewById(R.id.descriptionTextInput);
+        locationInput = AddEventFragmentLayout.findViewById(R.id.locationTextInput);
+        groupInput = AddEventFragmentLayout.findViewById(R.id.groupTextInput);
+        return AddEventFragmentLayout;
+
+    }
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.createEventButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Event newEvent = new Event();
+                newEvent.title = titleInput.getText().toString();
+                newEvent.description = descriptionInput.getText().toString();
+                newEvent.location = locationInput.getText().toString();
+                newEvent.group = groupInput.getText().toString();
+                MainActivity.listOfEvents.add(newEvent);
+
+                Navigation.findNavController(view).navigate(R.id.action_addEventFragment_to_homeFragment);
+                titleText.setText(MainActivity.listOfEvents.get(i).title+" "+MainActivity.listOfEvents.get(i).description+" "+MainActivity.listOfEvents.get(i).location+" "+MainActivity.listOfEvents.get(i).group);
+                i++;
+            }
+        });
     }
 }
