@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.GoToAddEventButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_calendarView);
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_addEventFragment);
             }
         });
     }
