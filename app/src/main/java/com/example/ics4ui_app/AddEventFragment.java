@@ -66,13 +66,10 @@ public class AddEventFragment extends Fragment {
 
                 titleText.setText(CalendarView.listOfEvents.get(i).title+" "+CalendarView.listOfEvents.get(i).description+" "+CalendarView.listOfEvents.get(i).location+" "+CalendarView.listOfEvents.get(i).group);
                 i++;
-<<<<<<< Updated upstream
 
                 FrameLayout frameLayout = (FrameLayout) getView().findViewById(R.id.add_event_container);
                 frameLayout.setVisibility(View.GONE);
-=======
-                
->>>>>>> Stashed changes
+
             }
         });
     }
