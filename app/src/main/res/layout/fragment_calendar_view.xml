@@ -1,51 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#536863"
     android:orientation="vertical"
     tools:context=".CalendarView">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
+        android:name="com.example.ics4ui_app.AddEventFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp">
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="INVALID CHARACTER"
-            android:textColor="@color/black"
-            android:background="@null"
-            android:textStyle="bold"
-            android:onClick="previousMonthAction"
-            android:textSize="20sp" />
+        android:orientation="horizontal">
+
 
         <TextView
             android:id="@+id/monthYearTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="0.5"
             android:text="March 2022"
-            android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            />
+            android:textColor="#F9FFEE"
+            android:textSize="23sp" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="INVALID CHARACTER"
-            android:textColor="@color/black"
-            android:background="@null"
-            android:textStyle="bold"
+        <ImageButton
+            android:layout_width="0.1dp"
+            android:layout_height="27dp"
+            android:layout_weight="0.1"
+            android:onClick="previousMonthAction"
+            android:src="@drawable/arrows_left_final" />
+
+        <ImageButton
+            android:layout_width="0.1dp"
+            android:layout_height="27dp"
+            android:layout_weight="0.1"
             android:onClick="nextMonthAction"
-            android:textSize="20sp"
-            />
+            android:src="@drawable/arrow_right_final" />
+
+        <ImageButton
+            android:layout_height="27dp"
+            android:src="@drawable/search"
+            android:layout_width="0.1dp"
+            android:layout_weight="0.1" />
+
+        <ImageButton
+            android:id="@+id/addEventImageButton"
+            android:layout_width="0.1dp"
+            android:layout_height="27dp"
+            android:src="@drawable/add_button"
+            android:layout_weight="0.1" />
 
     </LinearLayout>
 
@@ -53,63 +66,69 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Sun"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Mon"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tues"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Wed"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Thur"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Fri"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Sat"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="S"
+            android:textAlignment="center"
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="M"
+            android:textAlignment="center"
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="T"
+            android:textAlignment="center"
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="W"
+            android:textAlignment="center"
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="T"
+            android:textAlignment="center"
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="F"
+            android:textAlignment="center"
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="S"
+            android:textAlignment="center"
+            android:textColor="#F9FFEE"
+            android:textSize="16sp" />
 
 
     </LinearLayout>
@@ -117,7 +136,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="#536863">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>

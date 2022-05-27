@@ -3,29 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/addEventFragment">
+    app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.ics4ui_app.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_calendarView"
-            app:destination="@id/calendarView" />
-        <action
             android:id="@+id/action_homeFragment_to_addEventFragment"
             app:destination="@id/addEventFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_calendarViewFragment"
+            app:destination="@id/calendarViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"
         android:name="com.example.ics4ui_app.AddEventFragment"
         android:label="fragment_add_event"
-        tools:layout="@layout/fragment_add_event" />
+        tools:layout="@layout/fragment_add_event" >
+        <action
+            android:id="@+id/action_addEventFragment_to_calendarViewFragment"
+            app:destination="@id/calendarViewFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/calendarView"
+        android:id="@+id/calendarViewFragment"
         android:name="com.example.ics4ui_app.CalendarView"
         android:label="fragment_calendar_view"
-        tools:layout="@layout/fragment_calendar_view" />
+        tools:layout="@layout/fragment_calendar_view" >
+        <action
+            android:id="@+id/action_calendarViewFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.example.ics4ui_app.EventFragment"
@@ -39,11 +47,7 @@
         android:id="@+id/dayFragment"
         android:name="com.example.ics4ui_app.DayFragment"
         android:label="fragment_day"
-        tools:layout="@layout/fragment_day" >
-        <action
-            android:id="@+id/action_dayFragment_to_calendarView"
-            app:destination="@id/calendarView" />
-    </fragment>
+        tools:layout="@layout/fragment_day" />
     <fragment
         android:id="@+id/filterSearch"
         android:name="com.example.ics4ui_app.FilterSearch"

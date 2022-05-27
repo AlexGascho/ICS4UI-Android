@@ -5,4 +5,6 @@ public class Event {
     public String description;
     public String location;
     public String group;
+    public Time startTime;
+    public Time endTime;
 }
