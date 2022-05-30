@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -26,6 +27,11 @@ public class AddEventFragment extends Fragment {
 
     public AddEventFragment() {
         // Required empty public constructor
+    }
+
+    public void showTimePickerDialog(View view) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getActivity().getSupportFragmentManager(), "timePicker");
     }
 
     public static AddEventFragment newInstance(String param1, String param2) {
@@ -52,8 +58,15 @@ public class AddEventFragment extends Fragment {
         return AddEventFragmentLayout;
 
     }
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.startTimeButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showTimePickerDialog(view);
+            }
+        });
         view.findViewById(R.id.createEventButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +79,6 @@ public class AddEventFragment extends Fragment {
 
                 titleText.setText(CalendarView.listOfEvents.get(i).title+" "+CalendarView.listOfEvents.get(i).description+" "+CalendarView.listOfEvents.get(i).location+" "+CalendarView.listOfEvents.get(i).group);
                 i++;
-
                 FrameLayout frameLayout = (FrameLayout) getView().findViewById(R.id.add_event_container);
                 frameLayout.setVisibility(View.GONE);
             }
