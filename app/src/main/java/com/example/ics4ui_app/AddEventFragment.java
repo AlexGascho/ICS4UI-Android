@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -76,11 +77,11 @@ public class AddEventFragment extends Fragment {
                 newEvent.location = locationInput.getText().toString();
                 newEvent.group = groupInput.getText().toString();
                 CalendarView.listOfEvents.add(newEvent);
-
-                titleText.setText(CalendarView.listOfEvents.get(i).title+" "+CalendarView.listOfEvents.get(i).description+" "+CalendarView.listOfEvents.get(i).location+" "+CalendarView.listOfEvents.get(i).group);
-                i++;
+                //hides add event fragment to reveal Calendar view
                 FrameLayout frameLayout = (FrameLayout) getView().findViewById(R.id.add_event_container);
                 frameLayout.setVisibility(View.GONE);
+                //Creates toast (pop up)
+                Toast.makeText(getContext(), "Event Added", Toast.LENGTH_SHORT).show();
             }
         });
     }
