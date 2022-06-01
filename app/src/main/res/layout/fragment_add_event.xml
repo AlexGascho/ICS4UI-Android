@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundGreen"
     tools:context=".AddEventFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,88 +14,137 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/descriptionTextInput"
-            android:layout_width="220dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="475dp"
-            android:ems="10"
-            android:hint="Description"
-            android:inputType="textPersonName"
-            android:text=""
-            app:layout_constraintBottom_toTopOf="@+id/locationTextInput"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/addEventTitle"
             android:layout_width="161dp"
             android:layout_height="52dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
             android:text="Add Event"
+            android:textColor="@color/titleColor"
             android:textStyle="bold"
             app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.064"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/titleTitle"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="128dp"
+            android:text="Title:"
+            android:textColor="@color/darkPurple"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/locationTitle"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="340dp"
+            android:layout_marginBottom="24dp"
+            android:text="Location:"
+            android:textColor="@color/darkPurple"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionTitle"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginBottom="20dp"
+            android:text="Description:"
+            android:textColor="@color/darkPurple"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/clubsGroupsTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/clubsGroupsTitle"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="464dp"
+            android:layout_marginBottom="117dp"
+            android:text="Clubs/Groups:"
+            android:textColor="@color/darkPurple"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/createEventButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/createEventButton"
-            android:layout_width="170dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="121dp"
-            android:layout_marginBottom="9dp"
+            android:layout_width="355dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@color/buttonPurple"
             android:text="Create Event"
+            android:textSize="37dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/groupTextInput" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/titleTextInput"
-            android:layout_width="220dp"
-            android:layout_height="60dp"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="28dp"
             android:ems="10"
-            android:hint="Title"
             android:inputType="textPersonName"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.19" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/locationTextInput"
-            android:layout_width="220dp"
-            android:layout_height="60dp"
+            android:layout_width="215dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="165dp"
+            android:layout_marginEnd="30dp"
             android:ems="10"
-            android:hint="Location"
             android:inputType="textPersonName"
-            android:text=""
-            app:layout_constraintBottom_toTopOf="@+id/groupTextInput"
+            android:text=" "
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionTextInput" />
+            app:layout_constraintTop_toBottomOf="@+id/titleTextInput" />
 
         <EditText
             android:id="@+id/groupTextInput"
-            android:layout_width="220dp"
-            android:layout_height="60dp"
-            android:layout_marginBottom="20dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="30dp"
             android:ems="10"
-            android:hint="Group"
             android:inputType="textPersonName"
             android:text=""
-            app:layout_constraintBottom_toTopOf="@+id/createEventButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTextInput" />
+
+        <EditText
+            android:id="@+id/descriptionTextInput"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="30dp"
+            android:contentDescription=" "
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationTextInput" />
 
         <Button
@@ -102,11 +152,11 @@
             style="?android:spinnerStyle"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="120dp"
+            android:layout_marginEnd="76dp"
+            android:layout_marginBottom="148dp"
             android:hint="Start Time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextInput" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
