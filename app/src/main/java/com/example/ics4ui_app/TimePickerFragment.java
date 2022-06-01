@@ -11,12 +11,18 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
 import java.util.Calendar;
 
 public class TimePickerFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {
 
+    int timeHour;
+    int timeMinute;
+    String suffix = "AM";
+    String conditionalZero = "";
+    Calendar calendar;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -31,5 +37,31 @@ public class TimePickerFragment extends DialogFragment
     }
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        timeHour = hourOfDay;
+        timeMinute = minute;
+        if(timeHour==0){
+            timeHour = 12;
+            suffix = "AM";
+        }
+        else if(timeHour>12){
+            timeHour = timeHour-12;
+            suffix = "PM";
+        }
+        else if(timeHour==12){
+            suffix = "PM";
+        }
+        // Adds a zero if minute is less than 10 so that time goes from displaying as 6:5 to 6:05
+        if(timeMinute<10){
+            conditionalZero="0";
+        }
+        else{
+            conditionalZero="";
+        }
+
+        //initialize calendar
+        AddEventFragment.startTimeHour = timeHour;
+        AddEventFragment.startTimeMinute = timeMinute;
+        AddEventFragment.startTimeButtonInput.setHint(Integer.toString(timeHour)+":"+conditionalZero+Integer.toString(timeMinute)+suffix);
+
     }
 }

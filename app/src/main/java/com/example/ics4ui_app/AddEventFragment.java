@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -20,11 +21,15 @@ import androidx.fragment.app.Fragment;
  */
 public class AddEventFragment extends Fragment {
     TextView titleText;
+    public static Button startTimeButtonInput;
     EditText titleInput;
     EditText descriptionInput;
     EditText locationInput;
     EditText groupInput;
     Integer i=0;
+    public static int startTimeHour;
+    public static int startTimeMinute;
+
 
     public AddEventFragment() {
         // Required empty public constructor
@@ -34,7 +39,6 @@ public class AddEventFragment extends Fragment {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getActivity().getSupportFragmentManager(), "timePicker");
     }
-
     public static AddEventFragment newInstance(String param1, String param2) {
         AddEventFragment fragment = new AddEventFragment();
         return fragment;
@@ -56,6 +60,7 @@ public class AddEventFragment extends Fragment {
         descriptionInput = AddEventFragmentLayout.findViewById(R.id.descriptionTextInput);
         locationInput = AddEventFragmentLayout.findViewById(R.id.locationTextInput);
         groupInput = AddEventFragmentLayout.findViewById(R.id.groupTextInput);
+        startTimeButtonInput = AddEventFragmentLayout.findViewById(R.id.startTimeButton);
         return AddEventFragmentLayout;
 
     }
