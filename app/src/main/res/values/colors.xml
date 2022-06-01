@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="text_colour">#FF140719</color>
+    <color name="backgroundGreen">#FF536863</color>
+    <color name="titleColor">#FFF9FFEE</color>
+    <color name="darkPurple">#FF140719</color>
+    <color name="buttonPurple">#FFA57FC4</color>
 </resources>
