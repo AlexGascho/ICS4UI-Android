@@ -123,20 +123,20 @@
             android:layout_width="355dp"
             android:layout_height="80dp"
             android:layout_marginStart="28dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="28dp"
-            android:layout_marginBottom="30dp"
             android:background="@color/buttonPurple"
             android:text="Create Event"
             android:textSize="37dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clubsGroupsTitle" />
 
         <EditText
             android:id="@+id/titleTextInput"
             android:layout_width="270dp"
             android:layout_height="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="30dp"
             android:contentDescription=" "
             android:ems="10"
@@ -189,11 +189,11 @@
             style="?android:spinnerStyle"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="69dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="25dp"
             android:hint="Start Time"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clubsGroupsTitle" />
+            app:layout_constraintStart_toEndOf="@+id/startTitle"
+            app:layout_constraintTop_toBottomOf="@+id/allDaySwitch" />
 
         <Switch
             android:id="@+id/allDaySwitch"
