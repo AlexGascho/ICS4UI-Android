@@ -1,12 +1,28 @@
+<<<<<<< Updated upstream
 package com.example.ics4ui_app;
 
 import android.os.Bundle;
+=======
+package com.example;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+>>>>>>> Stashed changes
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+<<<<<<< Updated upstream
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+=======
+import com.example.ics4ui_android.R;
+import com.example.ics4ui_app.R;
+>>>>>>> Stashed changes
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +30,11 @@ import androidx.fragment.app.Fragment;
  * create an instance of this fragment.
  */
 public class DayFragment extends Fragment {
+<<<<<<< Updated upstream
+=======
+    private RecyclerView recyclerView;
+
+>>>>>>> Stashed changes
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,6 +79,7 @@ public class DayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+<<<<<<< Updated upstream
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_day, container, false);
 
@@ -69,5 +91,15 @@ public class DayFragment extends Fragment {
             public void onClick(View view) {
             }
         });
+=======
+        //Inflate this layout
+        View view = inflater.inflate(R.layout.fragment_day,container,false);
+        //Creating Recycler View
+        recyclerView = view.findViewById(R.id.dayFragmentRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        //recyclerView.setAdapter(new );
+
+        return view;
+>>>>>>> Stashed changes
     }
 }
