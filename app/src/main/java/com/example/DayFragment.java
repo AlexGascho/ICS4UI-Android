@@ -1,6 +1,5 @@
 
 package com.example;
-package com.example.ics4ui_app;
 
 
 import android.os.Bundle;
