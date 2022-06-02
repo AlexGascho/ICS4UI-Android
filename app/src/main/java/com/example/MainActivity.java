@@ -1,4 +1,4 @@
-package com.example.ics4ui_android;
+package com.example;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ics4ui_android.R;
 import com.example.ics4ui_android.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

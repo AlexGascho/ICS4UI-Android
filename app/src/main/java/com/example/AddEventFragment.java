@@ -1,4 +1,4 @@
-package com.example.ics4ui_android;
+package com.example;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+
+import com.example.ics4ui_android.R;
 
 /**
  * A simple {@link Fragment} subclass.
