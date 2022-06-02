@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ics4ui_android.R;
+import com.example.R;
 
 import java.awt.font.TextAttribute;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
 
         public MyViewHolder(final View view){
             super(view);
-            titleText = view.findViewById(R.id.itemTitle);
+            titleText = view.findViewById(R.id.event_title);
         }
     }
 
