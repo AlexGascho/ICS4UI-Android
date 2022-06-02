@@ -1,4 +1,4 @@
-package com.example.ics4ui_app;
+package com.example.ics4ui_android;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,11 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HomeFragment extends Fragment {
 
     public HomeFragment() {
@@ -36,6 +31,7 @@ public class HomeFragment extends Fragment {
         View HomeFragmentLayout = inflater.inflate(R.layout.fragment_home, container, false);
         return HomeFragmentLayout;
     }
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }

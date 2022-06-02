@@ -1,16 +1,18 @@
-package com.example.ics4ui_app;
+package com.example.ics4ui_android;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ics4ui_app.databinding.ActivityMainBinding;
+import com.example.ics4ui_android.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    CalendarFragment calendarFragment = new CalendarFragment();
+    HomeFragment homeFragment = new HomeFragment();
+
     private ActivityMainBinding binding;
 
     @Override
@@ -25,15 +27,13 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.home);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()) {
+                switch (item.getItemId()) {
                     case R.id.calendar:
-                        Intent intent = new Intent(MainActivity.this, CalendarView.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, calendarFragment).commit();
                         return true;
                     case R.id.home:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, homeFragment).commit();
                         return true;
                     case R.id.settings:
                         return true;
@@ -42,4 +42,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

@@ -1,17 +1,12 @@
-package com.example.ics4ui_app;
+package com.example.ics4ui_android;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.view.View;
-import android.view.ViewStructure;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import java.util.Calendar;
 

@@ -1,4 +1,4 @@
-package com.example.ics4ui_app;
+package com.example.ics4ui_android;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -81,7 +81,8 @@ public class AddEventFragment extends Fragment {
                 newEvent.description = descriptionInput.getText().toString();
                 newEvent.location = locationInput.getText().toString();
                 newEvent.group = groupInput.getText().toString();
-                CalendarView.listOfEvents.add(newEvent);
+                //removed for now
+                //CalendarView.listOfEvents.add(newEvent);
                 //hides add event fragment to reveal Calendar view
                 FrameLayout frameLayout = (FrameLayout) getView().findViewById(R.id.add_event_container);
                 frameLayout.setVisibility(View.GONE);
