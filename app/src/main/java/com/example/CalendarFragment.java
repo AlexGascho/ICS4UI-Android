@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.example.ics4ui_android.R;
+import com.example.R;
 
 public class CalendarFragment extends Fragment {
 

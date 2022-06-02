@@ -1,4 +1,4 @@
-package com.example.ics4ui_app;
+package com.example;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,11 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DayFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class DayFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match

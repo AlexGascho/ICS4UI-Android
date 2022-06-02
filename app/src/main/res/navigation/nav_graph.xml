@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.ics4ui_android.HomeFragment"
+        android:name="com.example.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.example.ics4ui_android.CalendarFragment"
+        android:name="com.example.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"
-        android:name="com.example.ics4ui_android.AddEventFragment"
+        android:name="com.example.AddEventFragment"
         android:label="fragment_add_event"
         tools:layout="@layout/fragment_add_event" >
         <action

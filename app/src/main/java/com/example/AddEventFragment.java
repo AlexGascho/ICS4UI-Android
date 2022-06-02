@@ -14,13 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
-import com.example.ics4ui_android.R;
+import com.example.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddEventFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AddEventFragment extends Fragment {
     TextView titleText;
     public static Button startTimeButtonInput;

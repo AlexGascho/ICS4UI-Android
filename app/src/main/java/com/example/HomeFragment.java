@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.ics4ui_android.R;
+import com.example.R;
 
 public class HomeFragment extends Fragment {
 
