@@ -6,11 +6,28 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.R;
 import com.example.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+
+    private static ArrayList<Event> eventList = new ArrayList<>();
+
+    public static Event getEventFromList(int i){
+        return eventList.get(i);
+    }
+
+    public static void addEventToList(Event event){
+        eventList.add(event);
+    }
+
+    public static void removeEventFromList(int i){
+        eventList.remove(i);
+    }
+
+
     CalendarFragment calendarFragment = new CalendarFragment();
     HomeFragment homeFragment = new HomeFragment();
 

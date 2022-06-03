@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.R;
 
+import java.util.ArrayList;
+
 public class AddEventFragment extends Fragment {
     TextView titleText;
     public static Button startTimeButtonInput;
@@ -73,13 +75,16 @@ public class AddEventFragment extends Fragment {
         view.findViewById(R.id.createEventButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //creates new event
                 Event newEvent = new Event();
-                newEvent.title = titleInput.getText().toString();
-                newEvent.description = descriptionInput.getText().toString();
-                newEvent.location = locationInput.getText().toString();
-                newEvent.group = groupInput.getText().toString();
-                //removed for now
-                //CalendarView.listOfEvents.add(newEvent);
+                //sets attributes of event
+                newEvent.setTitle(titleInput.getText().toString());
+                newEvent.setDescription(descriptionInput.getText().toString());
+                newEvent.setLocation(locationInput.getText().toString());
+                newEvent.setGroup(groupInput.getText().toString());
+                //adds event to list in main activity
+                MainActivity.addEventToList(newEvent);
+
                 //hides add event fragment to reveal Calendar view
                 FrameLayout frameLayout = (FrameLayout) getView().findViewById(R.id.add_event_container);
                 frameLayout.setVisibility(View.GONE);
