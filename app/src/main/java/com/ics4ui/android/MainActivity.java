@@ -6,9 +6,8 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.R;
-import com.example.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ics4ui.android.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 

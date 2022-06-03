@@ -2,6 +2,7 @@ package com.ics4ui.android;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -9,21 +10,25 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.R;
-import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.OptionalPendingResult;
-import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.tasks.Task;
 
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
-    private GoogleApiClient googleApiClient;
+    //private GoogleApiClient googleApiClient;
+    private GoogleSignInClient googleSignInClient;
+    //private FirebaseAuth firebaseAuth;
+    //private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private static final int RC_SIGN_IN = 9001;; //Request Code
+    private static final String TAG = "SignInActivity";
     private TextView accountName;
+    private TextView profile;
 
 
     @Override
@@ -32,6 +37,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         setContentView(R.layout.activity_sign_in);
 
         accountName = (TextView) findViewById(R.id.account_name);
+        profile = (TextView) findViewById(R.id.profile);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
 
@@ -40,28 +46,45 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 .requestEmail()
                 .build();
 
-        googleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
-                .build();
+        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+
+//        googleApiClient = new GoogleApiClient.Builder(this)
+//                .enableAutoManage(this, this)
+//                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
+//                .build();
 
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
+
+//        firebaseAuth = FirebaseAuth.getInstance();
+//        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                FirebaseUser user = firebaseAuth.getCurrentUser();
+//                if (user != null) {
+//                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+//                } else {
+//                    Log.d(TAG, "onAuthStateChanged:signed_out");
+//                }
+//                updateUI(user);
+//            }
+//        };
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        //firebaseAuth.addAuthStateListener(firebaseAuthListener);
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        updateUI(account);
+    }
 
-        OptionalPendingResult<GoogleSignInResult> optionalPendingResult = Auth.GoogleSignInApi.silentSignIn(googleApiClient);
-
-            //The user has not logged in previously
-        optionalPendingResult.setResultCallback(new ResultCallback<GoogleSignInResult>() {
-            @Override
-                public void onResult(GoogleSignInResult googleSignInResult) {
-                    handleSignInResult(googleSignInResult);
-                }
-        });
-
+    @Override
+    public void onStop() {
+        super.onStop();
+//        if (firebaseAuthListener != null) {
+//            firebaseAuth.removeAuthStateListener(firebaseAuthListener);
+//        }
     }
 
     @Override
@@ -69,45 +92,76 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            handleSignInResult(result);
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
         }
+//            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+//            if (result.isSuccess()) {
+//                GoogleSignInAccount account = result.getSignInAccount();
+//                handleSignInWithGoogle(account);
+//            }
+//        } else {
+//            updateUI(null);
+//        }
     }
 
-    private void handleSignInResult(GoogleSignInResult result) {
-        if (result.isSuccess()) {
-            GoogleSignInAccount acct = result.getSignInAccount();
-            accountName.setText(acct.getDisplayName());
-            refreshLayout(true);
-            startActivity(new Intent(SignInActivity.this, MainActivity.class));
-        } else {
-            refreshLayout(false);
-            //startActivity(new Intent(SignInActivity.this, MainActivity.class));
-        }
+//    private void handleSignInWithGoogle(GoogleSignInAccount account) {
+//        Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
+//
+//        AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+//        firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+//                if (!task.isSuccessful()) {
+//                    profile.setTextColor(Color.RED);
+//                    profile.setText(task.getException().getMessage());
+//                } else {
+//                    profile.setTextColor(Color.DKGRAY);
+//                }
+//            }
+//        });
+//    }
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            updateUI(account);
+        } catch (ApiException e) {
+            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+            updateUI(null);
+        }    
     }
 
     private void signIn() {
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+        Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    private void refreshLayout(boolean signedIn) {
-        if (signedIn) {
+    private void updateUI(GoogleSignInAccount user) {
+        if (user != null) {
+            profile.setText("DisplayName: " + user.getDisplayName());
+            profile.append("\n\n");
+            profile.append("Email: " + user.getEmail());
+            profile.append("\n\n");
+
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
         } else {
-            accountName.setText(R.string.signed_out);
+            profile.setText("null");
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
         }
     }
+
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show();
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.sign_in_button:
                 signIn();
+                break;
         }
     }
 }
