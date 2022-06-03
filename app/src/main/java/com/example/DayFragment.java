@@ -1,6 +1,4 @@
-
 package com.example;
-
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
