@@ -1,4 +1,4 @@
-package com.example.ics4ui_android;
+package com.ics4ui.ics4ui_android;
 
 import org.junit.Test;
 

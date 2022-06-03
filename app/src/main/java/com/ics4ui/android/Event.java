@@ -1,4 +1,4 @@
-package com.example;
+package com.ics4ui.android;
 
 public class Event {
     public String title;

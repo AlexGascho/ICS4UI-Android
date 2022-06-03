@@ -1,4 +1,4 @@
-package com.example;
+package com.ics4ui.android;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,8 +15,6 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.R;
-
-import java.util.ArrayList;
 
 public class AddEventFragment extends Fragment {
     TextView titleText;

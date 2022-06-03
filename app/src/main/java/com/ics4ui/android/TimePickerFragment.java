@@ -1,4 +1,4 @@
-package com.example;
+package com.ics4ui.android;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;

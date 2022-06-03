@@ -1,4 +1,4 @@
-package com.example;
+package com.ics4ui.android;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

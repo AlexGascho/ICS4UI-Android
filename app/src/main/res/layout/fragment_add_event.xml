@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundGreen"
-    tools:context=".AddEventFragment">
+    tools:context="com.ics4ui.android.AddEventFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

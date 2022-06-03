@@ -1,4 +1,4 @@
-package com.example;
+package com.ics4ui.android;
 
 public class Time {
     public int day;
