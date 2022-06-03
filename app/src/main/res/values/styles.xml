@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CalendarViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+    <style name="CalendarViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Large">
         <item name="android:textColor">#F9FFEE</item>
         <item name="android:weekNumberColor">#F9FFEE</item>
         <item name="android:textSize">25dp</item>
     </style>
 
-    <style name="calendarViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
-        <item name="android:textColor">#F9FFEE</item>
-        <item name="android:textSize">20dp</item>
+    <style name="calendarMonthCustomText">
+
     </style>
 
     <style name="CalendarViewCustom" parent="Theme.AppCompat">
@@ -17,14 +16,8 @@
         <item name="colorPrimary">#F9FFEE</item>
     </style>
 
-    <style name="calendarMonthCustomText" parent="android:TextAppearance.DeviceDefault.Small">
-        <item name="colorPrimary">#F9FFEE</item>
+    <style name="calendarViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Large">
         <item name="android:textColor">#F9FFEE</item>
-        <item name="android:focusedMonthDateColor">#F9FFEE</item>
-    </style>
-
-    <style name="calendarViewLineSeparator">
         <item name="android:textSize">20dp</item>
-        <item name="android:textColor">#F9FFEE</item>
     </style>
 </resources>

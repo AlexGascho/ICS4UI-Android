@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:ignore="ExtraText,MissingClass"
-    android:id="@+id/frameLayout"
     android:background="#526863"
-    android:backgroundTint="#526863">
+    android:backgroundTint="#526863"
+    android:orientation="vertical"
+    tools:ignore="ExtraText,MissingClass">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout2"
@@ -18,16 +17,13 @@
 
         <CalendarView
             android:id="@+id/calendarView"
-            style="@style/CalendarViewCustom"
+            style="@android:style/Widget.DeviceDefault.CalendarView"
             android:layout_width="411dp"
             android:layout_height="461dp"
             android:layout_marginTop="80dp"
             android:background="#536863"
             android:dateTextAppearance="@style/CalendarViewDateCustomText"
-            android:focusedMonthDateColor="@style/calendarMonthCustomText"
-            android:onClick="@+id/dayViewButton"
             android:theme="@style/CalendarViewCustom"
-            android:unfocusedMonthDateColor="#A83939"
             android:weekDayTextAppearance="@style/calendarViewWeekCustomText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
