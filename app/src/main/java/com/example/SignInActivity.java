@@ -84,8 +84,10 @@ public class SignInActivity extends AppCompatActivity implements
             GoogleSignInAccount acct = result.getSignInAccount();
             accountName.setText(acct.getDisplayName());
             refreshLayout(true);
+            startActivity(new Intent(SignInActivity.this, MainActivity.class));
         } else {
             refreshLayout(false);
+            startActivity(new Intent(SignInActivity.this, MainActivity.class));
         }
     }
 
