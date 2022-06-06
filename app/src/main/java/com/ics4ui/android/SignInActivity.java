@@ -53,7 +53,7 @@ public class SignInActivity extends AppCompatActivity {
         signInButton = findViewById(R.id.sign_in_button);
 
         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.web_client_id))
                 .requestEmail()
                 .build();
 
@@ -76,11 +76,7 @@ public class SignInActivity extends AppCompatActivity {
 
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        if (account != null) {
-            startActivity(new Intent(SignInActivity.this, MainActivity.class));
-        }
-
-        if (firebaseUser != null) {
+        if (account != null & firebaseUser != null) {
             startActivity(new Intent(SignInActivity.this, MainActivity.class));
         }
     }
