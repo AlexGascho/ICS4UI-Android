@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#526863"
+    android:backgroundTint="#526863"
+    android:orientation="vertical"
+    tools:ignore="ExtraText,MissingClass">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            style="@android:style/Widget.DeviceDefault.CalendarView"
+            android:layout_width="411dp"
+            android:layout_height="461dp"
+            android:layout_marginTop="80dp"
+            android:background="#536863"
+            android:dateTextAppearance="@style/CalendarViewDateCustomText"
+            android:theme="@style/CalendarViewCustom"
+            android:weekDayTextAppearance="@style/calendarViewWeekCustomText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            style="@android:style/Widget.ImageButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#00FFFFFF"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/high_res_filter"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="257dp"
+            tools:layout_editor_absoluteY="11dp" />
+
+        <ImageButton
+            android:id="@+id/addEventImageButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#00FFFFFF"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/high_res_add"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="326dp"
+            tools:layout_editor_absoluteY="11dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
