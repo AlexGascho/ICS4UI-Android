@@ -14,7 +14,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="36dp"
         android:layout_marginBottom="606dp"
-        android:text="[Today]"
+        android:text="@string/today"
         android:textAlignment="viewStart"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"

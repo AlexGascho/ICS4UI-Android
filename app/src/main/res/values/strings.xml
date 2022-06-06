@@ -8,6 +8,7 @@
     <string name="element_text">element_text</string>
     <string name="signed_out">Signed Out.</string>
     <string name="sign_in">Sign In.</string>
+    <string name="today">Today</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
