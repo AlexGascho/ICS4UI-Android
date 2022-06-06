@@ -33,11 +33,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/darkGreen"
         android:color="@color/darkGreen"
         android:paddingLeft="56dp"
         android:paddingRight="56dp"
         android:paddingBottom="300dp"
-        android:visibility="visible" />
+        android:visibility="visible"
+        app:buttonSize="wide"
+        app:colorScheme="dark" />
 
 </RelativeLayout>
