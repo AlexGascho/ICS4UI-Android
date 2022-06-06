@@ -12,7 +12,6 @@ import com.ics4ui.android.databinding.FragmentCalendarBinding;
 
 
 public class CalendarFragment extends Fragment {
-
     private FragmentCalendarBinding binding;
 
     public CalendarFragment() {
@@ -23,6 +22,14 @@ public class CalendarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
+
+        binding.addEventImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new AddEventFragment()).commit();
+            }
+        });
+
         return binding.getRoot();
     }
 
