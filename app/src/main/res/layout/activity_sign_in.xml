@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkPurple"
     tools:context="com.ics4ui.android.SignInActivity">
 
     <TextView
         android:id="@+id/sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="46dp"
+        android:layout_centerHorizontal="false"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="141dp"
         android:layout_marginEnd="47dp"
         android:layout_marginBottom="641dp"
-        android:text="Account Name"
-        android:textColor="#FFEEFF"
-        android:textSize="34sp"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="56dp"
         android:visibility="visible" />
 
     <TextView
@@ -29,9 +30,13 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/darkGreen"
+        android:paddingLeft="56dp"
+        android:paddingRight="56dp"
+        android:paddingBottom="300dp"
         android:visibility="visible" />
 
 </RelativeLayout>

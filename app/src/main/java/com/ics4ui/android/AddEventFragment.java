@@ -24,9 +24,16 @@ public class AddEventFragment extends Fragment {
 //    EditText locationInput;
 //    EditText groupInput;
     Integer i=0;
-    public static int startTimeHour;
-    public static int startTimeMinute;
+    private static int startTimeHour;
+    private static int startTimeMinute;
 
+    public static void setStartTimeHour(int TimeHour) {
+        startTimeHour = TimeHour;
+    }
+
+    public static void setStartTimeMinute(int TimeMinute) {
+        startTimeMinute = TimeMinute;
+    }
 
     public AddEventFragment() {
         // Required empty public constructor
@@ -56,13 +63,22 @@ public class AddEventFragment extends Fragment {
         binding.createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //creates new event
+                //creates new event object
                 Event newEvent = new Event();
+                //creates new Time object
+                Time startTime = new Time();
+                    //change properties of start time
+                startTime.setMinute(startTimeMinute);
+                startTime.setHour(startTimeHour);
+
                 //sets attributes of event
                 newEvent.setTitle(binding.titleTextInput.getText().toString());
                 newEvent.setDescription(binding.descriptionTextInput.getText().toString());
                 newEvent.setLocation(binding.locationTextInput.getText().toString());
                 newEvent.setGroup(binding.groupTextInput.getText().toString());
+
+                //adds start time object to event
+                newEvent.setStartTime(startTime);
                 //adds event to list in main activity
                 MainActivity.addEventToList(newEvent);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
