@@ -5,69 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_settings"
-    android:background="@color/white"
     tools:context="com.ics4ui.android.SettingsFragment" >
 
-    <TextView
-        android:id="@+id/settingsTitle"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Settings"
-        android:textColor="@color/darkPurple"
-        android:textSize="50dp" />
-
-    <TextView
-        android:id="@+id/notificationTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/settingsTitle"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Notifcations"
-        android:textColor="@color/darkPurple"
-        android:textSize="35sp" />
-
-    <TextView
-        android:id="@+id/volumeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/notificationTitle"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Volume"
-        android:textColor="@color/darkPurple"
-        android:textSize="35sp" />
-
-    <TextView
-        android:id="@+id/tactileStrengthTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/volumeTitle"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Tactile Strength"
-        android:textColor="@color/darkPurple"
-        android:textSize="35sp" />
 
     <Button
-        android:id="@+id/logOutButton"
-        android:layout_width="250dp"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="42dp"
-        android:background="@color/buttonPurple"
-        android:textAlignment="center"
-        android:text="LOGOUT"
-        android:textColor="@color/white"
-        android:textSize="50dp" />
+        android:id="@+id/sign_out_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#673AB7"
+        android:backgroundTint="#673AB7"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Sign Out"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
 
+    <TextView
+        android:id="@+id/display_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="name"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/display_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="email"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 </RelativeLayout>
