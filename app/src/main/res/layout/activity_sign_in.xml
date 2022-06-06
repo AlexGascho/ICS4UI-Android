@@ -26,6 +26,7 @@
         style="@style/CustomStatusTextView"
         android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:textColor="@color/titleColor"
         android:textSize="20sp" />
 
     <com.google.android.gms.common.SignInButton
