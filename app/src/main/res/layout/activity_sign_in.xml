@@ -7,34 +7,31 @@
     tools:context="com.ics4ui.android.SignInActivity">
 
     <TextView
-        android:id="@+id/account_name"
+        android:id="@+id/sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="46dp"
         android:layout_marginTop="141dp"
         android:layout_marginEnd="47dp"
         android:layout_marginBottom="641dp"
         android:text="Account Name"
         android:textColor="#FFEEFF"
-        android:textSize="48sp"
+        android:textSize="34sp"
         android:visibility="visible" />
 
     <TextView
-        android:id="@+id/profile"
+        android:id="@+id/email"
         style="@style/CustomStatusTextView"
-        android:textSize="20sp"
-        tools:text="@string/app_name" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="20sp" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="153dp"
-        android:layout_marginTop="345dp"
-        android:layout_marginEnd="154dp"
-        android:layout_marginBottom="248dp"
-        android:visibility="gone" />
+        android:layout_centerInParent="true"
+        android:visibility="visible" />
 
 </RelativeLayout>

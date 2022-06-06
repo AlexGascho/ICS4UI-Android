@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "647146302071",
-    "project_id": "ics4ui-app-9cf5f",
-    "storage_bucket": "ics4ui-app-9cf5f.appspot.com"
+    "project_number": "945443037655",
+    "project_id": "ics4ui-app-2a855",
+    "storage_bucket": "ics4ui-app-2a855.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:647146302071:android:fb4bf59af0222895d7b472",
+        "mobilesdk_app_id": "1:945443037655:android:0b84f6efa46cd1ae3b6b92",
         "android_client_info": {
           "package_name": "com.ics4ui.android"
         }
       },
       "oauth_client": [
         {
-          "client_id": "647146302071-npqfk2nnfq407fcrdg2tnrbl283m6csa.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.ics4ui.android",
-            "certificate_hash": "03e65328611e43819017a6fbb7ace76eda179d39"
-          }
-        },
-        {
-          "client_id": "647146302071-1e9o51kts7npqaviusgo7op5chuqi2dt.apps.googleusercontent.com",
+          "client_id": "945443037655-3ctseur9ahl88mgajsku0h4ippu0k779.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDc5zOuAUq4l4BY2w18M6e8dI4sebHIEyo"
+          "current_key": "AIzaSyCX7PuaokvXX48R6moRkYznmmgUz7r6fwE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "647146302071-1e9o51kts7npqaviusgo7op5chuqi2dt.apps.googleusercontent.com",
+              "client_id": "945443037655-3ctseur9ahl88mgajsku0h4ippu0k779.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
