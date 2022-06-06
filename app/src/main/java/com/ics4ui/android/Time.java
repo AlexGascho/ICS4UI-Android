@@ -1,12 +1,32 @@
 package com.ics4ui.android;
 
 public class Time {
-    public int day;
-    public int month;
-    public int year;
-    public int hour;
-    public int minute;
-    public String nameOfMonth;
+    private int day;
+    private int month;
+    private int year;
+    private int hour;
+    private int minute;
+    private String suffix;
+    private String conditionalMinuteZero;
+
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
+
+    public String getConditionalMinuteZero() {
+        return conditionalMinuteZero;
+    }
+
+    public void setConditionalMinuteZero(String conditionalMinuteZero) {
+        this.conditionalMinuteZero = conditionalMinuteZero;
+    }
+
+    private String nameOfMonth;
+
 
     public int getDay() {
         return day;

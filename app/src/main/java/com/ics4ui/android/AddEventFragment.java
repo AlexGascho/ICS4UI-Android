@@ -48,6 +48,11 @@ public class AddEventFragment extends Fragment {
         return fragment;
     }
 
+    public void changeStartTimeButtonText(){
+        startTimeButtonInput.setHint(Integer.toString(startTimeHour)+":"+conditionalZero+Integer.toString(startTimeMinute)+suffix);
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

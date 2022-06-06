@@ -15,8 +15,6 @@ public class TimePickerFragment extends DialogFragment
 
     int timeHour;
     int timeMinute;
-    String suffix = "AM";
-    String conditionalZero = "";
     Calendar calendar;
 
     @Override
@@ -57,7 +55,6 @@ public class TimePickerFragment extends DialogFragment
         AddEventFragment.setStartTimeHour(timeHour);
         AddEventFragment.setStartTimeMinute(timeMinute);
 
-        AddEventFragment.startTimeButtonInput.setHint(Integer.toString(timeHour)+":"+conditionalZero+Integer.toString(timeMinute)+suffix);
 
     }
 }
