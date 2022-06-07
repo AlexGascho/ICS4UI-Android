@@ -24,6 +24,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class SignInActivity extends AppCompatActivity {
     SignInButton signInButton;
@@ -35,12 +39,16 @@ public class SignInActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
 
+    private DatabaseReference rdata;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
         signInTitle = findViewById(R.id.sign_in);
+
+        rdata = FirebaseDatabase.getInstance().getReference();
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -118,8 +126,28 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void signedIn() {
+        writeNewUser(firebaseAuth.getCurrentUser());
         finish();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
+    }
+
+    private void writeNewUser(FirebaseUser user) {
+        rdata.child("users").child(user.getUid());
+
+        DatabaseReference rdata2 = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+
+        ArrayList<Event> fillerEvents = new ArrayList<>();
+        Event event = new Event();
+        event.setDescription("This is a filler event");
+        fillerEvents.add(event);
+        fillerEvents.add(event);
+        fillerEvents.add(event);
+        fillerEvents.add(event);
+        fillerEvents.add(event);
+        fillerEvents.add(event);
+
+        rdata2.child("events").setValue(fillerEvents);
+        rdata2.child("email").setValue(user.getEmail());
     }
 }

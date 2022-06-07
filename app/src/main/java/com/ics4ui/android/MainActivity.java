@@ -6,6 +6,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -15,6 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.ics4ui.android.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
@@ -46,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
     String DisplayName;
     String Email;
 
+    DatabaseReference databaseRef;
+    private RecyclerView recyclerView;
+    HomeEventAdapter adapter;
+
 
     private ActivityMainBinding binding;
 
@@ -55,6 +62,18 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        databaseRef = FirebaseDatabase.getInstance().getReference();
+        recyclerView = findViewById(R.id.announcementRecycler);
+
+ //       recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//       FirebaseRecyclerOptions<Event> options = new FirebaseRecyclerOptions.Builder<Event>()
+//               .setQuery(databaseRef, Event.class)
+//               .build();
+////
+//        adapter = new HomeEventAdapter(options);
+//        recyclerView.setAdapter(adapter);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -89,6 +108,17 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+    }
+
+    @Override protected void onStart() {
+        super.onStart();
+       // adapter.startListening();
+    }
+
+    @Override protected void onStop() {
+        super.onStop();
+        //adapter.stopListening();
     }
 
     public void SignOut() {

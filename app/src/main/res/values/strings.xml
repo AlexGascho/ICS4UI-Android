@@ -25,4 +25,7 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="web_client_id">945443037655-3ctseur9ahl88mgajsku0h4ippu0k779.apps.googleusercontent.com</string>
+    <string name="announcements">Announcements</string>
+    <string name="clubs_amp_groups"><![CDATA[Clubs & Groups]]></string>
+    <string name="edss_instagram"><a href="https://www.instagram.com/elmira_lancers/?hl=en">EDSS Instagram</a></string>
 </resources>

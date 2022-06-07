@@ -1,15 +1,16 @@
 package com.ics4ui.android;
 
 public class Event {
-    public String title;
-    public String description;
-    public String location;
-    public String group;
-    public Time startTime;
+    private String title;
+    private String description;
+    private String location;
+    private String group;
+    private String startTimeString;
+    private String endTimeString;
+    private Time startTime;
+    private Time endTime;
 
-    public Event() {
-    }
-
+    public Event() {}
 
     public String getTitle() {
         return title;
@@ -43,6 +44,22 @@ public class Event {
         this.group = group;
     }
 
+    public String getStartTimeString () {
+        return startTimeString;
+    }
+
+    public void setStartTimeString(String startTimeString) {
+        this.startTimeString = startTimeString;
+    }
+
+    public String getEndTimeString () {
+        return endTimeString;
+    }
+
+    public void setEndTimeString(String endTimeString) {
+        this.endTimeString = endTimeString;
+    }
+
     public Time getStartTime() {
         return startTime;
     }
@@ -59,5 +76,4 @@ public class Event {
         this.endTime = endTime;
     }
 
-    public Time endTime;
 }
