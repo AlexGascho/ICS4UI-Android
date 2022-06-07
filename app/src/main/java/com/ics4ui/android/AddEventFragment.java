@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.ics4ui.android.databinding.FragmentAddEventBinding;
 
 public class AddEventFragment extends Fragment {
-    private FragmentAddEventBinding binding;
+    private static FragmentAddEventBinding binding;
 
     TextView titleText;
     public static Button startTimeButtonInput;
@@ -24,25 +24,15 @@ public class AddEventFragment extends Fragment {
 //    EditText locationInput;
 //    EditText groupInput;
     Integer i=0;
-    private static String suffix;
-    private static String conditionalZero;
+
     private static int startTimeHour;
-    private static int startTimeMinute;
-
-    public static void setSuffix(String sfx){
-        suffix = sfx;
-    }
-
-    public static void setConditionalZero(String zero){
-        conditionalZero = zero;
-    }
-
+    private static String startTimeMinute;
 
     public static void setStartTimeHour(int TimeHour) {
         startTimeHour = TimeHour;
     }
 
-    public static void setStartTimeMinute(int TimeMinute) {
+    public static void setStartTimeMinute(String TimeMinute) {
         startTimeMinute = TimeMinute;
     }
 
@@ -59,9 +49,8 @@ public class AddEventFragment extends Fragment {
         return fragment;
     }
 
-    public void changeStartTimeButtonText(){
-        startTimeButtonInput.setHint(Integer.toString(startTimeHour)+":"+conditionalZero+Integer.toString(startTimeMinute)+suffix);
-
+    public static void changeStartTimeButtonText(String sfx){
+        binding.startTimeButton.setHint(Integer.toString(startTimeHour)+":"+startTimeMinute+sfx);
     }
 
     @Override
@@ -92,6 +81,7 @@ public class AddEventFragment extends Fragment {
                 newEvent.setDescription(binding.descriptionTextInput.getText().toString());
                 newEvent.setLocation(binding.locationTextInput.getText().toString());
                 newEvent.setGroup(binding.groupTextInput.getText().toString());
+                newEvent.setStartTime(startTime);
 
                 //adds start time object to event
                 newEvent.setStartTime(startTime);

@@ -5,9 +5,8 @@ public class Time {
     private int month;
     private int year;
     private int hour;
-    private int minute;
+    private String minute;
     private String suffix;
-    private String conditionalMinuteZero;
 
     public String getSuffix() {
         return suffix;
@@ -17,13 +16,6 @@ public class Time {
         this.suffix = suffix;
     }
 
-    public String getConditionalMinuteZero() {
-        return conditionalMinuteZero;
-    }
-
-    public void setConditionalMinuteZero(String conditionalMinuteZero) {
-        this.conditionalMinuteZero = conditionalMinuteZero;
-    }
 
     private String nameOfMonth;
 
@@ -60,11 +52,11 @@ public class Time {
         this.hour = hour;
     }
 
-    public int getMinute() {
+    public String getMinute() {
         return minute;
     }
 
-    public void setMinute(int minute) {
+    public void setMinute(String minute) {
         this.minute = minute;
     }
 
