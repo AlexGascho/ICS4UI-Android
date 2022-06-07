@@ -20,13 +20,6 @@
         android:textSize="56sp"
         android:visibility="visible" />
 
-    <TextView
-        android:id="@+id/email"
-        style="@style/CustomStatusTextView"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textSize="20sp" />
-
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
