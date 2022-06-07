@@ -34,21 +34,23 @@ public class TimePickerFragment extends DialogFragment
         timeMinute = minute;
         if(timeHour==0){
             timeHour = 12;
-            suffix = "AM";
+            AddEventFragment.setSuffix("AM");
         }
         else if(timeHour>12){
             timeHour = timeHour-12;
-            suffix = "PM";
+            AddEventFragment.setSuffix("PM");
         }
         else if(timeHour==12){
-            suffix = "PM";
+            AddEventFragment.setSuffix("PM");
         }
         // Adds a zero if minute is less than 10 so that time goes from displaying as 6:5 to 6:05
         if(timeMinute<10){
-            conditionalZero="0";
+            //fills zero
+            AddEventFragment.setConditionalZero("0");
         }
         else{
-            conditionalZero="";
+            //emptys zero
+            AddEventFragment.setConditionalZero("");
         }
 
         //initialize calendar

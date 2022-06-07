@@ -24,8 +24,19 @@ public class AddEventFragment extends Fragment {
 //    EditText locationInput;
 //    EditText groupInput;
     Integer i=0;
+    private static String suffix;
+    private static String conditionalZero;
     private static int startTimeHour;
     private static int startTimeMinute;
+
+    public static void setSuffix(String sfx){
+        suffix = sfx;
+    }
+
+    public static void setConditionalZero(String zero){
+        conditionalZero = zero;
+    }
+
 
     public static void setStartTimeHour(int TimeHour) {
         startTimeHour = TimeHour;
