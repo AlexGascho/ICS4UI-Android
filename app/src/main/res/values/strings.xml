@@ -1,27 +1,13 @@
 <resources>
     <string name="app_name">ICS4UI-APP</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="placeholder_day_day_fragment">Day 0</string>
-    <string name="placeholder_time_day_fragment">Start time - End time</string>
+    <string name="placeholder_time_day_fragment">time-time</string>
     <string name="placeholder_title_day_fragment">Title</string>
     <string name="fragment_day_close">close</string>
     <string name="element_text">element_text</string>
-    <string name="signed_out">Signed Out.</string>
-    <string name="sign_in">Sign In.</string>
-    <string name="today">Today</string>
-    <string name="login">Login</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_home">Home</string>
+    <string name="title_calendar">Calendar</string>
+    <string name="title_settings">Settings</string>
 </resources>
