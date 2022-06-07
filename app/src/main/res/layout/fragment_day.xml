@@ -19,9 +19,9 @@
             android:layout_marginTop="30dp"
             android:text="@string/placeholder_day_day_fragment"
             android:textAlignment="textStart"
-            android:textAppearance="bold"
             android:textColor="@color/darkPurple"
             android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,9 +32,9 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="40dp"
             android:text="@string/placeholder_time_day_fragment"
-            android:textAppearance="bold"
             android:textColor="@color/darkPurple"
             android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/event_day" />
 
