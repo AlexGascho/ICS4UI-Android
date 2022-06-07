@@ -7,4 +7,7 @@
     <string name="placeholder_title_day_fragment">Title</string>
     <string name="fragment_day_close">close</string>
     <string name="element_text">element_text</string>
+    <string name="title_home">Home</string>
+    <string name="title_calendar">Calendar</string>
+    <string name="title_settings">Settings</string>
 </resources>
