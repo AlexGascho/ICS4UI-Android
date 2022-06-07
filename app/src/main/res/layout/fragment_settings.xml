@@ -18,7 +18,7 @@
         android:layout_marginTop="30dp"
         android:text="Settings"
         android:textColor="@color/darkPurple"
-        android:textSize="50dp" />
+        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/notificationTitle"
@@ -67,7 +67,7 @@
         android:textAlignment="center"
         android:text="LOGOUT"
         android:textColor="@color/white"
-        android:textSize="50dp" />
+        android:textSize="50sp" />
 
 
 </RelativeLayout>
