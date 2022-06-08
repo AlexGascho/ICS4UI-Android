@@ -27,9 +27,9 @@ public class HomeFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
 
     DatabaseReference dbase;
-    HomeEventAdapter adapter, adapter2;
-    GoogleSignInOptions googleSignInOptions;
-    GoogleSignInClient googleSignInClient;
+    HomeAnnouncementAdapter announcementAdapter, clubsGroupsAnnouncementAdapter;
+//    GoogleSignInOptions googleSignInOptions;
+//    GoogleSignInClient googleSignInClient;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -43,16 +43,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        googleSignInClient = GoogleSignIn.getClient(getActivity(), googleSignInOptions);
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser account = firebaseAuth.getCurrentUser();
-
-
-        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid()).child("events");
+        dbase = FirebaseDatabase.getInstance().getReference().child("announcements");
     }
 
 
@@ -71,13 +62,18 @@ public class HomeFragment extends Fragment {
         binding.announcementRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.clubsGroupsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        FirebaseRecyclerOptions<Event> options = new FirebaseRecyclerOptions.Builder<Event>()
-                .setQuery(dbase, Event.class)
+        FirebaseRecyclerOptions<Announcements> options = new FirebaseRecyclerOptions.Builder<Announcements>()
+                .setQuery(dbase.child("genericAnnouncements"), Announcements.class)
+                .build();
+        FirebaseRecyclerOptions<Announcements> options2 = new FirebaseRecyclerOptions.Builder<Announcements>()
+                .setQuery(dbase.child("clubsGroupsAnnouncements"), Announcements.class)
                 .build();
 
-        adapter = new HomeEventAdapter(options);
-        binding.announcementRecycler.setAdapter(adapter);
-        binding.clubsGroupsRecycler.setAdapter(adapter);
+        announcementAdapter = new HomeAnnouncementAdapter(options);
+        clubsGroupsAnnouncementAdapter = new HomeAnnouncementAdapter(options2);
+
+        binding.announcementRecycler.setAdapter(announcementAdapter);
+        binding.clubsGroupsRecycler.setAdapter(clubsGroupsAnnouncementAdapter);
 
         return binding.getRoot();
     }
@@ -90,12 +86,14 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        adapter.startListening();
+        announcementAdapter.startListening();
+        clubsGroupsAnnouncementAdapter.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        adapter.stopListening();
+        announcementAdapter.stopListening();
+        clubsGroupsAnnouncementAdapter.startListening();
     }
 }

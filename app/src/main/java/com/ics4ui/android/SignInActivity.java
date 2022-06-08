@@ -28,6 +28,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignInActivity extends AppCompatActivity {
     SignInButton signInButton;
@@ -134,16 +136,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void writeNewUser(FirebaseUser user) {
         rdata = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
-
-        ArrayList<Event> fillerEvents = new ArrayList<>();
-        Event event = new Event();
-        event.setDescription("Body text o body text");
-
-        for (int i = 0; i < 10; ++i) {
-            fillerEvents.add(event);
-        }
-
-        rdata.child("events").setValue(fillerEvents);
         rdata.child("email").setValue(user.getEmail());
+        rdata.child("name").setValue(user.getDisplayName());
     }
 }
