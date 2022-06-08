@@ -17,5 +17,6 @@
     <string name="displayname">displayName</string>
     <string name="email">email</string>
     <string name="login">Login</string>
+    <string name="end_time">End Time</string>
 
 </resources>

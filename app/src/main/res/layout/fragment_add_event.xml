@@ -187,10 +187,10 @@
         <Button
             android:id="@+id/startTimeButton"
             style="?android:spinnerStyle"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="25dp"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="20dp"
             android:hint="Start Time"
             app:layout_constraintStart_toEndOf="@+id/startTitle"
             app:layout_constraintTop_toBottomOf="@+id/allDaySwitch" />
@@ -204,6 +204,15 @@
             android:text=""
             app:layout_constraintStart_toEndOf="@+id/allDayTitle"
             app:layout_constraintTop_toBottomOf="@+id/titleTextInput" />
+
+        <Button
+            android:id="@+id/button"
+            style="?android:spinnerStyle"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:hint="@string/end_time"
+            app:layout_constraintBottom_toBottomOf="@+id/endTitle"
+            app:layout_constraintEnd_toEndOf="@+id/startTimeButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
