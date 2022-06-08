@@ -1,5 +1,10 @@
 package com.ics4ui.android;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Event {
     public String title;
     public String description;
@@ -60,4 +65,16 @@ public class Event {
     }
 
     public Time endTime;
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("title", title);
+        result.put("description", description);
+        result.put("location", location);
+        result.put("group", group);
+        result.put("startTime", startTime);
+
+        return result;
+    }
 }

@@ -1,45 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_settings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_settings"
-    tools:context="com.ics4ui.android.SettingsFragment" >
-
-
-    <Button
-        android:id="@+id/sign_out_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="#673AB7"
-        android:backgroundTint="#673AB7"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:text="Sign Out"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp" />
+    android:background="@color/white"
+    tools:context="com.ics4ui.android.SettingsFragment">
 
     <TextView
-        android:id="@+id/display_name"
+        android:id="@+id/settingsTitle"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Settings"
+        android:textColor="@color/darkPurple"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/notificationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/settingsTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Notifcations"
+        android:textColor="@color/darkPurple"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/volumeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notificationTitle"
+        android:layout_alignParentStart="true"
+        android:layout_margin="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Volume"
+        android:textColor="@color/darkPurple"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/tactileStrengthTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/volumeTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Tactile Strength"
+        android:textColor="@color/darkPurple"
+        android:textSize="35sp" />
+
+    <Button
+        android:id="@+id/logOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/tactileStrengthTitle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="name"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp" />
+        android:layout_marginTop="200dp"
+        android:background="@color/buttonPurple"
+        android:text="LOGOUT"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/displayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/darkPurple"
+        android:text="@string/displayname"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/display_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="email"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:layout_toEndOf="@id/displayName"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/darkPurple"
+        android:text="@string/email"
+        android:textSize="14sp" />
+
 
 </RelativeLayout>

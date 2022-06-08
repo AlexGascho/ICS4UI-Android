@@ -1,53 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ics4ui.android.HomeFragment">
+    android:background="@color/backgroundGreen"
+    tools:context="com.ics4ui.android.MainActivity">
 
     <TextView
         android:id="@+id/announcementDate"
         android:layout_width="match_parent"
-        android:layout_height="88dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="606dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/underline"
         android:text="@string/today"
         android:textAlignment="viewStart"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/white"
+        android:textSize="48sp" />
 
     <TextView
         android:id="@+id/announcements"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:gravity="center_horizontal"
-        android:text="Announcements"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/announcementDate" />
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_below="@id/announcementDate"
+        android:layout_marginTop="30dp"
+        android:text="@string/announcements"
+        android:textColor="@color/titleColor"
+        android:textSize="32sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/announcementRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_below="@id/announcements"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/round_corners"
+        android:scrollbars="none" />
+
+    <TextView
+        android:id="@+id/clubsGroups"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/announcementRecycler"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="435dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/announcements"
-        app:layout_constraintVertical_bias="0.2" />
+        android:text="@string/clubs_amp_groups"
+        android:textColor="@color/titleColor"
+        android:textSize="32sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/clubsGroupsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_below="@id/clubsGroups"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/round_corners"
+        android:scrollbars="none" />
+
+    <TextView
+        android:id="@+id/instagram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/clubsGroupsRecycler"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:autoLink="web"
+        android:background="@drawable/round_corners"
+        android:gravity="center"
+        android:linksClickable="true"
+        android:text="@string/edss_instagram"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+</RelativeLayout>

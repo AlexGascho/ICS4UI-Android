@@ -12,17 +12,23 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.ics4ui.android.databinding.FragmentAddEventBinding;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddEventFragment extends Fragment {
     private static FragmentAddEventBinding binding;
 
+    private FirebaseAuth firebaseAuth;
+    DatabaseReference dbase;
+
     TextView titleText;
     public static Button startTimeButtonInput;
-//    EditText titleInput;
-//    EditText descriptionInput;
-//    EditText locationInput;
-//    EditText groupInput;
     Integer i=0;
 
     private static int startTimeHour;
@@ -55,6 +61,14 @@ public class AddEventFragment extends Fragment {
     public static void changeEndTimeButtonText(){
 
     }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+        firebaseAuth = FirebaseAuth.getInstance();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -89,6 +103,10 @@ public class AddEventFragment extends Fragment {
                 newEvent.setStartTime(startTime);
                 //adds event to list in main activity
                 MainActivity.addEventToList(newEvent);
+
+
+                FirebaseUser account = firebaseAuth.getCurrentUser();
+                writeNewEvent(account, newEvent);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
                 //Creates toast (pop up)
                 Toast.makeText(getContext(), "Event Added", Toast.LENGTH_SHORT).show();
@@ -101,4 +119,16 @@ public class AddEventFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
+    public void writeNewEvent(FirebaseUser account, Event newEvent) {
+        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid());
+        String key = dbase.child("events").push().getKey();
+        Map<String, Object> eventMap = newEvent.toMap();
+
+        Map<String, Object> update = new HashMap<>();
+        update.put("/events/" + key, eventMap);
+
+        dbase.updateChildren(update);
+    }
+
 }
