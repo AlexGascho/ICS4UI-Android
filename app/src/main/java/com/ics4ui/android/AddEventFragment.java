@@ -2,7 +2,6 @@ package com.ics4ui.android;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ import com.ics4ui.android.databinding.FragmentAddEventBinding;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddEventFragment extends Fragment {
+public class AddEventFragment extends Fragment implements View.OnClickListener {
     private static FragmentAddEventBinding binding;
 
     private FirebaseAuth firebaseAuth;
@@ -59,19 +58,19 @@ public class AddEventFragment extends Fragment {
         return fragment;
     }
 
-    public void createEditTextDialog(View view) {
+    public void createEditTextDialog(View view, TextView textView, String title) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setTitle("Title");
+        builder.setTitle(title);
 
-        final EditText input = new EditText(getContext());
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        builder.setView(input);
+        View viewInflated = LayoutInflater.from(getContext()).inflate(R.layout.text_input_layout, (ViewGroup) getView(), false);
+        final EditText input = (EditText) viewInflated.findViewById(R.id.input);
+        builder.setView(viewInflated);
 
         builder.setPositiveButton("ENTER", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                binding.titleTextInput.setText(input.getText().toString());
+                textView.setText(input.getText().toString());
             }
         });
 
@@ -103,28 +102,40 @@ public class AddEventFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentAddEventBinding.inflate(inflater, container,false);
 
-        binding.startTimeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showTimePickerDialog(view);
-            }
-        });
+        binding.startTimeButton.setOnClickListener(this);
+        binding.createEventButton.setOnClickListener(this);
+        binding.titleTextInput.setOnClickListener(this);
+        binding.locationTextInput.setOnClickListener(this);
+        binding.descriptionTextInput.setOnClickListener(this);
+        binding.groupTextInput.setOnClickListener(this);
 
-        binding.titleTextInput.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createEditTextDialog(view);
-            }
-        });
+        return binding.getRoot();
+    }
 
-        binding.createEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    public void writeNewEvent(FirebaseUser account, Event newEvent) {
+        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid());
+        String key = dbase.child("events").push().getKey();
+        Map<String, Object> eventMap = newEvent.toMap();
+
+        Map<String, Object> update = new HashMap<>();
+        update.put("/events/" + key, eventMap);
+
+        dbase.updateChildren(update);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.createEventButton:
                 //creates new event object
                 Event newEvent = new Event();
                 //creates new Time object
                 Time startTime = new Time();
-                    //change properties of start time
+                //change properties of start time
                 startTime.setMinute(startTimeMinute);
                 startTime.setHour(startTimeHour);
 
@@ -146,25 +157,24 @@ public class AddEventFragment extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
                 //Creates toast (pop up)
                 Toast.makeText(getContext(), "Event Added", Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        return binding.getRoot();
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
-    public void writeNewEvent(FirebaseUser account, Event newEvent) {
-        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid());
-        String key = dbase.child("events").push().getKey();
-        Map<String, Object> eventMap = newEvent.toMap();
-
-        Map<String, Object> update = new HashMap<>();
-        update.put("/events/" + key, eventMap);
-
-        dbase.updateChildren(update);
+                break;
+            case R.id.startTimeButton:
+                showTimePickerDialog(view);
+                break;
+            case R.id.titleTextInput:
+                createEditTextDialog(view, binding.titleTextInput, "Title");
+                break;
+            case R.id.locationTextInput:
+                createEditTextDialog(view, binding.locationTextInput, "Location");
+                break;
+            case R.id.descriptionTextInput:
+                createEditTextDialog(view, binding.descriptionTextInput, "Description");
+                break;
+            case R.id.groupTextInput:
+                createEditTextDialog(view, binding.groupTextInput, "Groups/Clubs");
+                break;
+        }
     }
 
 }

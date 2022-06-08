@@ -29,14 +29,16 @@
 
         <TextView
             android:id="@+id/titleTitle"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="40dp"
+            android:layout_marginEnd="1dp"
             android:text="@string/title"
             android:textColor="@color/darkPurple"
             android:textStyle="bold"
             app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toStartOf="@+id/titleTextInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addEventTitle" />
 
@@ -81,27 +83,32 @@
 
         <TextView
             android:id="@+id/locationTitle"
-            android:layout_width="170dp"
+            android:layout_width="140dp"
             android:layout_height="40dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="1dp"
             android:text="@string/location"
             android:textColor="@color/darkPurple"
             android:textStyle="bold"
             app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toStartOf="@+id/locationTextInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/endTitle" />
 
+
         <TextView
             android:id="@+id/descriptionTitle"
-            android:layout_width="180dp"
+            android:layout_width="170dp"
             android:layout_height="40dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="1dp"
             android:text="@string/description"
             android:textColor="@color/darkPurple"
             android:textStyle="bold"
             app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toStartOf="@+id/descriptionTextInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationTitle" />
 
@@ -111,10 +118,12 @@
             android:layout_height="40dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="1dp"
             android:text="@string/clubs_groups"
             android:textColor="@color/darkPurple"
             android:textStyle="bold"
             app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toStartOf="@+id/groupTextInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionTitle" />
 
@@ -127,7 +136,7 @@
             android:layout_marginEnd="28dp"
             android:background="@color/buttonPurple"
             android:text="@string/create_event"
-            android:textSize="37dp"
+            android:textSize="37sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clubsGroupsTitle" />
@@ -136,50 +145,55 @@
             android:id="@+id/titleTextInput"
             android:layout_width="270dp"
             android:layout_height="40dp"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="30dp"
             android:background="@drawable/underline_text"
             android:contentDescription=""
             android:ems="10"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="bottom"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/titleTitle"
             app:layout_constraintTop_toBottomOf="@+id/addEventTitle" />
 
-        <EditText
+        <TextView
             android:id="@+id/locationTextInput"
-            android:layout_width="215dp"
+            android:layout_width="210dp"
             android:layout_height="40dp"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="30dp"
-            android:ems="10"
-            android:inputType="textPersonName"
+            android:background="@drawable/underline_text"
+            android:gravity="bottom"
             android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/locationTitle"
             app:layout_constraintTop_toBottomOf="@+id/endTitle" />
 
-        <EditText
+        <TextView
             android:id="@+id/groupTextInput"
             android:layout_width="150dp"
             android:layout_height="40dp"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="30dp"
+            android:background="@drawable/underline_text"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:gravity="bottom"
             android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/clubsGroupsTitle"
             app:layout_constraintTop_toBottomOf="@+id/descriptionTextInput" />
 
-        <EditText
+        <TextView
             android:id="@+id/descriptionTextInput"
             android:layout_width="180dp"
             android:layout_height="40dp"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="30dp"
+            android:background="@drawable/underline_text"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:gravity="bottom"
             android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/descriptionTitle"
             app:layout_constraintTop_toBottomOf="@+id/locationTextInput" />
 
         <Button
