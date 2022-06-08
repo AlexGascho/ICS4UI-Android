@@ -7,34 +7,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public class DayFragment extends Fragment {
+import com.ics4ui.android.databinding.FragmentDayBinding;
 
-    public static DayFragment newInstance(String param1, String param2) {
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+public class DayFragment extends Fragment {
+    FragmentDayBinding binding;
+
+    public static DayFragment newInstance(Long date) {
         DayFragment fragment = new DayFragment();
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentDayBinding.inflate(inflater, container, false);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_day, container, false);
+        Long date = this.getArguments().getLong("date");
+        SimpleDateFormat formatDayMonth = new SimpleDateFormat("MMMM d", Locale.CANADA);
+        String formattedDate = formatDayMonth.format(date);
+        binding.eventDay.setText(formattedDate);
 
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        view.findViewById(R.id.day_close).setOnClickListener(new View.OnClickListener() {
+        binding.dayClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
             }
         });
+
+        return binding.getRoot();
     }
+
 }
