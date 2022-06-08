@@ -1,14 +1,18 @@
 package com.ics4ui.android;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
@@ -55,6 +59,31 @@ public class AddEventFragment extends Fragment {
         return fragment;
     }
 
+    public void createEditTextDialog(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        builder.setTitle("Title");
+
+        final EditText input = new EditText(getContext());
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        builder.setPositiveButton("ENTER", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                binding.titleTextInput.setText(input.getText().toString());
+            }
+        });
+
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
+    }
+
     public static void changeStartTimeButtonText(String sfx){
         binding.startTimeButton.setHint(Integer.toString(startTimeHour)+":"+startTimeMinute+sfx);
     }
@@ -78,6 +107,13 @@ public class AddEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view);
+            }
+        });
+
+        binding.titleTextInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createEditTextDialog(view);
             }
         });
 
