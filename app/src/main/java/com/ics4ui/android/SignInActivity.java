@@ -27,10 +27,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 public class SignInActivity extends AppCompatActivity {
     SignInButton signInButton;
     TextView signInTitle;
@@ -95,7 +91,7 @@ public class SignInActivity extends AppCompatActivity {
         Intent intent = googleSignInClient.getSignInIntent();
         startActivityForResult(intent, 100);
         //temp code to make it always work
-        startActivity(new Intent(SignInActivity.this,MainActivity.class));
+        //startActivity(new Intent(SignInActivity.this,MainActivity.class));
     }
 
     @Override
