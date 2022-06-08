@@ -52,7 +52,9 @@ public class AddEventFragment extends Fragment {
     public static void changeStartTimeButtonText(String sfx){
         binding.startTimeButton.setHint(Integer.toString(startTimeHour)+":"+startTimeMinute+sfx);
     }
+    public static void changeEndTimeButtonText(){
 
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
