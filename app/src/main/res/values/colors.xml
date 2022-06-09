@@ -6,13 +6,12 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFF9FFEE</color>
     <color name="text_colour">#FF140719</color>
     <color name="backgroundGreen">#FF536863</color>
     <color name="titleColor">#FFF9FFEE</color>
     <color name="darkPurple">#FF140719</color>
     <color name="buttonPurple">#FFA57FC4</color>
-    <color name="dark_purple">#FF140719</color>
-    <color name="creampie">#FF7f7f81</color>
-    <color name="theebone">#FFBA65FF</color>
+    <color name="lightGreen">#FFA0BBB4</color>
+    <color name="darkGreen">#FF536863</color>
 </resources>
