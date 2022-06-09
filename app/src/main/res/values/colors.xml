@@ -12,6 +12,7 @@
     <color name="titleColor">#FFF9FFEE</color>
     <color name="darkPurple">#FF140719</color>
     <color name="buttonPurple">#FFA57FC4</color>
+    <color name="vibrantPurple">#BA65FF</color>
     <color name="lightGreen">#FFA0BBB4</color>
     <color name="darkGreen">#FF536863</color>
 </resources>

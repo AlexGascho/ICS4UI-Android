@@ -2,7 +2,7 @@
     <string name="app_name">ICS4UI-APP</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="placeholder_day_day_fragment">Day 0</string>
-    <string name="placeholder_time_day_fragment">time-time</string>
+    <string name="placeholder_time_day_fragment">Start time -\n End time</string>
     <string name="placeholder_title_day_fragment">Title</string>
     <string name="fragment_day_close">close</string>
     <string name="element_text">element_text</string>
@@ -19,6 +19,7 @@
     <string name="login">Login</string>
     <string name="end_time">End Time</string>
     <string name="textview">TextView</string>
+    <string name="eventTitleText">Event title</string>
 
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
