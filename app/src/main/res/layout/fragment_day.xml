@@ -20,7 +20,7 @@
             android:text="@string/placeholder_day_day_fragment"
             android:textAlignment="textStart"
             android:textColor="@color/darkPurple"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
