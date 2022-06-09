@@ -28,7 +28,9 @@
         <item name="android:paddingTop">16dp</item>
     </style>
 
-    <style name="SpinnerTheme"></style>
+    <style name="SpinnerTheme">
+        <item name="android:background">@drawable/spinner_icon</item>
+    </style>
 
     <style name="button_custom">
         <item name="colorPrimary">@color/buttonPurple</item>
