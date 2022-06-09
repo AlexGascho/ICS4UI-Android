@@ -64,6 +64,13 @@
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
             tools:layout_editor_absoluteX="326dp"
             tools:layout_editor_absoluteY="11dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:alpha="0.5"></RelativeLayout>
     </RelativeLayout>
 
 </LinearLayout>

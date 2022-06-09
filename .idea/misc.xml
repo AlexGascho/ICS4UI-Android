@@ -39,6 +39,7 @@
         <entry key="app/src/main/res/layout/content_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/event_list_item.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.20750579833984378" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.20969202898550723" />
         <entry key="app/src/main/res/layout/fragment_calendar_view.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_day.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
