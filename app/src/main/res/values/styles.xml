@@ -36,4 +36,14 @@
         <item name="colorPrimary">@color/buttonPurple</item>
         <item name="colorAccent">@color/buttonOutline</item>
     </style>
+
+    <style name="purpleButton">
+        <item name="android:background">@drawable/purple_button</item>
+        <item name="colorPrimary">@color/buttonPurple</item>
+        <item name="colorAccent">@color/buttonOutline</item>
+    </style>
+
+    <style name="searchTheme">
+        <item name="android:background">@drawable/search_background</item>
+    </style>
 </resources>

@@ -35,7 +35,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/filterButton"
             style="@android:style/Widget.ImageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -54,7 +54,7 @@
             android:id="@+id/addEventImageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignRight="@id/imageButton"
+            android:layout_alignRight="@id/filterButton"
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:background="#00FFFFFF"
