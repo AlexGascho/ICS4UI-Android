@@ -32,19 +32,30 @@ public class AddEventFragment extends Fragment {
     DatabaseReference dbase;
 
     TextView titleText;
-    public static Button startTimeButtonInput;
     Integer i=0;
 
     private static int startTimeHour;
     private static String startTimeMinute;
+    private static int endTimeHour;
+    private static String endTimeMinute;
 
-    public static void setStartTimeHour(int TimeHour) {
-        startTimeHour = TimeHour;
+
+    public static void setStartTimeHour(int timeHour) {
+        startTimeHour = timeHour;
     }
 
     public static void setStartTimeMinute(String TimeMinute) {
         startTimeMinute = TimeMinute;
     }
+
+    public static void setEndTimeHour(int timeHour){
+        endTimeHour = timeHour;
+    }
+
+    public static void setEndTimeMinute(String timeMinute){
+        endTimeMinute = timeMinute;
+    }
+
 
     public AddEventFragment() {
         // Required empty public constructor
@@ -87,8 +98,9 @@ public class AddEventFragment extends Fragment {
     public static void changeStartTimeButtonText(String sfx){
         binding.startTimeButton.setHint(Integer.toString(startTimeHour)+":"+startTimeMinute+sfx);
     }
-    public static void changeEndTimeButtonText(){
 
+    public static void changeEndTimeButtonText(String sfx){
+        binding.endTimeButton.setHint(Integer.toString(endTimeHour)+":"+endTimeMinute+sfx);
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,6 +119,17 @@ public class AddEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view);
+                TimePickerFragment.setIsStartButton(true);
+                binding.addEventTitle.setText(TimePickerFragment.isStartButton.toString());
+            }
+        });
+
+        binding.endTimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showTimePickerDialog(view);
+                TimePickerFragment.setIsStartButton(false);
+                binding.addEventTitle.setText(TimePickerFragment.isStartButton.toString());
             }
         });
 
@@ -127,6 +150,10 @@ public class AddEventFragment extends Fragment {
                     //change properties of start time
                 startTime.setMinute(startTimeMinute);
                 startTime.setHour(startTimeHour);
+
+                Time endTime = new Time();
+                endTime.setMinute(endTimeMinute);
+                endTime.setHour(endTimeHour);
 
                 //sets attributes of event
                 newEvent.setTitle(binding.titleTextInput.getText().toString());
