@@ -15,6 +15,5 @@
     <color name="vibrantPurple">#BA65FF</color>
     <color name="lightGreen">#FFA0BBB4</color>
     <color name="darkGreen">#FF536863</color>
-    <color name="buttonOutline">#FF715C83</color>
-    <color name="mediumPurple">#FF715C83</color>
+    <color name="buttonOutline">#FF715c83</color>
 </resources>
