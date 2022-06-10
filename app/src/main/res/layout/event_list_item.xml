@@ -2,15 +2,13 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="30dp"
-    android:layout_marginTop="10dp"
     android:orientation="vertical"
-    android:layout_marginRight="30dp"
     android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/eventTime"
@@ -25,6 +23,7 @@
         <Space
             android:id="@+id/eventListSpace"
             android:layout_toRightOf="@id/eventTime"
+            android:background="@color/white"
             android:layout_width="75dp"
             android:layout_height="10dp" />
 
@@ -36,7 +35,7 @@
             android:background="@color/white"
             android:text="@string/fillterEventTitle"
             android:textColor="@color/backgroundGreen"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

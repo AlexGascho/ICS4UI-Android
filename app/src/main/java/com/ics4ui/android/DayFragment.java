@@ -36,28 +36,25 @@ public class DayFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         firebaseAuth = FirebaseAuth.getInstance();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDayBinding.inflate(inflater, container, false);
 
-        FirebaseUser account = firebaseAuth.getCurrentUser();
-
-        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid()).child("events");
-        binding.eventRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-
         Long date = this.getArguments().getLong("date");
         SimpleDateFormat formatDayMonth = new SimpleDateFormat("MMMM d", Locale.CANADA);
         String formattedDate = formatDayMonth.format(date);
         binding.eventDay.setText(formattedDate);
 
-        binding.dayClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
-            }
-        });
+        binding.eventRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
+        String databaseDate = databaseDateFormat.format(date);
+
+        FirebaseUser account = firebaseAuth.getCurrentUser();
+        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid()).child("events").child(databaseDate);
 
         FirebaseRecyclerOptions<Event> options = new FirebaseRecyclerOptions.Builder<Event>()
                 .setQuery(dbase, Event.class)
@@ -66,6 +63,13 @@ public class DayFragment extends Fragment {
         dayEventAdapter = new DayEventAdapter(options);
 
         binding.eventRecycler.setAdapter(dayEventAdapter);
+
+        binding.dayClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
+            }
+        });
 
         return binding.getRoot();
     }

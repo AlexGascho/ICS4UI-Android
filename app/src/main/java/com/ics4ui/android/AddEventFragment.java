@@ -21,7 +21,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ics4ui.android.databinding.FragmentAddEventBinding;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class AddEventFragment extends Fragment implements View.OnClickListener {
@@ -35,13 +37,13 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     Integer i=0;
 
     private static int startTimeHour;
-    private static String startTimeMinute;
+    private static int startTimeMinute;
 
     public static void setStartTimeHour(int TimeHour) {
         startTimeHour = TimeHour;
     }
 
-    public static void setStartTimeMinute(String TimeMinute) {
+    public static void setStartTimeMinute(int TimeMinute) {
         startTimeMinute = TimeMinute;
     }
 
@@ -117,12 +119,17 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     }
 
     public void writeNewEvent(FirebaseUser account, Event newEvent) {
-        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid());
-        String key = dbase.child("events").push().getKey();
+        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid()).child("events");
+
+        Time date = newEvent.getStartTime();
+        SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
+        String formattedDate = databaseDateFormat.format(date);
+
+        String key = dbase.child(formattedDate).push().getKey();
         Map<String, Object> eventMap = newEvent.toMap();
 
         Map<String, Object> update = new HashMap<>();
-        update.put("/events/" + key, eventMap);
+        update.put("/events/" + formattedDate + "/" + key, eventMap);
 
         dbase.updateChildren(update);
     }
@@ -149,7 +156,6 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
                 //adds start time object to event
                 newEvent.setStartTime(startTime);
                 //adds event to list in main activity
-                MainActivity.addEventToList(newEvent);
 
 
                 FirebaseUser account = firebaseAuth.getCurrentUser();

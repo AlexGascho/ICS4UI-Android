@@ -64,7 +64,7 @@
         android:layout_below="@id/tactileStrengthTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
-        android:background="@drawable/round_corners"
+        android:background="@drawable/purple_button"
         android:padding="10dp"
         android:text="LOGOUT"
         android:textAlignment="center"

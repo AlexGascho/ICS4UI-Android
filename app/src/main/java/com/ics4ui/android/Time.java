@@ -5,7 +5,7 @@ public class Time {
     private int month;
     private int year;
     private int hour;
-    private String minute;
+    private int minute;
     private String suffix;
 
     public String getSuffix() {
@@ -52,11 +52,11 @@ public class Time {
         this.hour = hour;
     }
 
-    public String getMinute() {
+    public int getMinute() {
         return minute;
     }
 
-    public void setMinute(String minute) {
+    public void setMinute(int minute) {
         this.minute = minute;
     }
 

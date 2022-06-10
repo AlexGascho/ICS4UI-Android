@@ -11,6 +11,7 @@ public class Event {
     public String location;
     public String group;
     public Time startTime;
+    public Time endTime;
 
     public Event() {
     }
@@ -64,8 +65,6 @@ public class Event {
         this.endTime = endTime;
     }
 
-    public Time endTime;
-
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -74,6 +73,7 @@ public class Event {
         result.put("location", location);
         result.put("group", group);
         result.put("startTime", startTime);
+        result.put("endTime", endTime);
 
         return result;
     }

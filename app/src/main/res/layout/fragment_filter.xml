@@ -32,7 +32,6 @@
             android:layout_marginStart="96dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
-            android:theme="@style/button_custom"
             android:background="@drawable/close_button_layout"
             android:text="@string/fragment_day_close"
             android:textColor="@color/darkPurple"
@@ -57,26 +56,28 @@
 
         <Spinner
             android:id="@+id/clubGroupSpinner"
+            style="@style/SpinnerTheme"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginTop="20dp"
-            style="@style/SpinnerTheme"
+            android:layout_marginEnd="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clubGroupSelection" />
 
         <Button
             android:id="@+id/applyButton"
+            style="@style/purpleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="0dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="288dp"
-            style="@style/purpleButton"
+            android:layout_marginBottom="204dp"
+            android:padding="0dp"
             android:text="@string/apply"
             android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clubGroupSpinner" />
 
@@ -89,18 +90,19 @@
             android:text="@string/search"
             android:textColor="@color/darkPurple"
             android:textSize="26sp"
+            app:layout_constraintBottom_toTopOf="@+id/searchResults"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/applyButton" />
 
         <SearchView
             android:id="@+id/searchBar"
+            style="@style/searchTheme"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
             android:queryHint="by title keyword."
-            style="@style/searchTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchTitle" />

@@ -19,15 +19,18 @@ public class DayEventAdapter extends FirebaseRecyclerAdapter<Event, DayEventAdap
 
     @Override
     protected void onBindViewHolder(@NonNull DayEventViewHolder holder, int position, @NonNull Event model) {
+        Time startTime = model.getStartTime();
+        Time endTime = model.getEndTime();
+        String eventTimeString = startTime.getHour() + ":" + startTime.getMinute() + " - " + endTime.getHour() + ":" + endTime.getMinute();
+
         holder.eventTitle.setText(model.getTitle());
-        String eventTimeString = model.getStartTime() + " / " + model.getEndTime();
         holder.eventTime.setText(eventTimeString);
     }
 
     @NonNull
     @Override
     public DayEventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.announcement_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item, parent, false);
         return new DayEventAdapter.DayEventViewHolder(view);
     }
 

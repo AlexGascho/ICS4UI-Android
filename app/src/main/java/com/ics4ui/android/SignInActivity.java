@@ -27,6 +27,9 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SignInActivity extends AppCompatActivity {
     SignInButton signInButton;
     TextView signInTitle;
@@ -136,5 +139,27 @@ public class SignInActivity extends AppCompatActivity {
         rdata = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
         rdata.child("email").setValue(user.getEmail());
         rdata.child("name").setValue(user.getDisplayName());
+
+        Event newEvent = new Event();
+
+        newEvent.setTitle("Title");
+        Time startTime = new Time();
+        startTime.setYear(2022);
+        startTime.setMonth(6);
+        startTime.setDay(8);
+        startTime.setMinute(5);
+        startTime.setSuffix("am");
+
+        newEvent.setStartTime(startTime);
+
+        String key = rdata.child("events").child("2022-06-08").push().getKey();
+        Map<String, Object> eventMap = newEvent.toMap();
+
+        Map<String, Object> update = new HashMap<>();
+        update.put("/events/2022-06-08/" + key, eventMap);
+
+        rdata.updateChildren(update);
+
+
     }
 }

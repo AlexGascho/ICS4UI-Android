@@ -51,7 +51,8 @@ public class CalendarFragment extends Fragment {
         binding.calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                Date newDate = new Date(year, month, day);
+                //Subtracting 1900 from year since Java adds 1900 for some reason
+                Date newDate = new Date(year-1900, month, day);
 
 
                 if (newDate.getTime() != oldDate) {

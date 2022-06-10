@@ -60,7 +60,7 @@ public class TimePickerFragment extends DialogFragment
 
         //initialize calendar
         AddEventFragment.setStartTimeHour(timeHour);
-        AddEventFragment.setStartTimeMinute(conditionalZero+Integer.toString(timeMinute));
+        AddEventFragment.setStartTimeMinute(timeMinute);
         AddEventFragment.changeStartTimeButtonText(suffix);
 
     }
