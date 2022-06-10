@@ -217,13 +217,22 @@
         <Button
             android:id="@+id/startTimeButton"
             style="?android:spinnerStyle"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="25dp"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/start_time"
             app:layout_constraintStart_toEndOf="@+id/startTitle"
             app:layout_constraintTop_toBottomOf="@+id/allDaySwitch" />
+
+        <Button
+            android:id="@+id/endTimeButton"
+            style="?android:spinnerStyle"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:hint="@string/end_time"
+            app:layout_constraintEnd_toEndOf="@+id/startTimeButton"
+            app:layout_constraintTop_toTopOf="@+id/endTitle" />
 
         <Switch
             android:id="@+id/allDaySwitch"
@@ -234,6 +243,26 @@
             android:text=""
             app:layout_constraintStart_toEndOf="@+id/allDayTitle"
             app:layout_constraintTop_toBottomOf="@+id/titleTextInput" />
+
+        <Button
+            android:id="@+id/startDateButton"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:hint="@string/start_date"
+            style="?android:spinnerStyle"
+            app:layout_constraintEnd_toStartOf="@+id/startTimeButton"
+            app:layout_constraintStart_toEndOf="@+id/startTitle"
+            app:layout_constraintTop_toTopOf="@+id/startTitle" />
+
+        <Button
+            android:id="@+id/endDateButton"
+            style="?android:spinnerStyle"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:hint="@string/end_date"
+            app:layout_constraintEnd_toStartOf="@+id/endTimeButton"
+            app:layout_constraintStart_toEndOf="@+id/endTitle"
+            app:layout_constraintTop_toTopOf="@+id/endTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
