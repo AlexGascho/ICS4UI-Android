@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.fragment.app.DialogFragment;
@@ -66,21 +65,12 @@ public class TimePickerFragment extends DialogFragment
             conditionalZero = "";
         }
 
-        //initialize calendar
-        AddEventFragment.setStartTimeHour(timeHour);
-        AddEventFragment.setStartTimeMinute(timeMinute);
-        AddEventFragment.changeStartTimeButtonText(suffix);
-        //change text of button and pass variables, if statement changes if your changing start or end Time
-
-
         if(isStartButton==false){
-            AddEventFragment.setEndTimeHour(timeHour);
-            AddEventFragment.setEndTimeMinute(timeMinute));
+            AddEventFragment.setEndTime(timeHour, timeMinute);
             AddEventFragment.changeEndTimeButtonText(suffix);
         }
         else if(isStartButton==true){
-            AddEventFragment.setStartTimeHour(timeHour);
-            AddEventFragment.setStartTimeMinute(timeMinute);
+            AddEventFragment.setStartTime(timeHour, timeMinute);
             AddEventFragment.changeStartTimeButtonText(suffix);
         }
 

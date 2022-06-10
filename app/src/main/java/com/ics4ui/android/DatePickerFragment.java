@@ -2,12 +2,8 @@ package com.ics4ui.android;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.widget.DatePicker;
-import android.widget.TextView;
-import android.widget.TimePicker;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -27,8 +23,7 @@ public class DatePickerFragment extends DialogFragment
         int day = c.get(Calendar.DAY_OF_YEAR);
 
         //Create a new instance of TimePickerDialog and return it
-        return new DatePickerDialog(getActivity(), this, year, month, day
-                DateFormat.getDateFormat(getActivity()));
+        return new DatePickerDialog(getActivity(), this, year, month, day);
     }
 
     public static void setIsStartButton(Boolean bool){
@@ -37,10 +32,10 @@ public class DatePickerFragment extends DialogFragment
 
     public void onDateSet(DatePicker view, int dateYear, int dateMonth, int dateDay) {
         if(!isStartButton){
-            AddEventFragment.setStartYearMonthDay(dateYear, dateMonth, dateDay);
+            AddEventFragment.setEndDate(dateYear, dateMonth, dateDay);
         }
         else if(isStartButton){
-            AddEventFragment.setStartYearMonthDay(dateYear, dateMonth, dateDay);
+            AddEventFragment.setStartDate(dateYear, dateMonth, dateDay);
         }
 
     }

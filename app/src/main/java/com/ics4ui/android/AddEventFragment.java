@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.ics4ui.android.databinding.FragmentAddEventBinding;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -36,15 +37,38 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     public static Button startTimeButtonInput;
     Integer i=0;
 
-    private static int startTimeHour;
-    private static int startTimeMinute;
+    private static int startHour;
+    private static int startMinute;
+    private static int startYear;
+    private static int startMonth;
+    private static int startDay;
 
-    public static void setStartTimeHour(int TimeHour) {
-        startTimeHour = TimeHour;
+    private static int endHour;
+    private static int endMinute;
+    private static int endYear;
+    private static int endMonth;
+    private static int endDay;
+
+    public static void setStartTime(int hour, int minute) {
+        startHour = hour;
+        startMinute = minute;
     }
 
-    public static void setStartTimeMinute(int TimeMinute) {
-        startTimeMinute = TimeMinute;
+    public static void setEndTime(int hour, int minute) {
+        endHour = hour;
+        endMinute = minute;
+    }
+
+    public static void setStartDate(int year, int month, int day) {
+        startYear = year;
+        startMonth = month;
+        startDay = day;
+    }
+
+    public static void setEndDate(int year, int month, int day) {
+        endYear = year;
+        endMonth = month;
+        endDay = day;
     }
 
     public AddEventFragment() {
@@ -55,9 +79,10 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getActivity().getSupportFragmentManager(), "timePicker");
     }
-    public static AddEventFragment newInstance(String param1, String param2) {
-        AddEventFragment fragment = new AddEventFragment();
-        return fragment;
+
+    public void showDatePickerDialog(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
     }
 
     public void createEditTextDialog(View view, TextView textView, String title) {
@@ -86,10 +111,10 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     }
 
     public static void changeStartTimeButtonText(String sfx){
-        binding.startTimeButton.setHint(Integer.toString(startTimeHour)+":"+startTimeMinute+sfx);
+        binding.startTimeButton.setHint(Integer.toString(startHour)+":"+startMinute+sfx);
     }
-    public static void changeEndTimeButtonText(){
-
+    public static void changeEndTimeButtonText(String sfx){
+        binding.endTimeButton.setHint(Integer.toString(endHour)+":"+endMinute+sfx);
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -121,7 +146,7 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     public void writeNewEvent(FirebaseUser account, Event newEvent) {
         dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid()).child("events");
 
-        Time date = newEvent.getStartTime();
+        Date date = newEvent.getStartTime();
         SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
         String formattedDate = databaseDateFormat.format(date);
 
@@ -140,23 +165,20 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
             case R.id.createEventButton:
                 //creates new event object
                 Event newEvent = new Event();
-                //creates new Time object
-                Time startTime = new Time();
-                //change properties of start time
-                startTime.setMinute(startTimeMinute);
-                startTime.setHour(startTimeHour);
+
+                //Create start and end date
+                Date startDate = new Date(startYear, startMonth, startDay, startHour, startMinute);
+                Date endDate = new Date(endYear, endMonth, endDay, endHour, endMinute);
 
                 //sets attributes of event
                 newEvent.setTitle(binding.titleTextInput.getText().toString());
                 newEvent.setDescription(binding.descriptionTextInput.getText().toString());
                 newEvent.setLocation(binding.locationTextInput.getText().toString());
                 newEvent.setGroup(binding.groupTextInput.getText().toString());
-                newEvent.setStartTime(startTime);
+                newEvent.setStartTime(startDate);
+                newEvent.setEndTime(endDate);
 
-                //adds start time object to event
-                newEvent.setStartTime(startTime);
                 //adds event to list in main activity
-
 
                 FirebaseUser account = firebaseAuth.getCurrentUser();
                 writeNewEvent(account, newEvent);
@@ -167,6 +189,9 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.startTimeButton:
                 showTimePickerDialog(view);
+                break;
+            case R.id.endTimeButton:
+                showDatePickerDialog(view);
                 break;
             case R.id.titleTextInput:
                 createEditTextDialog(view, binding.titleTextInput, "Title");

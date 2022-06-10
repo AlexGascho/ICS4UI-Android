@@ -27,7 +27,10 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class SignInActivity extends AppCompatActivity {
@@ -143,20 +146,17 @@ public class SignInActivity extends AppCompatActivity {
         Event newEvent = new Event();
 
         newEvent.setTitle("Title");
-        Time startTime = new Time();
-        startTime.setYear(2022);
-        startTime.setMonth(6);
-        startTime.setDay(8);
-        startTime.setMinute(5);
-        startTime.setSuffix("am");
+        Date startTime = new Date(2022, 6, 8, 12, 30);
 
         newEvent.setStartTime(startTime);
 
-        String key = rdata.child("events").child("2022-06-08").push().getKey();
+        SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
+
+        String key = rdata.child("events").child(databaseDateFormat.format(startTime)).push().getKey();
         Map<String, Object> eventMap = newEvent.toMap();
 
         Map<String, Object> update = new HashMap<>();
-        update.put("/events/2022-06-08/" + key, eventMap);
+        update.put("/events/" + databaseDateFormat.format(startTime) + key, eventMap);
 
         rdata.updateChildren(update);
 
