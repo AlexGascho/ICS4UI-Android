@@ -1,5 +1,6 @@
 package com.ics4ui.android;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ics4ui.android.databinding.FragmentAddEventBinding;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +41,8 @@ public class AddEventFragment extends Fragment {
     private static String startTimeMinute;
     private static int endTimeHour;
     private static String endTimeMinute;
+    private static Calendar startDate;
+    private static Calendar endDate;
 
 
     public static void setStartTimeHour(int timeHour) {
@@ -56,15 +61,28 @@ public class AddEventFragment extends Fragment {
         endTimeMinute = timeMinute;
     }
 
+    public static void setStartDate(Calendar c){
+        startDate = c;
+    }
+
+    public static void setEndDate(Calendar c){
+        endDate = c;
+    }
 
     public AddEventFragment() {
         // Required empty public constructor
     }
 
     public void showTimePickerDialog(View view) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getActivity().getSupportFragmentManager(), "timePicker");
+        DialogFragment timePicker = new TimePickerFragment();
+        timePicker.show(getActivity().getSupportFragmentManager(), "timePicker");
     }
+
+    public void showDatePickerDialog(View view){
+        DialogFragment datePicker = new DatePickerFragment();
+        datePicker.show(getActivity().getSupportFragmentManager(),"datePicker");
+    }
+
     public static AddEventFragment newInstance(String param1, String param2) {
         AddEventFragment fragment = new AddEventFragment();
         return fragment;
@@ -102,6 +120,14 @@ public class AddEventFragment extends Fragment {
     public static void changeEndTimeButtonText(String sfx){
         binding.endTimeButton.setHint(Integer.toString(endTimeHour)+":"+endTimeMinute+sfx);
     }
+
+    public static void changeStartDateButtonText(){
+        binding.startDateButton.setHint("test");
+    }
+
+    public static void changeEndDateButtonText(){
+        binding.endDateButton.setHint("test");
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,18 +144,33 @@ public class AddEventFragment extends Fragment {
         binding.startTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showTimePickerDialog(view);
                 TimePickerFragment.setIsStartButton(true);
-                binding.addEventTitle.setText(TimePickerFragment.isStartButton.toString());
+                showTimePickerDialog(view);
+
             }
         });
 
         binding.endTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showTimePickerDialog(view);
                 TimePickerFragment.setIsStartButton(false);
-                binding.addEventTitle.setText(TimePickerFragment.isStartButton.toString());
+                showTimePickerDialog(view);
+            }
+        });
+
+        binding.startDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerFragment.setIsStartDateButton(true);
+                showDatePickerDialog(view);
+            }
+        });
+
+        binding.endDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerFragment.setIsStartDateButton(false);
+                showDatePickerDialog(view);
             }
         });
 
@@ -151,6 +192,7 @@ public class AddEventFragment extends Fragment {
                 startTime.setMinute(startTimeMinute);
                 startTime.setHour(startTimeHour);
 
+                //creating endTime time object
                 Time endTime = new Time();
                 endTime.setMinute(endTimeMinute);
                 endTime.setHour(endTimeHour);
@@ -160,10 +202,10 @@ public class AddEventFragment extends Fragment {
                 newEvent.setDescription(binding.descriptionTextInput.getText().toString());
                 newEvent.setLocation(binding.locationTextInput.getText().toString());
                 newEvent.setGroup(binding.groupTextInput.getText().toString());
-                newEvent.setStartTime(startTime);
-
                 //adds start time object to event
                 newEvent.setStartTime(startTime);
+                //adds end time object to event
+                newEvent.setEndTime(endTime);
                 //adds event to list in main activity
                 MainActivity.addEventToList(newEvent);
 

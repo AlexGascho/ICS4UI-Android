@@ -212,6 +212,26 @@
             app:layout_constraintStart_toEndOf="@+id/allDayTitle"
             app:layout_constraintTop_toBottomOf="@+id/titleTextInput" />
 
+        <Button
+            android:id="@+id/startDateButton"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:hint="@string/start_date"
+            style="?android:spinnerStyle"
+            app:layout_constraintEnd_toStartOf="@+id/startTimeButton"
+            app:layout_constraintStart_toEndOf="@+id/startTitle"
+            app:layout_constraintTop_toTopOf="@+id/startTitle" />
+
+        <Button
+            android:id="@+id/endDateButton"
+            style="?android:spinnerStyle"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:hint="@string/end_date"
+            app:layout_constraintEnd_toStartOf="@+id/endTimeButton"
+            app:layout_constraintStart_toEndOf="@+id/endTitle"
+            app:layout_constraintTop_toTopOf="@+id/endTitle" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
