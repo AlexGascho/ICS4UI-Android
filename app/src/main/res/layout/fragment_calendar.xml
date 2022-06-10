@@ -8,8 +8,7 @@
     android:backgroundTint="#526863"
     android:orientation="vertical"
     android:visibility="visible"
-    android:id="@+id/fragment_calendar"
-    tools:context="com.ics4ui.android.CalendarFragment" >
+    android:id="@+id/fragment_calendar" >
 
     <RelativeLayout
         android:id="@+id/relativelayout"
@@ -33,11 +32,10 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/filterButton"
             style="@android:style/Widget.ImageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -56,7 +54,7 @@
             android:id="@+id/addEventImageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignRight="@id/imageButton"
+            android:layout_alignRight="@id/filterButton"
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:background="#00FFFFFF"
@@ -66,6 +64,13 @@
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
             tools:layout_editor_absoluteX="326dp"
             tools:layout_editor_absoluteY="11dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:alpha="0.5"></RelativeLayout>
     </RelativeLayout>
 
 </LinearLayout>

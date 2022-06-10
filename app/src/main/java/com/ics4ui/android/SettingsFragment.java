@@ -8,11 +8,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.ics4ui.android.databinding.FragmentSettingsBinding;
 
 public class SettingsFragment extends Fragment {
-
     private FragmentSettingsBinding binding;
+
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser account;
 
     public SettingsFragment() {
 
@@ -23,8 +27,11 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
 
-        binding.displayName.setText(((MainActivity) getActivity()).DisplayName);
-        binding.email.setText(((MainActivity) getActivity()).Email);
+        firebaseAuth = FirebaseAuth.getInstance();
+        account = firebaseAuth.getCurrentUser();
+
+        binding.displayName.setText(account.getDisplayName());
+        binding.email.setText(account.getEmail());
 
         return binding.getRoot();
     }
@@ -32,7 +39,8 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.signOutButton.setOnClickListener(new View.OnClickListener() {
+
+        binding.logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).SignOut();

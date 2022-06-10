@@ -27,4 +27,23 @@
         <item name="android:paddingBottom">16dp</item>
         <item name="android:paddingTop">16dp</item>
     </style>
+
+    <style name="SpinnerTheme">
+        <item name="android:background">@drawable/spinner_icon</item>
+    </style>
+
+    <style name="button_custom">
+        <item name="colorPrimary">@color/buttonPurple</item>
+        <item name="colorAccent">@color/buttonOutline</item>
+    </style>
+
+    <style name="purpleButton">
+        <item name="android:background">@drawable/purple_button</item>
+        <item name="colorPrimary">@color/buttonPurple</item>
+        <item name="colorAccent">@color/buttonOutline</item>
+    </style>
+
+    <style name="searchTheme">
+        <item name="android:background">@drawable/search_background</item>
+    </style>
 </resources>

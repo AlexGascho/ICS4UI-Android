@@ -1,12 +1,24 @@
 package com.ics4ui.android;
 
 public class Time {
-    public int day;
-    public int month;
-    public int year;
-    public int hour;
-    public int minute;
-    public String nameOfMonth;
+    private int day;
+    private int month;
+    private int year;
+    private int hour;
+    private String minute;
+    private String suffix;
+
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
+
+
+    private String nameOfMonth;
+
 
     public int getDay() {
         return day;
@@ -40,11 +52,11 @@ public class Time {
         this.hour = hour;
     }
 
-    public int getMinute() {
+    public String getMinute() {
         return minute;
     }
 
-    public void setMinute(int minute) {
+    public void setMinute(String minute) {
         this.minute = minute;
     }
 

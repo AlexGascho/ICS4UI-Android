@@ -13,60 +13,72 @@
 
         <TextView
             android:id="@+id/event_day"
-            android:layout_width="167dp"
-            android:layout_height="39dp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:text="@string/placeholder_day_day_fragment"
             android:textAlignment="textStart"
-            android:textAppearance="bold"
             android:textColor="@color/darkPurple"
-            android:textSize="25sp"
+            android:textSize="40dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/event_time"
-            android:layout_width="132dp"
-            android:layout_height="68dp"
-            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="40dp"
             android:text="@string/placeholder_time_day_fragment"
-            android:textAppearance="bold"
             android:textColor="@color/darkPurple"
             android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/event_day" />
 
         <TextView
-            android:id="@+id/event_title"
+            android:id="@+id/dayFragmentEventTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="87dp"
-            android:layout_marginEnd="192dp"
-            android:layout_marginStart="192dp"
-            android:layout_marginBottom="634dp"
-            android:text="@string/placeholder_title_day_fragment"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="35dp"
+            android:text="@string/eventTitleText"
+            android:textColor="@color/darkPurple"
+            android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/event_day" />
+
+        <TextView
+            android:id="@+id/dayFragmentLine"
+            android:layout_width="400dp"
+            android:layout_height="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/underline"
+            android:textColor="@color/buttonPurple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/event_time" />
 
         <Button
             android:id="@+id/day_close"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="135dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="692dp"
-            android:background="#00FFFFFF"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/fragment_day_close"
             android:textColor="#000000"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/close_button_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/event_day"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="409dp"
+            android:layout_height="538dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="192dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

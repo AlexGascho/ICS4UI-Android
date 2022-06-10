@@ -9,24 +9,16 @@
 
     <TextView
         android:id="@+id/sign_in"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="false"
         android:layout_marginStart="56dp"
         android:layout_marginTop="141dp"
         android:layout_marginEnd="47dp"
-        android:layout_marginBottom="641dp"
         android:text="@string/login"
         android:textColor="@color/white"
-        android:textSize="56dp"
+        android:textSize="56sp"
         android:visibility="visible" />
-
-    <TextView
-        android:id="@+id/email"
-        style="@style/CustomStatusTextView"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textSize="20sp" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"

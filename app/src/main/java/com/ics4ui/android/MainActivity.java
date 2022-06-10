@@ -3,6 +3,7 @@ package com.ics4ui.android;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.CalendarView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         eventList.remove(i);
     }
 
+    public CalendarView calendarView;
+
 
     CalendarFragment calendarFragment = new CalendarFragment();
     HomeFragment homeFragment = new HomeFragment();
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
         bottomNavigationView.setSelectedItemId(R.id.home);
