@@ -23,6 +23,7 @@ public class CalendarFragment extends Fragment {
 
     public CalendarFragment() {
 
+        int width = 60;
     }
 
     @Override
