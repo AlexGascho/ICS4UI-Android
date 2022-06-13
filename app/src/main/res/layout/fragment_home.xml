@@ -36,7 +36,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/announcementRecycler"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:layout_height="180dp"
         android:layout_below="@id/announcements"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
@@ -59,7 +59,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/clubsGroupsRecycler"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:layout_height="180dp"
         android:layout_below="@id/clubsGroups"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"

@@ -61,8 +61,9 @@
         android:id="@+id/logOutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tactileStrengthTitle"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tactileStrengthTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="88dp"
         android:layout_marginTop="200dp"
         android:background="@drawable/purple_button"
         android:padding="10dp"
@@ -77,19 +78,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        android:textColor="@color/darkPurple"
         android:text="@string/displayname"
+        android:textColor="@color/darkPurple"
         android:textSize="14sp" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/displayName"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        android:textColor="@color/darkPurple"
+        android:layout_toEndOf="@id/displayName"
         android:text="@string/email"
+        android:textColor="@color/darkPurple"
         android:textSize="14sp" />
 
 
