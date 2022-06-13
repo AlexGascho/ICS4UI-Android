@@ -38,6 +38,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/close_button_layout.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/event_indicator.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/green_button.xml" value="0.1365" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/purple_button.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.14" />
@@ -50,7 +51,7 @@
         <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/event_list_item.xml" value="0.1890625" />
-        <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.3889457523029683" />
+        <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_calendar_view.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_day.xml" value="0.25" />

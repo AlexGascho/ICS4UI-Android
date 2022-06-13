@@ -14,7 +14,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <Button
+            android:id="@+id/dayCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/green_button"
+            android:text="@string/fragment_add_event_cancel"
+            android:textColor="@color/lightGreen"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" /><TextView
             android:id="@+id/addEventWhiteBox"
             android:layout_width="360dp"
             android:layout_height="460dp"
@@ -154,6 +165,7 @@
             android:layout_marginTop="35dp"
             android:layout_marginEnd="28dp"
             android:text="@string/create_event"
+            android:textColor="@color/white"
             android:textSize="37sp"
             android:theme="@style/button_custom"
             android:background="@drawable/purple_button"

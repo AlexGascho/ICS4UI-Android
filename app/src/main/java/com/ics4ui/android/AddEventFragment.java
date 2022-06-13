@@ -89,6 +89,7 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     public static void changeEndTimeButtonText(){
 
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,8 +101,10 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         binding = FragmentAddEventBinding.inflate(inflater, container,false);
 
+        binding.dayCancel.setOnClickListener(this);
         binding.startTimeButton.setOnClickListener(this);
         binding.createEventButton.setOnClickListener(this);
         binding.titleTextInput.setOnClickListener(this);
@@ -174,7 +177,9 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
             case R.id.groupTextInput:
                 createEditTextDialog(view, binding.groupTextInput, "Groups/Clubs");
                 break;
+            case R.id.dayCancel:
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
+                break;
         }
     }
-
 }

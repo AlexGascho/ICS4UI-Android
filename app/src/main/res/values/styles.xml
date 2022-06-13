@@ -37,6 +37,11 @@
         <item name="colorAccent">@color/buttonOutline</item>
     </style>
 
+    <style name="button_cancel">
+        <item name="colorPrimary">@color/lightGreen</item>
+        <item name="colorAccent">@color/buttonOutline</item>
+    </style>
+
     <style name="purpleButton">
         <item name="android:background">@drawable/purple_button</item>
         <item name="colorPrimary">@color/buttonPurple</item>
