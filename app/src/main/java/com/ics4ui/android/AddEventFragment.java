@@ -154,7 +154,7 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
 
                 FirebaseUser account = firebaseAuth.getCurrentUser();
                 writeNewEvent(account, newEvent);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, new CalendarFragment()).commit();
                 //Creates toast (pop up)
                 Toast.makeText(getContext(), "Event Added", Toast.LENGTH_SHORT).show();
 
