@@ -1,13 +1,17 @@
 package com.ics4ui.android;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.ics4ui.android.databinding.FragmentAddEventBinding;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -85,6 +90,52 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
         newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
     }
 
+    public void createDatePickerDialog(View view, Button button) {
+        Calendar c = Calendar.getInstance();
+        int currentDay = c.get(Calendar.DAY_OF_MONTH);
+        int currentMonth = c.get(Calendar.MONTH);
+        int currentYear = c.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(view.getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                button.setText(year + "/" + month + "" + dayOfMonth);
+            }
+        }, currentYear, currentMonth, currentDay);
+        datePickerDialog.show();
+    }
+
+    public void createTimePickerDialog(View view, Button button) {
+        Calendar c = Calendar.getInstance();
+        int currentHour = c.get(Calendar.HOUR_OF_DAY);
+        int currentMinute = c.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(view.getContext(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minuteOfHour) {
+                String suffix = "";
+                int hour = hourOfDay;
+                int minute = minuteOfHour;
+
+                if (hourOfDay == 0){
+                    hour = 12;
+                    suffix = "AM";
+                } else if (hourOfDay < 12) {
+                    suffix = "AM";
+                } else if (hourOfDay > 12){
+                    hour = hourOfDay - 12;
+                    suffix = "PM";
+                } else if (hourOfDay == 12){
+                    suffix = "PM";
+                }
+
+                button.setText(hour + ":" + minute + " " + suffix);
+            }
+        }, currentHour, currentMinute, true);
+
+        timePickerDialog.show();
+    }
+
     public void createEditTextDialog(View view, TextView textView, String title) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setTitle(title);
@@ -133,6 +184,9 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
 
         binding.dayCancel.setOnClickListener(this);
         binding.startTimeButton.setOnClickListener(this);
+        binding.endTimeButton.setOnClickListener(this);
+        binding.startDateButton.setOnClickListener(this);
+        binding.endDateButton.setOnClickListener(this);
         binding.createEventButton.setOnClickListener(this);
         binding.titleTextInput.setOnClickListener(this);
         binding.locationTextInput.setOnClickListener(this);
@@ -191,9 +245,15 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.startTimeButton:
-                showTimePickerDialog(view);
+                createTimePickerDialog(view, binding.startTimeButton);
                 break;
             case R.id.endTimeButton:
+                createTimePickerDialog(view, binding.endTimeButton);
+                break;
+            case R.id.startDateButton:
+                showDatePickerDialog(view);
+                break;
+            case R.id.endDateButton:
                 showDatePickerDialog(view);
                 break;
             case R.id.titleTextInput:
