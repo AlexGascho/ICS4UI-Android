@@ -55,4 +55,8 @@
     <style name="PickerButton" parent="@android:style/Widget.Spinner">
         <item name="android:background">@drawable/fake_spinner</item>
     </style>
+
+    <style name="SwitchStyle" parent="@style/Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:background">@color/black</item>
+    </style>
 </resources>

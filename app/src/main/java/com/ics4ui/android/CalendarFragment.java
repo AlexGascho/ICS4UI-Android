@@ -12,14 +12,12 @@ import androidx.fragment.app.Fragment;
 
 import com.ics4ui.android.databinding.FragmentCalendarBinding;
 
-import java.util.Date;
+import java.util.Calendar;
 
 
 public class CalendarFragment extends Fragment {
     FragmentCalendarBinding binding;
-    Long oldDate;
     ImageButton addEventImageButton;
-    CalendarView calendarView;
 
     public CalendarFragment() {
 
@@ -30,8 +28,6 @@ public class CalendarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
-
-        oldDate = binding.calendarView.getDate();
 
         binding.addEventImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,17 +48,11 @@ public class CalendarFragment extends Fragment {
         binding.calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                //Subtracting 1900 from year since Java adds 1900 for some reason
-                Date newDate = new Date(year-1900, month, day);
-
-
-                if (newDate.getTime() != oldDate) {
-                    oldDate = newDate.getTime();
-                    calendarView.setDate(oldDate);
-                }
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, month, day);
 
                 Bundle bundle = new Bundle();
-                bundle.putLong("date", oldDate);
+                bundle.putLong("date", newDate.getTimeInMillis());
 
                 DayFragment dayFragment = new DayFragment();
                 dayFragment.setArguments(bundle);
