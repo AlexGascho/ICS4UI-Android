@@ -2,7 +2,7 @@ package com.ics4ui.android;
 
 import com.google.firebase.database.Exclude;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,8 +11,8 @@ public class Event {
     public String description;
     public String location;
     public String group;
-    public Calendar startTime;
-    public Calendar endTime;
+    public Date startTime;
+    public Date endTime;
 
     public Event() {
     }
@@ -50,19 +50,19 @@ public class Event {
         this.group = group;
     }
 
-    public Calendar getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Calendar startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Calendar getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Calendar endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 

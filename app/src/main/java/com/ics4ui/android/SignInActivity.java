@@ -146,11 +146,11 @@ public class SignInActivity extends AppCompatActivity {
 
         Calendar startTime = Calendar.getInstance();
         startTime.set(2022, 5, 28, 10, 30);
-        newEvent.setStartTime(startTime);
+        newEvent.setStartTime(startTime.getTime());
 
         Calendar endTime = Calendar.getInstance();
         endTime.set(2022, 5, 28, 12, 30);
-        newEvent.setEndTime(endTime);
+        newEvent.setEndTime(endTime.getTime());
 
         SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
         String formattedDate = databaseDateFormat.format(startTime.getTimeInMillis());

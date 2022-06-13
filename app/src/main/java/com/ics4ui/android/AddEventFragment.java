@@ -24,6 +24,7 @@ import com.ics4ui.android.databinding.FragmentAddEventBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -125,7 +126,7 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
 
         //sets attributes of event
         newEvent.setTitle(binding.titleTextInput.getText().toString());
-        newEvent.setStartTime(startDateTime);
+        newEvent.setStartTime(startDateTime.getTime());
 
         //Sets default values if empty
         if (TextUtils.isEmpty(binding.descriptionTextInput.getText())) {
@@ -152,8 +153,8 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
             endDateTime.set(Calendar.DAY_OF_MONTH, startDateTime.get(Calendar.DAY_OF_MONTH));
         }
 
-        newEvent.setStartTime(startDateTime);
-        newEvent.setEndTime(endDateTime);
+        newEvent.setStartTime(startDateTime.getTime());
+        newEvent.setEndTime(endDateTime.getTime());
 
         return newEvent;
     }
@@ -161,9 +162,9 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     public void writeNewEvent(FirebaseUser account, Event newEvent) {
         dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid());
 
-        Calendar date = newEvent.getStartTime();
+        Date date = newEvent.getStartTime();
         SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
-        String formattedDate = databaseDateFormat.format(date.getTimeInMillis());
+        String formattedDate = databaseDateFormat.format(date);
 
         String key = dbase.child("events").child(formattedDate).push().getKey();
         Map<String, Object> eventMap = newEvent.toMap();
