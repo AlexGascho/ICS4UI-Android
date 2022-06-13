@@ -1,5 +1,6 @@
 package com.ics4ui.android;
 
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,7 +30,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class AddEventFragment extends Fragment implements View.OnClickListener {
-    private static FragmentAddEventBinding binding;
+    private FragmentAddEventBinding binding;
 
     private FirebaseAuth firebaseAuth;
     DatabaseReference dbase;
@@ -48,6 +50,54 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     private static int endYear;
     private static int endMonth;
     private static int endDay;
+
+    public AddEventFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        firebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        binding = FragmentAddEventBinding.inflate(inflater, container,false);
+
+        binding.dayCancel.setOnClickListener(this);
+        binding.startTimeButton.setOnClickListener(this);
+        binding.endTimeButton.setOnClickListener(this);
+        binding.createEventButton.setOnClickListener(this);
+        binding.titleTextInput.setOnClickListener(this);
+        binding.locationTextInput.setOnClickListener(this);
+        binding.descriptionTextInput.setOnClickListener(this);
+        binding.groupTextInput.setOnClickListener(this);
+
+        return binding.getRoot();
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    public void writeNewEvent(FirebaseUser account, Event newEvent) {
+        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid()).child("events");
+
+        Date date = newEvent.getStartTime();
+        SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
+        String formattedDate = databaseDateFormat.format(date);
+
+        String key = dbase.child(formattedDate).push().getKey();
+        Map<String, Object> eventMap = newEvent.toMap();
+
+        Map<String, Object> update = new HashMap<>();
+        update.put("/events/" + formattedDate + "/" + key, eventMap);
+
+        dbase.updateChildren(update);
+    }
 
     public static void setStartTime(int hour, int minute) {
         startHour = hour;
@@ -71,9 +121,6 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
         endDay = day;
     }
 
-    public AddEventFragment() {
-        // Required empty public constructor
-    }
 
     public void showTimePickerDialog(View view) {
         DialogFragment newFragment = new TimePickerFragment();
@@ -83,6 +130,16 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     public void showDatePickerDialog(View view) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
+    }
+
+    public void createDatePickerDialog(View view, String title) {
+//        TimePickerDialog timePickerDialog = new TimePickerDialog(view.getContext(), new TimePickerDialog.OnTimeSetListener() {
+//            @Override
+//            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+//                binding.startDateButton.setHint(hourOfDay + ":" + minute);
+//            }
+//        }, hourOfDay, minute, false);
+//        picker.show();
     }
 
     public void createEditTextDialog(View view, TextView textView, String title) {
@@ -111,55 +168,10 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     }
 
     public static void changeStartTimeButtonText(String sfx){
-        binding.startTimeButton.setHint(Integer.toString(startHour)+":"+startMinute+sfx);
+          //binding.startTimeButton.setHint(Integer.toString(startHour)+":"+startMinute+sfx);
     }
     public static void changeEndTimeButtonText(String sfx){
-        binding.endTimeButton.setHint(Integer.toString(endHour)+":"+endMinute+sfx);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-        firebaseAuth = FirebaseAuth.getInstance();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        binding = FragmentAddEventBinding.inflate(inflater, container,false);
-
-        binding.dayCancel.setOnClickListener(this);
-        binding.startTimeButton.setOnClickListener(this);
-        binding.createEventButton.setOnClickListener(this);
-        binding.titleTextInput.setOnClickListener(this);
-        binding.locationTextInput.setOnClickListener(this);
-        binding.descriptionTextInput.setOnClickListener(this);
-        binding.groupTextInput.setOnClickListener(this);
-
-        return binding.getRoot();
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
-    public void writeNewEvent(FirebaseUser account, Event newEvent) {
-        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid()).child("events");
-
-        Date date = newEvent.getStartTime();
-        SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
-        String formattedDate = databaseDateFormat.format(date);
-
-        String key = dbase.child(formattedDate).push().getKey();
-        Map<String, Object> eventMap = newEvent.toMap();
-
-        Map<String, Object> update = new HashMap<>();
-        update.put("/events/" + formattedDate + "/" + key, eventMap);
-
-        dbase.updateChildren(update);
+         //binding.endTimeButton.setHint(Integer.toString(endHour)+":"+endMinute+sfx);
     }
 
     @Override
@@ -194,6 +206,12 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
                 showTimePickerDialog(view);
                 break;
             case R.id.endTimeButton:
+                showTimePickerDialog(view);
+                break;
+            case R.id.startDateButton:
+                showDatePickerDialog(view);
+                break;
+            case R.id.endDateButton:
                 showDatePickerDialog(view);
                 break;
             case R.id.titleTextInput:

@@ -65,14 +65,13 @@ public class TimePickerFragment extends DialogFragment
             conditionalZero = "";
         }
 
-        if(isStartButton==false){
-            AddEventFragment.setEndTime(timeHour, timeMinute);
-            AddEventFragment.changeEndTimeButtonText(suffix);
-        }
-        else if(isStartButton==true){
-            AddEventFragment.setStartTime(timeHour, timeMinute);
-            AddEventFragment.changeStartTimeButtonText(suffix);
-        }
-
+//        if(isStartButton==false){
+//            AddEventFragment.setEndTime(timeHour, timeMinute);
+//            AddEventFragment.changeEndTimeButtonText(suffix);
+//        }
+//        else if(isStartButton==true){
+//            AddEventFragment.setStartTime(timeHour, timeMinute);
+//            AddEventFragment.changeStartTimeButtonText(suffix);
+//        }
     }
 }
