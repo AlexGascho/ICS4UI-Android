@@ -12,28 +12,20 @@
 
         <TextView
             android:id="@+id/eventTime"
-            android:layout_width="100dp"
+            android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:text="@string/tempTime"
             android:textColor="@color/backgroundGreen"
             android:textSize="16sp" />
 
-
-        <Space
-            android:id="@+id/eventListSpace"
-            android:layout_toRightOf="@id/eventTime"
-            android:background="@color/white"
-            android:layout_width="75dp"
-            android:layout_height="10dp" />
-
         <TextView
             android:id="@+id/eventTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/eventListSpace"
+            android:layout_toRightOf="@id/eventTime"
             android:background="@color/white"
-            android:text="@string/fillterEventTitle"
+            android:text="@string/fillerTitle"
             android:textColor="@color/backgroundGreen"
             android:textSize="16sp" />
 

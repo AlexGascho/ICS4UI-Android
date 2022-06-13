@@ -146,9 +146,12 @@ public class SignInActivity extends AppCompatActivity {
         Event newEvent = new Event();
 
         newEvent.setTitle("Title");
-        Date startTime = new Date(2022, 6, 8, 12, 30);
+        Date startTime = new Date(122, 5, 8, 12, 30);
+        Date endTime = new Date(122, 5, 8, 15, 30);
 
         newEvent.setStartTime(startTime);
+        newEvent.setEndTime(endTime);
+
 
         SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
 
@@ -156,7 +159,7 @@ public class SignInActivity extends AppCompatActivity {
         Map<String, Object> eventMap = newEvent.toMap();
 
         Map<String, Object> update = new HashMap<>();
-        update.put("/events/" + databaseDateFormat.format(startTime) + key, eventMap);
+        update.put("/events/" + databaseDateFormat.format(startTime) + "/" + key, eventMap);
 
         rdata.updateChildren(update);
 

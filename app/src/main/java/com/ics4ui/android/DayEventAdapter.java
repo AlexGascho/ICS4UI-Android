@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class DayEventAdapter extends FirebaseRecyclerAdapter<Event, DayEventAdapter.DayEventViewHolder> {
 
     public DayEventAdapter(@NonNull FirebaseRecyclerOptions<Event> options) {
@@ -19,10 +23,8 @@ public class DayEventAdapter extends FirebaseRecyclerAdapter<Event, DayEventAdap
 
     @Override
     protected void onBindViewHolder(@NonNull DayEventViewHolder holder, int position, @NonNull Event model) {
-        Time startTime = model.getStartTime();
-        Time endTime = model.getEndTime();
-        String eventTimeString = startTime.getHour() + ":" + startTime.getMinute() + " - " + endTime.getHour() + ":" + endTime.getMinute();
-
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm aaa", Locale.ENGLISH);
+        String eventTimeString = timeFormat.format(model.getStartTime()) + " - " + timeFormat.format(model.getEndTime());
         holder.eventTitle.setText(model.getTitle());
         holder.eventTime.setText(eventTimeString);
     }
