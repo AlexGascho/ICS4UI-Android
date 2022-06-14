@@ -46,28 +46,31 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/close_button_layout.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/event_indicator.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/green_button.xml" value="0.1365" />
+        <entry key="app/src/main/res/drawable/fake_spinner.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/purple_button.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/round_corners.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/tab_color.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/underline.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/underline_text.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1867263793945313" />
-        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.2103424072265625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.1" />
         <entry key="app/src/main/res/layout/announcement_list_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/event_list_item.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.12949066162109374" />
+        <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.4398148148148148" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_calendar_view.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_day.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_event.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/fragment_filter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/roundedbutton.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.196875" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1785" />
