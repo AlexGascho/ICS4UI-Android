@@ -58,7 +58,7 @@ android:id="@+id/fragment_calendar" >
         <TableLayout
             android:id="@+id/eventShower"
             android:layout_width="412dp"
-            android:layout_height="239dp"
+            android:layout_height="380dp"
             android:paddingTop="135dp"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="134dp">
@@ -66,59 +66,72 @@ android:id="@+id/fragment_calendar" >
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent1"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
-                    android:text=""
-                    />
+                    android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent2"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent3"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent4"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent5"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
-                    android:text=""
-                    android:background="@drawable/event_icon_calendar"/>
+                    android:background="@drawable/event_icon_calendar"
+                    android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent6"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent7"
                     android:layout_width="10dp"
@@ -135,57 +148,70 @@ android:id="@+id/fragment_calendar" >
 
                 <TextView
                     android:layout_width="40dp"
-                    android:layout_height="20dp"/>
+                    android:layout_height="20dp" />
+
                 <TextView
                     android:id="@+id/showEvent8"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:text=""
-                    android:background="@drawable/event_icon_calendar"/>
+                    android:background="@drawable/event_icon_calendar"
+                    android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="20dp"/>
+                    android:layout_height="20dp" />
+
                 <TextView
                     android:id="@+id/showEvent9"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:text=""
-                    android:background="@drawable/event_icon_calendar"/>
+                    android:background="@drawable/event_icon_calendar"
+                    android:text="" />
+
                 <TextView
-                    android:layout_height="match_parent"
-                    android:layout_width="38dp"/>
+                    android:layout_width="38dp"
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent10"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent11"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent12"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent13"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent14"
                     android:layout_width="15dp"
@@ -199,58 +225,72 @@ android:id="@+id/fragment_calendar" >
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent15"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
-                    android:text=""
-                    android:background="@drawable/event_icon_calendar"/>
+                    android:background="@drawable/event_icon_calendar"
+                    android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent16"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent17"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent18"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent19"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent20"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent21"
                     android:layout_width="10dp"
@@ -264,123 +304,151 @@ android:id="@+id/fragment_calendar" >
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent22"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent23"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent24"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent25"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent26"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent27"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent28"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
-                    android:text=""
-                    android:background="@drawable/event_icon_calendar"/>
+                    android:background="@drawable/event_icon_calendar"
+                    android:text="" />
             </TableRow>
 
             <TableRow>
 
-                <TextView android:textSize="14dp" />
+                <TextView android:textSize="20dp" />
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent29"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent30"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent31"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent32"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent33"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
-                    android:text=""
-                    android:background="@drawable/event_icon_calendar"/>
+                    android:background="@drawable/event_icon_calendar"
+                    android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent34"
                     android:layout_width="10dp"
                     android:layout_height="15dp"
                     android:text="" />
+
                 <TextView
                     android:layout_width="38dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
+
                 <TextView
                     android:id="@+id/showEvent35"
                     android:layout_width="10dp"
