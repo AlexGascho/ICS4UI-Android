@@ -14,7 +14,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <Button
+            android:id="@+id/dayCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/close_button_layout"
+            android:text="@string/fragment_add_event_cancel"
+            android:textColor="@color/lightGreen"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" /><TextView
             android:id="@+id/addEventWhiteBox"
             android:layout_width="360dp"
             android:layout_height="460dp"
@@ -154,8 +165,8 @@
             android:layout_marginTop="35dp"
             android:layout_marginEnd="28dp"
             android:text="@string/create_event"
+            android:textColor="@color/white"
             android:textSize="37sp"
-            android:theme="@style/button_custom"
             android:background="@drawable/purple_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -219,13 +230,22 @@
         <Button
             android:id="@+id/startTimeButton"
             style="?android:spinnerStyle"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="25dp"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/start_time"
             app:layout_constraintStart_toEndOf="@+id/startTitle"
             app:layout_constraintTop_toBottomOf="@+id/allDaySwitch" />
+
+        <Button
+            android:id="@+id/endTimeButton"
+            style="?android:spinnerStyle"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:hint="@string/end_time"
+            app:layout_constraintEnd_toEndOf="@+id/startTimeButton"
+            app:layout_constraintTop_toTopOf="@+id/endTitle" />
 
         <Switch
             android:id="@+id/allDaySwitch"
@@ -236,6 +256,26 @@
             android:text=""
             app:layout_constraintStart_toEndOf="@+id/allDayTitle"
             app:layout_constraintTop_toBottomOf="@+id/titleTextInput" />
+
+        <Button
+            android:id="@+id/startDateButton"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:hint="@string/start_date"
+            style="?android:spinnerStyle"
+            app:layout_constraintEnd_toStartOf="@+id/startTimeButton"
+            app:layout_constraintStart_toEndOf="@+id/startTitle"
+            app:layout_constraintTop_toTopOf="@+id/startTitle" />
+
+        <Button
+            android:id="@+id/endDateButton"
+            style="?android:spinnerStyle"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:hint="@string/end_date"
+            app:layout_constraintEnd_toStartOf="@+id/endTimeButton"
+            app:layout_constraintStart_toEndOf="@+id/endTitle"
+            app:layout_constraintTop_toTopOf="@+id/endTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

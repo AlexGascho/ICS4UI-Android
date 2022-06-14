@@ -12,15 +12,15 @@
 
         <TextView
             android:id="@+id/filter_title"
-            android:layout_width="167dp"
-            android:layout_height="39dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:gravity="bottom"
             android:text="Filter/Search"
             android:textAlignment="textStart"
             android:textColor="@color/darkPurple"
-            android:textSize="25sp"
+            android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,17 +28,15 @@
         <Button
             android:id="@+id/filter_search_close"
             android:layout_width="wrap_content"
-            android:layout_height="39dp"
-            android:layout_marginStart="96dp"
+            android:layout_height="42dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
-            android:theme="@style/button_custom"
             android:background="@drawable/close_button_layout"
             android:text="@string/fragment_day_close"
             android:textColor="@color/darkPurple"
             android:textSize="12sp"
+            android:theme="@style/button_custom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/filter_title"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -73,7 +71,8 @@
             android:layout_height="wrap_content"
             android:padding="0dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="288dp"
+            android:layout_marginTop="150dp"
+            android:textColor="@color/white"
             style="@style/purpleButton"
             android:text="@string/apply"
             android:textSize="24sp"
@@ -85,20 +84,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="31dp"
+            android:layout_marginTop="30dp"
             android:text="@string/search"
             android:textColor="@color/darkPurple"
             android:textSize="26sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/applyButton" />
 
-        <SearchView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/searchBar"
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="40dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
+
             android:queryHint="by title keyword."
             style="@style/searchTheme"
             app:layout_constraintEnd_toEndOf="parent"

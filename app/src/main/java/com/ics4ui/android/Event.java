@@ -2,6 +2,7 @@ package com.ics4ui.android;
 
 import com.google.firebase.database.Exclude;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,8 @@ public class Event {
     public String description;
     public String location;
     public String group;
-    public Time startTime;
+    public Date startTime;
+    public Date endTime;
 
     public Event() {
     }
@@ -48,23 +50,21 @@ public class Event {
         this.group = group;
     }
 
-    public Time getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Time getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
-
-    public Time endTime;
 
     @Exclude
     public Map<String, Object> toMap() {
@@ -74,6 +74,7 @@ public class Event {
         result.put("location", location);
         result.put("group", group);
         result.put("startTime", startTime);
+        result.put("endTime", endTime);
 
         return result;
     }

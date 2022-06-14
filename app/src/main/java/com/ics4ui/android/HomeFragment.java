@@ -12,11 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ics4ui.android.databinding.FragmentHomeBinding;
@@ -28,8 +24,6 @@ public class HomeFragment extends Fragment {
 
     DatabaseReference dbase;
     HomeAnnouncementAdapter announcementAdapter, clubsGroupsAnnouncementAdapter;
-//    GoogleSignInOptions googleSignInOptions;
-//    GoogleSignInClient googleSignInClient;
 
     public HomeFragment() {
         // Required empty public constructor

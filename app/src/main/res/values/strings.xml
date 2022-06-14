@@ -5,6 +5,7 @@
     <string name="placeholder_time_day_fragment">Start time -\n End time</string>
     <string name="placeholder_title_day_fragment">Title</string>
     <string name="fragment_day_close">close</string>
+    <string name="fragment_add_event_cancel">cancel</string>
     <string name="element_text">element_text</string>
     <string name="title_home">Home</string>
     <string name="title_calendar">Calendar</string>
@@ -44,4 +45,8 @@
     <string name="club_group_selection">Club/Group Selection</string>
     <string name="apply">APPLY</string>
     <string name="search">Search</string>
+    <string name="tempTime">00:00 - 00:00</string>
+    <string name="fillerTitle">Filler Title</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
 </resources>

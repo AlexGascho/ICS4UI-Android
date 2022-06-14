@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!--Create a layer list and add item of shape "Rectangle to it"-->
+    <item>
+        <shape
+            android:shape="oval">
+            <!--Give the dashed lines their property
+                 like color, width, and dashGap-->
+            <solid
+                android:color="#F9FFEE" />
+            <stroke
+                android:color="@android:color/transparent"
+                android:width="10dp" />
+        </shape>
+    </item>
+</layer-list>
