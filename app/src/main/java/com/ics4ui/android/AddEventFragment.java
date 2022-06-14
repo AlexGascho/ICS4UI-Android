@@ -209,7 +209,7 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
                 createEditTextDialog(view, binding.groupTextInput, "Groups/Clubs");
                 break;
             case R.id.dayCancel:
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, new CalendarFragment()).commit();
                 break;
         }
     }
