@@ -32,7 +32,7 @@ public class CalendarFragment extends Fragment {
         binding.addEventImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, new AddEventFragment())
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new AddEventFragment())
                         .commit();
             }
         });
@@ -40,7 +40,7 @@ public class CalendarFragment extends Fragment {
         binding.filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, new FilterFragment())
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new FilterFragment())
                         .commit();
             }
         });
@@ -57,7 +57,7 @@ public class CalendarFragment extends Fragment {
                 DayFragment dayFragment = new DayFragment();
                 dayFragment.setArguments(bundle);
 
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, dayFragment).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, dayFragment).commit();
             }
         });
 
