@@ -7,8 +7,9 @@
         <item name="android:textSize">25dp</item>
     </style>
 
-    <style name="calendarMonthCustomText">
-
+    <style name="calendarHeadingCustomText">
+        <item name="android:textColor">#F9FFEE</item>
+        <item name="android:textSize">@dimen/abc_text_size_display_2_material</item>
     </style>
 
     <style name="CalendarViewCustom" parent="Theme.AppCompat">
