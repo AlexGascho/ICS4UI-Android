@@ -1,80 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/add_event_container"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/backgroundGreen"
-    tools:context="com.ics4ui.android.AddEventFragment">
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/add_event_container"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/backgroundGreen"
+tools:context="com.ics4ui.android.AddEventFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/dayCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/close_button_layout"
-            android:text="@string/fragment_add_event_cancel"
-            android:textColor="@color/lightGreen"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" /><TextView
-            android:id="@+id/addEventWhiteBox"
-            android:layout_width="360dp"
-            android:layout_height="460dp"
-            android:layout_marginTop="112dp"
-            android:background="@drawable/round_corners"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/addEventTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/add_event"
-            android:textColor="@color/titleColor"
-            android:textStyle="bold"
-            android:textSize="40sp"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/addEventWhiteBox"
+        android:layout_width="360dp"
+        android:layout_height="460dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp"
+        android:background="@drawable/round_corners">
 
         <TextView
             android:id="@+id/titleTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="1dp"
+            android:layout_marginStart="20dp"
             android:text="@string/title"
             android:textColor="@color/darkPurple"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toStartOf="@+id/titleTextInput"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addEventTitle" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/allDayTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
             android:text="@string/all_day"
             android:textColor="@color/darkPurple"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:autoSizeTextType="uniform"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTitle" />
@@ -83,12 +47,12 @@
             android:id="@+id/startTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
             android:text="@string/start"
             android:textColor="@color/darkPurple"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:autoSizeTextType="uniform"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/allDayTitle" />
@@ -97,12 +61,12 @@
             android:id="@+id/endTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
             android:text="@string/end"
             android:textColor="@color/darkPurple"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:autoSizeTextType="uniform"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/startTitle" />
@@ -111,15 +75,13 @@
             android:id="@+id/locationTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="1dp"
             android:text="@string/location"
             android:textColor="@color/darkPurple"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toStartOf="@+id/locationTextInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/endTitle" />
 
@@ -128,15 +90,13 @@
             android:id="@+id/descriptionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="1dp"
             android:text="@string/description"
             android:textColor="@color/darkPurple"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toStartOf="@+id/descriptionTextInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationTitle" />
 
@@ -144,138 +104,187 @@
             android:id="@+id/clubsGroupsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="1dp"
             android:text="@string/clubs_groups"
             android:textColor="@color/darkPurple"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toStartOf="@+id/groupTextInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionTitle" />
 
-        <Button
-            android:id="@+id/createEventButton"
-            android:layout_width="355dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginEnd="28dp"
-            android:text="@string/create_event"
-            android:textColor="@color/white"
-            android:textSize="37sp"
-            android:background="@drawable/purple_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clubsGroupsTitle" />
-
-        <TextView
+        <EditText
             android:id="@+id/titleTextInput"
-            android:layout_width="270dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/underline_text"
+            android:layout_width="240dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/translucentGreen"
             android:contentDescription=""
-            android:ems="10"
             android:gravity="bottom"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/darkPurple"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/titleTitle"
-            app:layout_constraintTop_toBottomOf="@+id/addEventTitle" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <EditText
             android:id="@+id/locationTextInput"
-            android:layout_width="210dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/underline_text"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/translucentGreen"
             android:gravity="bottom"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:text=""
+            android:textColor="@color/darkPurple"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/locationTitle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/endTitle" />
 
-        <TextView
-            android:id="@+id/groupTextInput"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/underline_text"
-            android:ems="10"
-            android:gravity="bottom"
-            android:text=""
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/clubsGroupsTitle"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionTextInput" />
-
-        <TextView
+        <EditText
             android:id="@+id/descriptionTextInput"
-            android:layout_width="180dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/underline_text"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/translucentGreen"
             android:ems="10"
             android:gravity="bottom"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:text=""
+            android:textColor="@color/darkPurple"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/descriptionTitle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationTextInput" />
 
         <Button
             android:id="@+id/startTimeButton"
-            style="?android:spinnerStyle"
-            android:layout_width="115dp"
+            style="@style/PickerButton"
+            android:layout_width="95dp"
             android:layout_height="40dp"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="20dp"
-            android:hint="@string/start_time"
-            app:layout_constraintStart_toEndOf="@+id/startTitle"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:paddingEnd="15dp"
+            android:text="@string/start_time"
+            android:textColor="@color/darkPurple"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/allDaySwitch" />
+
+        <Spinner
+            android:id="@+id/clubGroupSpinner"
+            style="@style/SpinnerTheme"
+            android:layout_width="115dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:gravity="bottom"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTextInput" />
 
         <Button
             android:id="@+id/endTimeButton"
-            style="?android:spinnerStyle"
-            android:layout_width="115dp"
+            style="@style/PickerButton"
+            android:layout_width="95dp"
             android:layout_height="40dp"
-            android:hint="@string/end_time"
-            app:layout_constraintEnd_toEndOf="@+id/startTimeButton"
-            app:layout_constraintTop_toTopOf="@+id/endTitle" />
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:paddingEnd="15dp"
+            android:text="@string/end_time"
+            android:textColor="@color/darkPurple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/startTimeButton" />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/allDaySwitch"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
             android:text=""
             app:layout_constraintStart_toEndOf="@+id/allDayTitle"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextInput" />
+            app:layout_constraintTop_toBottomOf="@+id/titleTextInput"
+            app:splitTrack="false"
+            app:thumbTint="@color/backgroundGreen"
+            app:trackTint="@color/translucentGreen" />
 
         <Button
             android:id="@+id/startDateButton"
-            android:layout_width="115dp"
+            style="@style/PickerButton"
+            android:layout_width="105dp"
             android:layout_height="40dp"
-            android:hint="@string/start_date"
-            style="?android:spinnerStyle"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:paddingEnd="15dp"
+            android:text="@string/start_date"
+            android:textColor="@color/darkPurple"
             app:layout_constraintEnd_toStartOf="@+id/startTimeButton"
-            app:layout_constraintStart_toEndOf="@+id/startTitle"
-            app:layout_constraintTop_toTopOf="@+id/startTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/allDaySwitch" />
 
         <Button
             android:id="@+id/endDateButton"
-            style="?android:spinnerStyle"
-            android:layout_width="115dp"
+            style="@style/PickerButton"
+            android:layout_width="105dp"
             android:layout_height="40dp"
-            android:hint="@string/end_date"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:paddingEnd="15dp"
+            android:text="@string/end_date"
+            android:textColor="@color/darkPurple"
             app:layout_constraintEnd_toStartOf="@+id/endTimeButton"
-            app:layout_constraintStart_toEndOf="@+id/endTitle"
-            app:layout_constraintTop_toTopOf="@+id/endTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/startDateButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/dayCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/close_button_layout"
+        android:text="@string/fragment_add_event_cancel"
+        android:textColor="@color/lightGreen"
+        android:textSize="12sp"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/addEventTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/add_event"
+        android:textColor="@color/titleColor"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        app:autoSizeTextType="uniform" />
+
+
+    <Button
+        android:id="@+id/createEventButton"
+        android:layout_width="355dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="28dp"
+        android:layout_below="@id/addEventWhiteBox"
+        android:text="@string/create_event"
+        android:textColor="@color/white"
+        android:textSize="37sp"
+        android:background="@drawable/purple_button" />
+
+</RelativeLayout>

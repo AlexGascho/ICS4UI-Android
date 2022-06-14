@@ -1,7 +1,6 @@
 package com.ics4ui.android;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -28,7 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -121,10 +120,8 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    signInTitle.setTextColor(Color.GRAY);
                     signedIn();
                 } else {
-                    signInTitle.setTextColor(Color.RED);
                     Toast.makeText(getApplicationContext(), "Firebase: Error logging in.", Toast.LENGTH_LONG).show();
                 }
             }
@@ -145,24 +142,26 @@ public class SignInActivity extends AppCompatActivity {
 
         Event newEvent = new Event();
 
-        newEvent.setTitle("Title");
-        Date startTime = new Date(122, 5, 8, 12, 30);
-        Date endTime = new Date(122, 5, 8, 15, 30);
+        newEvent.setTitle("Example title");
 
-        newEvent.setStartTime(startTime);
-        newEvent.setEndTime(endTime);
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(2022, 5, 28, 10, 30);
+        newEvent.setStartTime(startTime.getTime());
 
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(2022, 5, 28, 12, 30);
+        newEvent.setEndTime(endTime.getTime());
 
         SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
+        String formattedDate = databaseDateFormat.format(startTime.getTimeInMillis());
 
-        String key = rdata.child("events").child(databaseDateFormat.format(startTime)).push().getKey();
+        String key = rdata.child("events").child(formattedDate).push().getKey();
         Map<String, Object> eventMap = newEvent.toMap();
 
         Map<String, Object> update = new HashMap<>();
-        update.put("/events/" + databaseDateFormat.format(startTime) + "/" + key, eventMap);
+        update.put("/events/" + formattedDate + "/" + key, eventMap);
 
         rdata.updateChildren(update);
-
 
     }
 }

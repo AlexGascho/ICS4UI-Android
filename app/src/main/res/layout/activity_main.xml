@@ -12,7 +12,7 @@
         android:layout_height="60dp"
         android:layout_gravity="bottom"
         app:itemBackground="@color/black"
-        app:itemIconTint="@color/purple_200"
+        app:itemIconTint="@drawable/tab_color"
         app:itemTextColor="#00FFFFFF"
         app:menu="@menu/bottom_navigation" />
 

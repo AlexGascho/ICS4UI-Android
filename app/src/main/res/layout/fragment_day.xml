@@ -29,11 +29,11 @@
             android:id="@+id/event_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/event_day"
             android:layout_marginStart="35dp"
             android:layout_marginTop="40dp"
             android:text="@string/placeholder_time_day_fragment"
             android:textColor="@color/darkPurple"
-            android:layout_below="@id/event_day"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -41,14 +41,14 @@
             android:id="@+id/dayFragmentEventTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/event_day"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="70dp"
+            android:layout_marginEnd="80dp"
             android:text="@string/eventTitleText"
             android:textColor="@color/darkPurple"
-            android:layout_alignParentEnd="true"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_below="@id/event_day" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/dayFragmentLine"
