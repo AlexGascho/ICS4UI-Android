@@ -17,6 +17,7 @@
         android:layout_marginEnd="30dp"
         android:background="@drawable/underline"
         android:text="@string/today"
+        android:textStyle="bold"
         android:textAlignment="viewStart"
         android:textColor="@color/white"
         android:textSize="48sp" />
@@ -30,6 +31,7 @@
         android:layout_below="@id/announcementDate"
         android:layout_marginTop="30dp"
         android:text="@string/announcements"
+        android:textStyle="bold"
         android:textColor="@color/titleColor"
         android:textSize="32sp" />
 
@@ -53,6 +55,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:text="@string/clubs_amp_groups"
+        android:textStyle="bold"
         android:textColor="@color/titleColor"
         android:textSize="32sp" />
 
