@@ -197,7 +197,7 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
                     //Creates toast (pop up)
                     Toast.makeText(getContext(), "Event Added", Toast.LENGTH_SHORT).show();
                     writeNewEvent(account, getEventDetails(view));
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, new CalendarFragment()).commit();
 
                 } else {
                     Toast.makeText(getContext(), "You are not logged in", Toast.LENGTH_SHORT).show();
@@ -218,7 +218,7 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
                 createDatePickerDialog(view, binding.endDateButton, endDateTime);
                 break;
             case R.id.dayCancel:
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, new CalendarFragment()).commit();
                 break;
             case R.id.allDaySwitch:
                 if (binding.allDaySwitch.isChecked()) {
