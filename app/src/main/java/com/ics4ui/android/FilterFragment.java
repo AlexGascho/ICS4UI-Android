@@ -28,7 +28,7 @@ public class FilterFragment extends Fragment {
         binding.filterSearchClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, new CalendarFragment()).commit();
             }
         });
         return binding.getRoot();
