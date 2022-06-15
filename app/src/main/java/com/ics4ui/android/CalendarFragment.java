@@ -102,6 +102,7 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
         return binding.getRoot();
     }
 
+
     private CalendarDay convertStringToCalendarDay(String key) {
         Date date;
         try{
