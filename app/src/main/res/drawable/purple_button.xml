@@ -4,5 +4,5 @@
     <solid android:color="@color/buttonPurple" />
     <corners android:radius="10dp" />
     <stroke android:color="@color/buttonOutline"
-        android:width="5dp" />
+        android:width="4dp" />
 </shape>
