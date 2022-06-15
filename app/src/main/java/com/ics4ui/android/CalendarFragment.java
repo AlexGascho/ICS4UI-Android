@@ -1,35 +1,51 @@
 package com.ics4ui.android;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.ics4ui.android.databinding.FragmentCalendarBinding;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.DayViewDecorator;
-import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateLongClickListener;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
-import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class CalendarFragment extends Fragment implements OnDateSelectedListener, OnMonthChangedListener, OnDateLongClickListener {
     FragmentCalendarBinding binding;
-    ImageButton addEventImageButton;
+    private FirebaseAuth firebaseAuth;
+    DatabaseReference dbase;
+
+    private ArrayList<CalendarDay> eventDateList = new ArrayList<>();
 
     public CalendarFragment() {
+    }
 
-        int width = 60;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        firebaseAuth = FirebaseAuth.getInstance();
+        dbase = FirebaseDatabase.getInstance().getReference();
     }
 
     @Override
@@ -37,13 +53,39 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
                              Bundle savedInstanceState) {
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
 
-        binding.addEventImageButton.setOnClickListener(new View.OnClickListener() {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        Query eventKeys = dbase.child("users").child(user.getUid()).child("events");
+
+        eventKeys.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new AddEventFragment())
-                        .commit();
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                if (snapshot.exists()) {
+                    try {
+                        binding.calendarView.addDecorator(new EventDecorator(convertStringToCalendarDay(snapshot.getKey())));
+                    } catch (Exception ignored) {}
+                }
             }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
         });
+
+                binding.addEventImageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new AddEventFragment())
+                                .commit();
+                    }
+                });
 
         binding.filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,35 +99,24 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
         binding.calendarView.setOnDateLongClickListener(this);
         binding.calendarView.setOnMonthChangedListener(this);
 
-        //Adds event indicators
-        CalendarDay test = CalendarDay.from(2022, 6, 28);
-        binding.calendarView.addDecorator(new EventDecorator(test));
-
         return binding.getRoot();
+    }
+
+    private CalendarDay convertStringToCalendarDay(String key) {
+        Date date;
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            date = dateFormat.parse(key);
+        }catch(ParseException e){
+            date = new Date(0, 0, 0);
+        }
+        return CalendarDay.from(date.getYear()+1900, date.getMonth()+1, date.getDate());
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public class EventDecorator implements DayViewDecorator {
-
-        private final CalendarDay dates;
-
-        public EventDecorator(CalendarDay dates) {
-            this.dates = dates;
-        }
-
-        @Override
-        public boolean shouldDecorate(CalendarDay day) {
-            return dates.equals(day);
-        }
-
-        @Override
-        public void decorate(DayViewFacade view) {
-            view.addSpan(new DotSpan(10, Color.MAGENTA));
-        }
-    }
 
     @Override
     public void onDateLongClick(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date) {
@@ -110,4 +141,5 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
     public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
 
     }
+
 }
