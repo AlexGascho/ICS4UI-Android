@@ -1,11 +1,15 @@
 package com.ics4ui.android;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -26,6 +30,22 @@ public class DayEventAdapter extends FirebaseRecyclerAdapter<Event, DayEventAdap
         String eventTimeString = timeFormat.format(model.getStartTime()) + " - " + timeFormat.format(model.getEndTime());
         holder.eventTitle.setText(model.getTitle());
         holder.eventTime.setText(eventTimeString);
+
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("title","test title");
+                bundle.putString("desc","test desc");
+
+                EventFragment eventFragment = new EventFragment();
+                eventFragment.setArguments(bundle);
+
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, eventFragment).commit();
+
+            }
+        });
     }
 
     @NonNull
@@ -37,10 +57,12 @@ public class DayEventAdapter extends FirebaseRecyclerAdapter<Event, DayEventAdap
 
     class DayEventViewHolder extends RecyclerView.ViewHolder {
         TextView eventTitle, eventTime;
+        RelativeLayout relativeLayout;
         public DayEventViewHolder(@NonNull View itemView) {
             super(itemView);
             eventTitle = itemView.findViewById(R.id.eventTitle);
             eventTime = itemView.findViewById(R.id.eventTime);
+            relativeLayout = itemView.findViewById(R.id.eventRow);
         }
     }
 }
