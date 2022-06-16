@@ -59,6 +59,7 @@ android:id="@+id/fragment_calendar" >
         app:mcv_tileHeight="match_parent"
         app:mcv_tileSize="match_parent"
         app:mcv_tileWidth="match_parent"
+        app:mcv_weekDayLabels="@array/weekdays_custom"
         app:mcv_weekDayTextAppearance="@style/calendarViewWeekCustomText"
         tools:layout_editor_absoluteX="3dp">
 
