@@ -9,7 +9,7 @@
 
     <style name="calendarHeadingCustomText">
         <item name="android:textColor">#F9FFEE</item>
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">30sp</item>
     </style>
 
     <style name="CalendarViewCustom" parent="Theme.AppCompat">
@@ -19,7 +19,7 @@
 
     <style name="calendarViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Large">
         <item name="android:textColor">#F9FFEE</item>
-        <item name="android:textSize">25dp</item>
+        <item name="android:textSize">20dp</item>
         <item name="mcv_weekDayLabels">@string/calendarWeekDays</item>
     </style>
 
