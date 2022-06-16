@@ -163,7 +163,6 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
 
                 populateRemoveAnnouncementSpinner(announcementList);
             }
-
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
             @Override

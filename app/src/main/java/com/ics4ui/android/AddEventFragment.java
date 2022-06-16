@@ -9,20 +9,28 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.ics4ui.android.databinding.FragmentAddEventBinding;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -39,10 +47,14 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     private Calendar startDateTime;
     private Calendar endDateTime;
 
+    Map<String, String> announcementKeys = new HashMap<>();
+    ArrayAdapter<String> adapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         firebaseAuth = FirebaseAuth.getInstance();
+        dbase = FirebaseDatabase.getInstance().getReference();
     }
 
     @Override
@@ -61,7 +73,44 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
         binding.createEventButton.setOnClickListener(this);
         binding.allDaySwitch.setOnClickListener(this);
 
+
+        fetchClubsGroupsList();
+
         return binding.getRoot();
+    }
+
+    private void fetchClubsGroupsList() {
+        ArrayList<String> clubsGroupsList = new ArrayList<>();
+        clubsGroupsList.add("None");
+
+        Query query = dbase.child("clubsGroups");
+
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                if(snapshot.exists()) {
+                    try {
+                        clubsGroupsList.add(snapshot.getKey());
+                        populateSpinner(clubsGroupsList);
+                    } catch (Exception ignored) {}
+                }
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+    private void populateSpinner(ArrayList<String> clubsGroupsList) {
+        adapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, clubsGroupsList);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        binding.clubGroupSpinner.setAdapter(adapter);
+        binding.clubGroupSpinner.setPopupBackgroundResource(R.drawable.spinner_dropdown_background);
     }
 
     public void createDatePickerDialog(View view, Button button, Calendar calendar) {
@@ -141,18 +190,13 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
             newEvent.setLocation(binding.locationTextInput.getText().toString());
         }
 
-        if (binding.clubGroupSpinner.getSelectedItem() == null) {
-            newEvent.setGroup("None");
-        } else {
-            newEvent.setGroup(binding.clubGroupSpinner.getSelectedItem().toString());
-        }
-
         if (binding.endDateButton.getText().toString().equals("End Date")) {
             endDateTime.set(Calendar.YEAR, startDateTime.get(Calendar.YEAR));
             endDateTime.set(Calendar.MONTH, startDateTime.get(Calendar.MONTH));
             endDateTime.set(Calendar.DAY_OF_MONTH, startDateTime.get(Calendar.DAY_OF_MONTH));
         }
 
+        newEvent.setGroup(binding.clubGroupSpinner.getSelectedItem().toString());
         newEvent.setStartTime(startDateTime.getTime());
         newEvent.setEndTime(endDateTime.getTime());
 
@@ -160,19 +204,28 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
     }
 
     public void writeNewEvent(FirebaseUser account, Event newEvent) {
-        dbase = FirebaseDatabase.getInstance().getReference().child("users").child(account.getUid());
-
+        DatabaseReference dbase2 = dbase.child("users").child(account.getUid());
         Date date = newEvent.getStartTime();
         SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
         String formattedDate = databaseDateFormat.format(date);
+        String clubGroup = newEvent.getGroup();
 
-        String key = dbase.child("events").child(formattedDate).push().getKey();
-        Map<String, Object> eventMap = newEvent.toMap();
-
+        //If Clubs/Groups == "None" the event will be private, otherwise the event will be added to to /ClubsGroups/[Specified Group]/events
         Map<String, Object> update = new HashMap<>();
-        update.put("/events/" + formattedDate + "/" + key, eventMap);
 
-        dbase.updateChildren(update);
+        if (clubGroup.equals("None")) {
+            String key = dbase2.child("events").child(formattedDate).push().getKey();
+            Map<String, Object> eventMap = newEvent.toMap();
+
+            update.put("/events/" + formattedDate + "/" + key, eventMap);
+            dbase2.updateChildren(update);
+        } else {
+            String key = dbase.child("clubsGroups").child(clubGroup).push().getKey();
+            Map<String, Object> eventMap = newEvent.toMap();
+
+            update.put("/clubsGroups/" + clubGroup + "/events/" + formattedDate + "/" + key, eventMap);
+            dbase.updateChildren(update);
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -191,6 +244,15 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
                 } else if (binding.endTimeButton.getText().toString().equals("End Time")) {
                     Toast.makeText(getContext(), "End time is required!", Toast.LENGTH_SHORT).show();
                     break;
+                }
+
+                if (binding.allDaySwitch.isChecked()) {
+                    //Sets start/endtime to full day
+                    endDateTime.set(Calendar.HOUR_OF_DAY, 23);
+                    endDateTime.set(Calendar.MINUTE, 59);
+
+                    startDateTime.set(Calendar.HOUR_OF_DAY, 0);
+                    startDateTime.set(Calendar.MINUTE, 1);
                 }
 
                 if (account != null) {
@@ -224,14 +286,14 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
                 if (binding.allDaySwitch.isChecked()) {
                     binding.endTimeButton.setVisibility(View.GONE);
                     binding.endDateButton.setVisibility(View.GONE);
+                    binding.startTimeButton.setVisibility(View.GONE);
 
-                    //Sets end date to end of day
-                    endDateTime.set(Calendar.HOUR_OF_DAY, 23);
-                    endDateTime.set(Calendar.MINUTE, 59);
                     binding.endTimeButton.setText(convertToTimeFormat(23, 59));
+                    binding.startTimeButton.setText(convertToTimeFormat(0, 1));
                 } else {
                     binding.endTimeButton.setVisibility(View.VISIBLE);
                     binding.endDateButton.setVisibility(View.VISIBLE);
+                    binding.startTimeButton.setVisibility(View.VISIBLE);
                 }
                 break;
         }

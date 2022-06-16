@@ -139,29 +139,5 @@ public class SignInActivity extends AppCompatActivity {
         rdata = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
         rdata.child("email").setValue(user.getEmail());
         rdata.child("name").setValue(user.getDisplayName());
-
-        Event newEvent = new Event();
-
-        newEvent.setTitle("Example title");
-
-        Calendar startTime = Calendar.getInstance();
-        startTime.set(2022, 5, 28, 10, 30);
-        newEvent.setStartTime(startTime.getTime());
-
-        Calendar endTime = Calendar.getInstance();
-        endTime.set(2022, 5, 28, 12, 30);
-        newEvent.setEndTime(endTime.getTime());
-
-        SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
-        String formattedDate = databaseDateFormat.format(startTime.getTimeInMillis());
-
-        String key = rdata.child("events").child(formattedDate).push().getKey();
-        Map<String, Object> eventMap = newEvent.toMap();
-
-        Map<String, Object> update = new HashMap<>();
-        update.put("/events/" + formattedDate + "/" + key, eventMap);
-
-        rdata.updateChildren(update);
-
     }
 }
