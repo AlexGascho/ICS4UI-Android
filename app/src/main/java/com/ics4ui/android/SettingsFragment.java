@@ -46,6 +46,13 @@ public class SettingsFragment extends Fragment {
                 ((MainActivity) getActivity()).SignOut();
             }
         });
+
+        binding.manageClubsGroups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new ClubsGroupsManagerFragment()).commit();
+            }
+        });
     }
 
 }

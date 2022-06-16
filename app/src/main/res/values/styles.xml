@@ -61,4 +61,9 @@
     <style name="SwitchStyle" parent="@style/Widget.AppCompat.CompoundButton.Switch">
         <item name="android:background">@color/black</item>
     </style>
+
+    <style name="spinnerDropdownStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:popupBackground">@color/translucentGreen</item>
+        <item name="android:background">@drawable/spinner_item_background</item>
+    </style>
 </resources>
