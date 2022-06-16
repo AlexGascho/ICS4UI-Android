@@ -41,6 +41,7 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
 
     String clubName;
     Map<String, String> announcementKeys = new HashMap<>();
+    ArrayList<User> userList = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
     public ClubsGroupsOptionsFragment() {}
@@ -63,9 +64,12 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
         binding.addClubGroupAnnouncementButton.setOnClickListener(this);
         binding.removeClubGroupAnnouncementButton.setOnClickListener(this);
         binding.addClubGroupAnnouncementInput.setOnClickListener(this);
+        binding.addClubGroupMemberInput.setOnClickListener(this);
+        binding.addClubGroupMemberButton.setOnClickListener(this);
 
         //This fetches the announcements from the database then populates the removeAnnouncementSpinner
         fetchAnnouncements();
+        fetchUsers();
 
         return binding.getRoot();
     }
@@ -82,6 +86,11 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
                 break;
             case R.id.addClubGroupAnnouncementInput:
                 createEditTextView(view, binding.addClubGroupAnnouncementInput, "Announcement");
+                break;
+            case R.id.addClubGroupMemberButton:
+                break;
+            case R.id.addClubGroupMemberInput:
+                createEditTextView(view, binding.addClubGroupMemberInput, "New Member");
                 break;
         }
     }
@@ -145,6 +154,28 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
         });
 
         builder.show();
+    }
+
+    private void fetchUsers() {
+        Query query = dbase.child("users");
+
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String uid = snapshot.getKey();
+                User user = snapshot.getValue(User.class);
+                user.setUid(uid);
+                userList.add(user);
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
     }
 
     private void fetchAnnouncements() {
