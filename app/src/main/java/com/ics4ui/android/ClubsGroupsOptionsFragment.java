@@ -45,7 +45,7 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
     String clubName;
 
     Map<String, String> announcementKeys = new HashMap<>();
-    MultiValuedMap<User, String> userList = new ArrayListValuedHashMap<>();
+    Map<String, User> userList = new HashMap<>();
 
     ArrayAdapter<String> adapter;
 
@@ -90,30 +90,33 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
                 removeClubGroupAnnouncement();
                 break;
             case R.id.addClubGroupAnnouncementInput:
-                createEditTextView(view, binding.addClubGroupAnnouncementInput, "Announcement");
+                createEditTextView(view, binding.addClubGroupAnnouncementInput, "Announcement", false);
                 break;
             case R.id.addClubGroupMemberButton:
                 addClubGroupMember();
                 break;
             case R.id.addClubGroupMemberInput:
-                createEditTextView(view, binding.addClubGroupMemberInput, "New Member");
+                createEditTextView(view, binding.addClubGroupMemberInput, "New Member", true);
                 break;
         }
     }
 
     private void addClubGroupMember() {
         String user = binding.addClubGroupMemberInput.getText().toString();
-        if (user.equals("") || (user.equals(null))) {
+        if (user.equals("")) {
             Toast.makeText(getContext(), "No member was specified!", Toast.LENGTH_SHORT).show();
         } else {
-            if (userList.containsValue(user)) {
-                ArrayList<User> findUser = new ArrayList<>();
-                findUser.addAll(userList.entries().stream().filter(a->a.getValue().equals(user)).map(e -> e.getKey()).collect(Collectors.toList()));
-                binding.addClubGroupAnnouncement.setText(findUser.get(0).getEmail());
+            if (userList.containsKey(user)) {
+                User userData = userList.get(user);
+                dbase.child("clubsGroups").child(clubName).child("members").child(userData.getUid()).setValue(userData);
+                dbase.child("users").child(userData.getUid()).child("memberOf").child(clubName).setValue("member");
+
+                Toast.makeText(getContext(), "User added as member!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "User not found in database!", Toast.LENGTH_SHORT).show();
             }
         }
+        binding.addClubGroupMemberInput.setText("");
     }
 
     private void removeClubGroupAnnouncement() {
@@ -158,7 +161,7 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
                 }
     }
 
-    private void createEditTextView(View view, TextView textView, String title) {
+    private void createEditTextView(View view, TextView textView, String title, Boolean isMember) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setTitle(title);
 
@@ -170,6 +173,12 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+                if (isMember) {
+                    String addon = "";
+                    if (userList.containsKey(input.getText().toString())) {
+                        Toast.makeText(getContext(), "Found user: " + userList.get(input.getText().toString()).getName(), Toast.LENGTH_SHORT).show();
+                    }
+                }
                 textView.setText(input.getText().toString());
             }
         });
@@ -186,8 +195,7 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
                 String uid = snapshot.getKey();
                 User user = snapshot.getValue(User.class);
                 user.setUid(uid);
-                userList.put(user, user.getEmail());
-                userList.put(user, user.getName());
+                userList.put(user.getEmail(), user);
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
