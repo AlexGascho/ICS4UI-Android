@@ -25,12 +25,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.ics4ui.android.databinding.FragmentClubsGroupsManagerBinding;
 import com.ics4ui.android.databinding.FragmentClubsGroupsOptionsBinding;
+
+import org.apache.commons.collections4.MultiValuedMap;
+import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClickListener {
     FragmentClubsGroupsOptionsBinding binding;
@@ -40,8 +43,10 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
     FirebaseUser user;
 
     String clubName;
+
     Map<String, String> announcementKeys = new HashMap<>();
-    ArrayList<User> userList = new ArrayList<>();
+    MultiValuedMap<User, String> userList = new ArrayListValuedHashMap<>();
+
     ArrayAdapter<String> adapter;
 
     public ClubsGroupsOptionsFragment() {}
@@ -88,10 +93,26 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
                 createEditTextView(view, binding.addClubGroupAnnouncementInput, "Announcement");
                 break;
             case R.id.addClubGroupMemberButton:
+                addClubGroupMember();
                 break;
             case R.id.addClubGroupMemberInput:
                 createEditTextView(view, binding.addClubGroupMemberInput, "New Member");
                 break;
+        }
+    }
+
+    private void addClubGroupMember() {
+        String user = binding.addClubGroupMemberInput.getText().toString();
+        if (user.equals("") || (user.equals(null))) {
+            Toast.makeText(getContext(), "No member was specified!", Toast.LENGTH_SHORT).show();
+        } else {
+            if (userList.containsValue(user)) {
+                ArrayList<User> findUser = new ArrayList<>();
+                findUser.addAll(userList.entries().stream().filter(a->a.getValue().equals(user)).map(e -> e.getKey()).collect(Collectors.toList()));
+                binding.addClubGroupAnnouncement.setText(findUser.get(0).getEmail());
+            } else {
+                Toast.makeText(getContext(), "User not found in database!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -165,7 +186,8 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
                 String uid = snapshot.getKey();
                 User user = snapshot.getValue(User.class);
                 user.setUid(uid);
-                userList.add(user);
+                userList.put(user, user.getEmail());
+                userList.put(user, user.getName());
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
