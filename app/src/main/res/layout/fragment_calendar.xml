@@ -16,41 +16,42 @@ android:id="@+id/fragment_calendar" >
         style="@android:style/Widget.ImageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="10dp"
         android:background="#00FFFFFF"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
         android:src="@drawable/search_button__new_"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/calendarView"
         app:layout_constraintEnd_toStartOf="@+id/addEventImageButton"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/addEventImageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="10dp"
         android:background="#00FFFFFF"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
         android:src="@drawable/high_res_add"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/calendarView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginTop="10dp"
         android:background="#536863"
         android:paddingTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterButton"
         app:mcv_dateTextAppearance="@style/CalendarViewDateCustomText"
         app:mcv_headerTextAppearance="@style/calendarHeadingCustomText"
         app:mcv_leftArrow="@drawable/arrows_left_final"
@@ -60,8 +61,7 @@ android:id="@+id/fragment_calendar" >
         app:mcv_tileSize="match_parent"
         app:mcv_tileWidth="match_parent"
         app:mcv_weekDayLabels="@array/weekdays_custom"
-        app:mcv_weekDayTextAppearance="@style/calendarViewWeekCustomText"
-        tools:layout_editor_absoluteX="3dp">
+        app:mcv_weekDayTextAppearance="@style/calendarViewWeekCustomText">
 
 
     </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
