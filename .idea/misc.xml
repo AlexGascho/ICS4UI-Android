@@ -71,6 +71,8 @@
         <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.17822576452184602" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_calendar_view.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_clubs_groups_manager.xml" value="0.4661911010742188" />
+        <entry key="app/src/main/res/layout/fragment_clubs_groups_options.xml" value="0.31915740966796874" />
         <entry key="app/src/main/res/layout/fragment_day.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_event.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/fragment_filter.xml" value="0.25" />
