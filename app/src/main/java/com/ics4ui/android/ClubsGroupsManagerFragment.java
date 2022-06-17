@@ -98,4 +98,3 @@ public class ClubsGroupsManagerFragment extends Fragment {
     }
 
 }
-
