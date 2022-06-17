@@ -61,6 +61,7 @@
         <item>T</item>
         <item>F</item>
         <item>S</item>
+        <item>@string/sunday</item>
     </array>
     <string name="clubs_groups_manager">Clubs/Groups Manager</string>
     <string name="select_clubs_groups">Select Clubs/Groups</string>
