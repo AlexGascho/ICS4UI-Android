@@ -75,6 +75,7 @@
         android:paddingEnd="10dp"
         android:text="@string/manage_clubs_groups"
         android:textAlignment="center"
+        android:textSize="24sp"
         android:textColor="@color/white" />
 
 
