@@ -6,59 +6,64 @@ android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/addClubGroupAnnouncement"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/add_announcements"
+        android:textColor="@color/darkPurple"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/addClubGroupAnnouncementInput"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/addClubGroupAnnouncement"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_toEndOf="@id/addClubGroupAnnouncementButton"
+        android:background="@drawable/underline_text"
+        android:gravity="bottom"
+        android:paddingStart="10dp"
+        android:textColor="@color/darkPurple" />
+
+    <Button
+        android:id="@+id/addClubGroupAnnouncementButton"
+        style="@style/purpleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/addClubGroupAnnouncement"
+        android:layout_marginStart="30dp"
+        android:text="@string/add"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/removeClubGroupAnnouncement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addClubGroupAnnouncementButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="@string/add_announcements"
+        android:text="@string/remove_announcements"
         android:textColor="@color/darkPurple"
-        android:textSize="18sp" />
+        android:textSize="25sp" />
 
-<TextView
-    android:id="@+id/addClubGroupAnnouncementInput"
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:layout_below="@id/addClubGroupAnnouncement"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="30dp"
-    android:layout_toEndOf="@id/addClubGroupAnnouncementButton"
-    android:background="@drawable/underline_text"
-    android:gravity="bottom"
-    android:paddingStart="10dp"
-    android:textColor="@color/darkPurple" />
-
-<Button
-    android:id="@+id/addClubGroupAnnouncementButton"
-    style="@style/purpleButton"
-    android:layout_width="50dp"
-    android:layout_height="40dp"
-    android:layout_below="@id/addClubGroupAnnouncement"
-    android:layout_marginStart="30dp"
-    android:text="@string/add"
-    android:textColor="@color/white" />
-
-<TextView
-    android:id="@+id/removeClubGroupAnnouncement"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/addClubGroupAnnouncementButton"
-    android:layout_marginTop="30dp"
-    android:layout_marginBottom="10dp"
-    android:gravity="center"
-    android:text="@string/remove_announcements"
-    android:textColor="@color/darkPurple"
-    android:textSize="18sp" />
-
-<Button
-    android:id="@+id/removeClubGroupAnnouncementButton"
-    style="@style/purpleButton"
-    android:layout_width="80dp"
-    android:layout_height="40dp"
-    android:layout_below="@id/removeClubGroupAnnouncement"
-    android:layout_marginStart="30dp"
-    android:text="@string/remove"
-    android:textColor="@color/white" />
+    <Button
+        android:id="@+id/removeClubGroupAnnouncementButton"
+        style="@style/purpleButton"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/removeClubGroupAnnouncement"
+        android:layout_marginStart="30dp"
+        android:text="@string/remove"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 
 <Spinner
     android:id="@+id/removeClubGroupAnnouncementSpinner"
@@ -75,25 +80,28 @@ android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/addClubGroupMember"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/removeClubGroupAnnouncementSpinner"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="@string/add_member_s"
         android:textColor="@color/darkPurple"
-        android:textSize="18sp" />
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/addClubGroupMemberButton"
         style="@style/purpleButton"
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_below="@id/addClubGroupMember"
         android:layout_marginStart="30dp"
         android:text="@string/add"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/addClubGroupMemberInput"
