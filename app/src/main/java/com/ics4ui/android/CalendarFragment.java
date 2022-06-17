@@ -26,6 +26,8 @@ import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -94,6 +96,8 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
         binding.calendarView.setOnDateChangedListener(this);
         binding.calendarView.setOnDateLongClickListener(this);
         binding.calendarView.setOnMonthChangedListener(this);
+        CalendarDay currentDate = CalendarDay.today();
+        binding.calendarView.setDateSelected(currentDate, true);
 
         return binding.getRoot();
     }
