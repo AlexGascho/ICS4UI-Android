@@ -58,6 +58,8 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
         FirebaseUser user = firebaseAuth.getCurrentUser();
         Query eventKeys = dbase.child("users").child(user.getUid()).child("events");
 
+        getUserClubGroups(user);
+
         eventKeys.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -100,6 +102,39 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
         binding.calendarView.setDateSelected(currentDate, true);
 
         return binding.getRoot();
+    }
+
+    private void getUserClubGroups(FirebaseUser user) {
+        Query query = dbase.child("users").child(user.getUid()).child("memberOf");
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String clubGroup = snapshot.getValue().toString();
+                Query clubEvent = dbase.child("clubsGroups").child(clubGroup).child("events");
+                clubEvent.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        binding.calendarView.addDecorator(new EventDecorator(convertStringToCalendarDay(snapshot.getKey())));
+                    }
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) { }
+                });
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
     }
 
 

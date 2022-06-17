@@ -109,7 +109,9 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
             if (userList.containsKey(user)) {
                 User userData = userList.get(user);
                 dbase.child("clubsGroups").child(clubName).child("members").child(userData.getUid()).setValue(userData);
-                dbase.child("users").child(userData.getUid()).child("memberOf").child(clubName).setValue("member");
+
+                String key = dbase.child("users").child(userData.getUid()).child("memberOf").push().getKey();
+                dbase.child("users").child(userData.getUid()).child("memberOf").child(key).child("clubGroup").setValue(clubName);
 
                 Toast.makeText(getContext(), "User added as member!", Toast.LENGTH_SHORT).show();
             } else {
