@@ -132,7 +132,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 clubGroupAnnouncements.add(snapshot.getValue(Announcements.class).getAnnouncement());
-                ClubGroupAnnouncementAdapter adapter = new ClubGroupAnnouncementAdapter(clubGroupAnnouncements);
+                ClubGroupAnnouncementAdapter adapter = new ClubGroupAnnouncementAdapter(clubGroupAnnouncements, clubGroup);
+                binding.clubsGroupsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
                 binding.clubsGroupsRecycler.setAdapter(adapter);
             }
             @Override
