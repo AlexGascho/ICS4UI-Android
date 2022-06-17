@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,49 +17,61 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
-public class DayEventAdapter extends FirebaseRecyclerAdapter<Event, DayEventAdapter.DayEventViewHolder> {
+public class DayEventAdapter extends  RecyclerView.Adapter<DayEventAdapter.ViewHolder> {
+    ArrayList<Event> eventList;
+    Boolean isClubGroupEvent;
 
-    public DayEventAdapter(@NonNull FirebaseRecyclerOptions<Event> options) {
-        super(options);
+    public DayEventAdapter(ArrayList<Event> eventList, Boolean isClubGroupEvent) {
+        this.eventList = eventList;
+        this.isClubGroupEvent = isClubGroupEvent;
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull DayEventViewHolder holder, int position, @NonNull Event model) {
+    public void onBindViewHolder(@NonNull DayEventAdapter.ViewHolder holder, int position) {
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm aaa", Locale.ENGLISH);
-        String eventTimeString = timeFormat.format(model.getStartTime()) + " - " + timeFormat.format(model.getEndTime());
-        holder.eventTitle.setText(model.getTitle());
+        String eventTimeString = timeFormat.format(eventList.get(position).getStartTime()) + " - " + timeFormat.format(eventList.get(position).getEndTime());
+        holder.eventTitle.setText(eventList.get(position).getTitle());
         holder.eventTime.setText(eventTimeString);
 
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("title","test title");
-                bundle.putString("desc","test desc");
+                if(isClubGroupEvent) {
+                    Toast.makeText(view.getContext(), "Event info for club/group events is under construction.", Toast.LENGTH_LONG).show();
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("title", "test title");
+                    bundle.putString("desc", "test desc");
 
-                EventFragment eventFragment = new EventFragment();
-                eventFragment.setArguments(bundle);
+                    EventFragment eventFragment = new EventFragment();
+                    eventFragment.setArguments(bundle);
 
-                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, eventFragment).commit();
-
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, eventFragment).commit();
+                }
             }
         });
     }
 
     @NonNull
     @Override
-    public DayEventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DayEventAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item, parent, false);
-        return new DayEventAdapter.DayEventViewHolder(view);
+        return new DayEventAdapter.ViewHolder(view);
     }
 
-    class DayEventViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public int getItemCount() {
+        return this.eventList.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView eventTitle, eventTime;
         RelativeLayout relativeLayout;
-        public DayEventViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             eventTitle = itemView.findViewById(R.id.eventTitle);
             eventTime = itemView.findViewById(R.id.eventTime);

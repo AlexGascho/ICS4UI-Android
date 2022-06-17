@@ -40,6 +40,8 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
     DatabaseReference dbase;
 
     private ArrayList<CalendarDay> eventDateList = new ArrayList<>();
+    private ArrayList<String> userClubGroups = new ArrayList<>();
+    Bundle bundle = new Bundle();
 
     public CalendarFragment() {
     }
@@ -111,6 +113,8 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String clubGroup = snapshot.child("clubGroup").getValue().toString();
+                userClubGroups.add(clubGroup);
+                bundle.putStringArrayList("clubsGroups", userClubGroups);
                 Query clubEvent = dbase.child("clubsGroups").child(clubGroup).child("events");
                 clubEvent.addChildEventListener(new ChildEventListener() {
                     @Override
@@ -165,7 +169,6 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
         Calendar newDate = Calendar.getInstance();
         newDate.set(date.getYear(), date.getMonth() - 1, date.getDay()); //CalendarDay months start at 1 while Calendar starts at 0
 
-        Bundle bundle = new Bundle();
         bundle.putLong("date", newDate.getTimeInMillis());
 
         DayFragment dayFragment = new DayFragment();
