@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -109,7 +110,7 @@ public class CalendarFragment extends Fragment implements OnDateSelectedListener
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String clubGroup = snapshot.getValue().toString();
+                String clubGroup = snapshot.child("clubGroup").getValue().toString();
                 Query clubEvent = dbase.child("clubsGroups").child(clubGroup).child("events");
                 clubEvent.addChildEventListener(new ChildEventListener() {
                     @Override
