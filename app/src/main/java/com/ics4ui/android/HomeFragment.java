@@ -6,24 +6,38 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.ics4ui.android.databinding.FragmentHomeBinding;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
 
     DatabaseReference dbase;
     HomeAnnouncementAdapter announcementAdapter, clubsGroupsAnnouncementAdapter;
+    ArrayList<String> clubGroupAnnouncements = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -37,7 +51,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dbase = FirebaseDatabase.getInstance().getReference().child("announcements");
+        dbase = FirebaseDatabase.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
 
@@ -57,19 +72,82 @@ public class HomeFragment extends Fragment {
         binding.clubsGroupsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
         FirebaseRecyclerOptions<Announcements> options = new FirebaseRecyclerOptions.Builder<Announcements>()
-                .setQuery(dbase.child("genericAnnouncements"), Announcements.class)
-                .build();
-        FirebaseRecyclerOptions<Announcements> options2 = new FirebaseRecyclerOptions.Builder<Announcements>()
-                .setQuery(dbase.child("clubsGroupsAnnouncements"), Announcements.class)
+                .setQuery(dbase.child("announcements").child("genericAnnouncements"), Announcements.class)
                 .build();
 
         announcementAdapter = new HomeAnnouncementAdapter(options);
-        clubsGroupsAnnouncementAdapter = new HomeAnnouncementAdapter(options2);
-
         binding.announcementRecycler.setAdapter(announcementAdapter);
-        binding.clubsGroupsRecycler.setAdapter(clubsGroupsAnnouncementAdapter);
+
+        getClubGroupAnnouncements();
 
         return binding.getRoot();
+    }
+
+    private void getClubGroupAnnouncements() {
+        user = firebaseAuth.getCurrentUser();
+
+        Query query = dbase.child("clubsGroups");
+
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                getAnnouncements(snapshot.getKey());
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+    private void getAnnouncements(String clubGroup) {
+        ArrayList<String> uidList = new ArrayList<>();
+        Query query = dbase.child("clubsGroups").child(clubGroup).child("members");
+
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                if (user.getUid().equals(snapshot.getKey())) {
+                    appendAnnouncement(clubGroup);
+                }
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+    private void appendAnnouncement(String clubGroup) {
+        Query query = dbase.child("clubsGroups").child(clubGroup).child("announcements");
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                clubGroupAnnouncements.add(snapshot.getValue(Announcements.class).getAnnouncement());
+                ClubGroupAnnouncementAdapter adapter = new ClubGroupAnnouncementAdapter(clubGroupAnnouncements);
+                binding.clubsGroupsRecycler.setAdapter(adapter);
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            }
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+            }
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
     @Override
@@ -81,13 +159,11 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
         announcementAdapter.startListening();
-        clubsGroupsAnnouncementAdapter.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
         announcementAdapter.stopListening();
-        clubsGroupsAnnouncementAdapter.startListening();
     }
 }
