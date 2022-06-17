@@ -36,8 +36,8 @@ public class HomeFragment extends Fragment {
     private FirebaseUser user;
 
     DatabaseReference dbase;
-    HomeAnnouncementAdapter announcementAdapter, clubsGroupsAnnouncementAdapter;
     ArrayList<String> clubGroupAnnouncements = new ArrayList<>();
+    ArrayList<String> globalAnnouncements = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -71,16 +71,32 @@ public class HomeFragment extends Fragment {
         binding.announcementRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.clubsGroupsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        FirebaseRecyclerOptions<Announcements> options = new FirebaseRecyclerOptions.Builder<Announcements>()
-                .setQuery(dbase.child("announcements").child("genericAnnouncements"), Announcements.class)
-                .build();
-
-        announcementAdapter = new HomeAnnouncementAdapter(options);
-        binding.announcementRecycler.setAdapter(announcementAdapter);
+        getGlobalAnnouncements();
 
         getClubGroupAnnouncements();
 
         return binding.getRoot();
+    }
+
+    private void getGlobalAnnouncements() {
+        Query query = dbase.child("announcements");
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                globalAnnouncements.add(snapshot.getValue(Announcements.class).getAnnouncement());
+                HomeAnnouncementAdapter adapter = new HomeAnnouncementAdapter(globalAnnouncements);
+                binding.announcementRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+                binding.announcementRecycler.setAdapter(adapter);
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
     }
 
     private void getClubGroupAnnouncements() {
@@ -154,17 +170,5 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        announcementAdapter.startListening();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        announcementAdapter.stopListening();
     }
 }
