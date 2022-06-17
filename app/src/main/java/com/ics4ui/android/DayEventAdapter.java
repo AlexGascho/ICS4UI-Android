@@ -14,11 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class DayEventAdapter extends FirebaseRecyclerAdapter<Event, DayEventAdapter.DayEventViewHolder> {
+
+    DatabaseReference dbase;
+    FirebaseAuth auth;
+
 
     public DayEventAdapter(@NonNull FirebaseRecyclerOptions<Event> options) {
         super(options);
@@ -34,7 +43,20 @@ public class DayEventAdapter extends FirebaseRecyclerAdapter<Event, DayEventAdap
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                String formatedDate = dateFormat.format(model.getStartTime());
+
+                dbase = FirebaseDatabase.getInstance().getReference();
+                auth = FirebaseAuth.getInstance();
+
+                FirebaseUser user = auth.getCurrentUser();
+
+                String eventKey = model.getEventId();
+
                 Bundle bundle = new Bundle();
+                bundle.putString("date",formatedDate);
+                bundle.putString("eventKey",eventKey);
                 bundle.putString("title","test title");
                 bundle.putString("desc","test desc");
 
