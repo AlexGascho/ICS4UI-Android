@@ -46,6 +46,7 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
 
     Map<String, String> announcementKeys = new HashMap<>();
     Map<String, User> userList = new HashMap<>();
+    ArrayList<String> clubGroupList = new ArrayList<>();
 
     ArrayAdapter<String> adapter;
 
@@ -71,6 +72,8 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
         binding.addClubGroupAnnouncementInput.setOnClickListener(this);
         binding.addClubGroupMemberInput.setOnClickListener(this);
         binding.addClubGroupMemberButton.setOnClickListener(this);
+        binding.addClubGroupInput.setOnClickListener(this);
+        binding.addClubGroupButton.setOnClickListener(this);
 
         //This fetches the announcements from the database then populates the removeAnnouncementSpinner
         fetchAnnouncements();
@@ -98,7 +101,31 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
             case R.id.addClubGroupMemberInput:
                 createEditTextView(view, binding.addClubGroupMemberInput, "New Member", true);
                 break;
+            case R.id.addClubGroupInput:
+                createEditTextView(view, binding.addClubGroupInput, "New Club/Group", false);
+                break;
+            case R.id.addClubGroupButton:
+                createClubGroup();
+                break;
         }
+    }
+
+    private void createClubGroup() {
+        Query query = dbase.child("clubsGroups");
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                clubGroupList.add(snapshot.getKey());
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
     }
 
     private void addClubGroupMember() {
