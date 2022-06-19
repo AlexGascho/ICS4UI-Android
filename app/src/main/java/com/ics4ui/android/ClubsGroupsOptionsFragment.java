@@ -46,7 +46,7 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
 
     Map<String, String> announcementKeys = new HashMap<>();
     Map<String, User> userList = new HashMap<>();
-    ArrayList<String> clubGroupList = new ArrayList<>();
+    ArrayList<String> clubsGroupsList = new ArrayList<>();
 
     ArrayAdapter<String> adapter;
 
@@ -111,11 +111,29 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
     }
 
     private void createClubGroup() {
+        fetchClubGroups();
+        String newClubGroup = binding.addClubGroupInput.getText().toString();
+        if (newClubGroup != "") {
+            if (!clubsGroupsList.contains(newClubGroup)) {
+                dbase.child("clubsGroups").child(newClubGroup).child("members").push();
+                dbase.child("clubsGroups").child(newClubGroup).child("members").child(user.getUid()).child("uid").setValue(user.getUid());
+                dbase.child("clubsGroups").child(newClubGroup).child("members").child(user.getUid()).child("name").setValue(user.getDisplayName());
+                dbase.child("clubsGroups").child(newClubGroup).child("members").child(user.getUid()).child("email").setValue(user.getEmail());
+                Toast.makeText(getContext(), "Your club/group has been added.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "This club/group already exists!", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getContext(), "Input cannot be empty!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void fetchClubGroups() {
         Query query = dbase.child("clubsGroups");
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                clubGroupList.add(snapshot.getKey());
+                clubsGroupsList.add(snapshot.getKey());
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
