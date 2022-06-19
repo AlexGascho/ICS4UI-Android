@@ -17,6 +17,6 @@
         android:background="@color/white"
         android:text="@string/textview"
         android:textColor="@color/backgroundGreen"
-        android:textSize="26sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

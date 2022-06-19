@@ -19,15 +19,20 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class ClubGroupAnnouncementAdapter extends RecyclerView.Adapter<ClubGroupAnnouncementAdapter.ViewHolder> {
-    ArrayList<String> announcementArray;
-    String clubGroup;
+    Map<String, String> announcementMap;
+    ArrayList<String> keys = new ArrayList<>();
+    ArrayList<String> values = new ArrayList<>();
 
-    public ClubGroupAnnouncementAdapter(ArrayList<String> announcementArray, String clubGroup) {
-        this.announcementArray = announcementArray;
-        this.clubGroup = clubGroup;
+    public ClubGroupAnnouncementAdapter(Map<String, String> announcementMap) {
+        this.announcementMap = announcementMap;
+        values.addAll(announcementMap.values());
+        keys.addAll(announcementMap.keySet());
     }
 
     @Override
@@ -38,13 +43,13 @@ public class ClubGroupAnnouncementAdapter extends RecyclerView.Adapter<ClubGroup
 
     @Override
     public void onBindViewHolder(ClubGroupAnnouncementAdapter.ViewHolder holder, int position) {
-        holder.clubGroupTitle.setText(clubGroup);
-        holder.clubGroupAnnouncement.setText(this.announcementArray.get(position));
+        holder.clubGroupTitle.setText(values.get(position));
+        holder.clubGroupAnnouncement.setText(keys.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return this.announcementArray.size();
+        return this.announcementMap.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

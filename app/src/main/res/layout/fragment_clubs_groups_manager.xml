@@ -41,9 +41,47 @@
         android:dropDownVerticalOffset="40dp"
         android:layout_marginEnd="30dp" />
 
+    <TextView
+        android:id="@+id/addClubGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectClubsGroupsSpinner"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="@string/create_club_group"
+        android:textColor="@color/darkPurple"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/addClubGroupButton"
+        style="@style/purpleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/addClubGroup"
+        android:layout_marginStart="30dp"
+        android:text="@string/add"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/addClubGroupInput"
+        android:background="@drawable/underline_text"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/addClubGroup"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_toEndOf="@id/addClubGroupButton"
+        android:dropDownVerticalOffset="40dp"
+        android:gravity="bottom"
+        android:textColor="@color/darkPurple" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
-        android:layout_below="@id/selectClubsGroupsSpinner"
+        android:layout_below="@id/addClubGroupInput"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

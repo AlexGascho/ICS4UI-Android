@@ -3,6 +3,7 @@ package com.ics4ui.android;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.ics4ui.android.databinding.FragmentHomeBinding;
 
+import org.apache.commons.collections4.MultiValuedMap;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class HomeFragment extends Fragment {
@@ -36,7 +41,7 @@ public class HomeFragment extends Fragment {
     private FirebaseUser user;
 
     DatabaseReference dbase;
-    ArrayList<String> clubGroupAnnouncements = new ArrayList<>();
+    Map<String, String> clubGroupAnnouncements = new HashMap<>();
     ArrayList<String> globalAnnouncements = new ArrayList<>();
 
     public HomeFragment() {
@@ -83,7 +88,9 @@ public class HomeFragment extends Fragment {
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                globalAnnouncements.add(snapshot.getValue(Announcements.class).getAnnouncement());
+                if (!globalAnnouncements.contains(snapshot.getValue(Announcements.class).getAnnouncement())) {
+                    globalAnnouncements.add(snapshot.getValue(Announcements.class).getAnnouncement());
+                }
                 HomeAnnouncementAdapter adapter = new HomeAnnouncementAdapter(globalAnnouncements);
                 binding.announcementRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
                 binding.announcementRecycler.setAdapter(adapter);
@@ -121,7 +128,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void getAnnouncements(String clubGroup) {
-        ArrayList<String> uidList = new ArrayList<>();
         Query query = dbase.child("clubsGroups").child(clubGroup).child("members");
 
         query.addChildEventListener(new ChildEventListener() {
@@ -147,8 +153,10 @@ public class HomeFragment extends Fragment {
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                clubGroupAnnouncements.add(snapshot.getValue(Announcements.class).getAnnouncement());
-                ClubGroupAnnouncementAdapter adapter = new ClubGroupAnnouncementAdapter(clubGroupAnnouncements, clubGroup);
+                if (!clubGroupAnnouncements.containsKey(snapshot.getValue(Announcements.class).getAnnouncement())) {
+                    clubGroupAnnouncements.put(snapshot.getValue(Announcements.class).getAnnouncement(), clubGroup);
+                }
+                ClubGroupAnnouncementAdapter adapter = new ClubGroupAnnouncementAdapter(clubGroupAnnouncements);
                 binding.clubsGroupsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
                 binding.clubsGroupsRecycler.setAdapter(adapter);
             }

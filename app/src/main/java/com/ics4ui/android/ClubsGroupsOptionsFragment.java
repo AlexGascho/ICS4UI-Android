@@ -46,7 +46,6 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
 
     Map<String, String> announcementKeys = new HashMap<>();
     Map<String, User> userList = new HashMap<>();
-    ArrayList<String> clubsGroupsList = new ArrayList<>();
 
     ArrayAdapter<String> adapter;
 
@@ -72,8 +71,6 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
         binding.addClubGroupAnnouncementInput.setOnClickListener(this);
         binding.addClubGroupMemberInput.setOnClickListener(this);
         binding.addClubGroupMemberButton.setOnClickListener(this);
-        binding.addClubGroupInput.setOnClickListener(this);
-        binding.addClubGroupButton.setOnClickListener(this);
 
         //This fetches the announcements from the database then populates the removeAnnouncementSpinner
         fetchAnnouncements();
@@ -101,49 +98,7 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
             case R.id.addClubGroupMemberInput:
                 createEditTextView(view, binding.addClubGroupMemberInput, "New Member", true);
                 break;
-            case R.id.addClubGroupInput:
-                createEditTextView(view, binding.addClubGroupInput, "New Club/Group", false);
-                break;
-            case R.id.addClubGroupButton:
-                createClubGroup();
-                break;
         }
-    }
-
-    private void createClubGroup() {
-        fetchClubGroups();
-        String newClubGroup = binding.addClubGroupInput.getText().toString();
-        if (newClubGroup != "") {
-            if (!clubsGroupsList.contains(newClubGroup)) {
-                dbase.child("clubsGroups").child(newClubGroup).child("members").push();
-                dbase.child("clubsGroups").child(newClubGroup).child("members").child(user.getUid()).child("uid").setValue(user.getUid());
-                dbase.child("clubsGroups").child(newClubGroup).child("members").child(user.getUid()).child("name").setValue(user.getDisplayName());
-                dbase.child("clubsGroups").child(newClubGroup).child("members").child(user.getUid()).child("email").setValue(user.getEmail());
-                Toast.makeText(getContext(), "Your club/group has been added.", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getContext(), "This club/group already exists!", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(getContext(), "Input cannot be empty!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void fetchClubGroups() {
-        Query query = dbase.child("clubsGroups");
-        query.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                clubsGroupsList.add(snapshot.getKey());
-            }
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
-        });
     }
 
     private void addClubGroupMember() {
@@ -214,6 +169,7 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
 
         View viewInflated = LayoutInflater.from(getContext()).inflate(R.layout.text_input_layout, (ViewGroup) getView(), false);
         final EditText input = (EditText) viewInflated.findViewById(R.id.input);
+        input.setText(textView.getText().toString());
         builder.setView(viewInflated);
 
         builder.setPositiveButton("ENTER", new DialogInterface.OnClickListener() {
@@ -221,7 +177,6 @@ public class ClubsGroupsOptionsFragment extends Fragment implements View.OnClick
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 if (isMember) {
-                    String addon = "";
                     if (userList.containsKey(input.getText().toString())) {
                         Toast.makeText(getContext(), "Found user: " + userList.get(input.getText().toString()).getName(), Toast.LENGTH_SHORT).show();
                     }
