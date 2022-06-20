@@ -13,15 +13,6 @@ public class Event {
     public String group;
     public Date startTime;
     public Date endTime;
-    public String eventId;
-
-    public String getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
-    }
 
     public Event() {
     }
@@ -75,7 +66,6 @@ public class Event {
         this.endTime = endTime;
     }
 
-
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -85,7 +75,6 @@ public class Event {
         result.put("group", group);
         result.put("startTime", startTime);
         result.put("endTime", endTime);
-        result.put("eventId",eventId);
 
         return result;
     }
