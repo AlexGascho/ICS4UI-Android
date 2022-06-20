@@ -38,11 +38,6 @@ public class DayFragment extends Fragment {
     ArrayList<String> clubsGroups = new ArrayList<>();
     Long date;
 
-    public static DayFragment newInstance(Long date) {
-        DayFragment fragment = new DayFragment();
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

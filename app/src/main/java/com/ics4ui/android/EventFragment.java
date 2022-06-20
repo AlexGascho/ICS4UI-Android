@@ -33,6 +33,7 @@ import java.util.Map;
 
 public class EventFragment extends Fragment {
     FragmentEventBinding binding;
+
     DatabaseReference dbase;
     FirebaseAuth auth;
     String eventKey;
@@ -54,8 +55,8 @@ public class EventFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Toast.makeText(getContext(), "Warning Buttons Don't Work Yet",Toast.LENGTH_SHORT);
         binding = FragmentEventBinding.inflate(inflater, container, false);
+
         binding.eventCloseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,12 +73,14 @@ public class EventFragment extends Fragment {
 
             }
         });
-        // Inflate the layout for this fragment
 
         FirebaseUser user = auth.getCurrentUser();
         eventKey = this.getArguments().getString("eventKey");
         formatedDate = this.getArguments().getString("date");
 
+        Bundle bundle = new Bundle();
+        bundle.putString("eventKey", eventKey);
+        bundle.putString("date", formatedDate);
 
         binding = FragmentEventBinding.inflate(inflater, container, false);
         Map<String, String> eventInfo = new HashMap<>();

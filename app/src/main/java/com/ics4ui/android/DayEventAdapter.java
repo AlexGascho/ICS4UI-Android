@@ -1,5 +1,6 @@
 package com.ics4ui.android;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -30,7 +32,7 @@ public class DayEventAdapter extends  RecyclerView.Adapter<DayEventAdapter.ViewH
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DayEventAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DayEventAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm aaa", Locale.ENGLISH);
         String eventTimeString = timeFormat.format(eventList.get(position).getStartTime()) + " - " + timeFormat.format(eventList.get(position).getEndTime());
         holder.eventTitle.setText(eventList.get(position).getTitle());
@@ -50,7 +52,8 @@ public class DayEventAdapter extends  RecyclerView.Adapter<DayEventAdapter.ViewH
                     eventFragment.setArguments(bundle);
 
                     AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, eventFragment).commit();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, eventFragment).detach(eventFragment);
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, eventFragment).attach(eventFragment).commit();
                 }
             }
         });
