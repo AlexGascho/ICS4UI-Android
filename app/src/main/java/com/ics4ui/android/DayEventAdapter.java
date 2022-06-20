@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,8 +58,6 @@ public class DayEventAdapter extends FirebaseRecyclerAdapter<Event, DayEventAdap
                 Bundle bundle = new Bundle();
                 bundle.putString("date",formatedDate);
                 bundle.putString("eventKey",eventKey);
-                bundle.putString("title","test title");
-                bundle.putString("desc","test desc");
 
                 EventFragment eventFragment = new EventFragment();
                 eventFragment.setArguments(bundle);

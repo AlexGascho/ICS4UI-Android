@@ -14,10 +14,12 @@
         <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/drawable/spinner_icon.xml" value="0.3635" />
         <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/activity_main.xml" value="0.14" />
         <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/activity_sign_in.xml" value="0.22" />
+        <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/announcement_list_item.xml" value="0.3625" />
         <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/content_main.xml" value="0.22" />
         <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/event_list_item.xml" value="0.3115942028985507" />
         <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/fragment_add_event.xml" value="0.3115942028985507" />
         <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/fragment_calendar.xml" value="0.22" />
+        <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/fragment_clubs_groups_manager.xml" value="0.3625" />
         <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/fragment_clubs_groups_options.xml" value="0.28894927536231885" />
         <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/fragment_day.xml" value="0.14722222222222223" />
         <entry key="..\:/Users/alexg/Documents/GitHub/ICS4UI-Android/ICS4UI-Android/app/src/main/res/layout/fragment_home.xml" value="0.22" />
@@ -50,7 +52,13 @@
         <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-APP/app/src/main/res/layout/fragment_home.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-APP/app/src/main/res/layout/text_input_layout.xml" value="0.11621621621621622" />
         <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-APP/app/src/main/res/menu/bottom_navigation.xml" value="0.15" />
-        <entry key="app/src/main/res/drawable-mdpi/green_outline.xml" value="0.2535" />
+        <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-Android/app/src/main/res/layout/announcement_list_item.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-Android/app/src/main/res/layout/club_group_announcement_item.xml" value="0.14673913043478262" />
+        <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-Android/app/src/main/res/layout/fragment_event.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-Android/app/src/main/res/layout/fragment_home.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-Android/app/src/main/res/layout/fragment_settings.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/gasca4686/Documents/GitHub/ICS4UI-Android/app/src/main/res/layout/text_input_layout.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/theoh/OneDrive/Documents/GitHub/ICS4UI-Android/app/src/main/res/layout/fragment_event.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/close_button_layout.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/event_indicator.xml" value="0.1" />
@@ -70,10 +78,8 @@
         <entry key="app/src/main/res/layout/content_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/event_list_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.17822576452184602" />
-        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.33144378662109375" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_calendar_view.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_clubs_groups_manager.xml" value="0.4661911010742188" />
-        <entry key="app/src/main/res/layout/fragment_clubs_groups_options.xml" value="0.31915740966796874" />
         <entry key="app/src/main/res/layout/fragment_day.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_event.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/fragment_filter.xml" value="0.25" />

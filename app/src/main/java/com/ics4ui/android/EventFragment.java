@@ -54,6 +54,7 @@ public class EventFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Toast.makeText(getContext(), "Warning Buttons Don't Work Yet",Toast.LENGTH_SHORT);
         binding = FragmentEventBinding.inflate(inflater, container, false);
         binding.eventCloseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +64,6 @@ public class EventFragment extends Fragment {
         binding.editEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"Under Construction", Toast.LENGTH_SHORT);
             }
         });
         binding.deleteEventButton.setOnClickListener(new View.OnClickListener() {
