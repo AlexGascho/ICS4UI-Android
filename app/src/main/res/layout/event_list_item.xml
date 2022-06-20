@@ -6,29 +6,33 @@
     android:background="@color/white">
 
     <RelativeLayout
+        android:id="@+id/eventRow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:id="@+id/eventRow">
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/eventTime"
-            android:layout_width="175dp"
-            android:layout_height="wrap_content"
+            android:layout_width="193dp"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/eventTitle"
+            android:layout_alignBottom="@+id/eventTitle"
+            android:layout_marginBottom="0dp"
             android:background="@color/white"
             android:text="@string/tempTime"
             android:textColor="@color/backgroundGreen"
-            android:textSize="16sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/eventTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:layout_toRightOf="@id/eventTime"
             android:background="@color/white"
             android:text="@string/fillerTitle"
             android:textColor="@color/backgroundGreen"
-            android:textSize="16sp" />
+            android:textSize="20dp" />
 
     </RelativeLayout>
 

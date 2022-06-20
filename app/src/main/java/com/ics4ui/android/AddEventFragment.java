@@ -145,7 +145,6 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
                 calendar.set(Calendar.MINUTE, minuteOfHour);
             }
         }, currentHour, currentMinute, true);
-
         timePickerDialog.show();
     }
 
@@ -215,6 +214,7 @@ public class AddEventFragment extends Fragment implements View.OnClickListener {
 
         if (clubGroup.equals("None")) {
             String key = dbase2.child("events").child(formattedDate).push().getKey();
+            newEvent.setEventId(key);
             Map<String, Object> eventMap = newEvent.toMap();
 
             update.put("/events/" + formattedDate + "/" + key, eventMap);
