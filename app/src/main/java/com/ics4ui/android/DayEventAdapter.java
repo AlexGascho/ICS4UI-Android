@@ -39,12 +39,12 @@ public class DayEventAdapter extends  RecyclerView.Adapter<DayEventAdapter.ViewH
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isClubGroupEvent) {
+                if (isClubGroupEvent) {
                     Toast.makeText(view.getContext(), "Event info for club/group events is under construction.", Toast.LENGTH_LONG).show();
                 } else {
                     Bundle bundle = new Bundle();
-                    bundle.putString("title", "test title");
-                    bundle.putString("desc", "test desc");
+                    bundle.putString("eventKey", eventList.get(position).getEventId());
+                    bundle.putString("date", timeFormat.format(eventList.get(position).getStartTime()));
 
                     EventFragment eventFragment = new EventFragment();
                     eventFragment.setArguments(bundle);

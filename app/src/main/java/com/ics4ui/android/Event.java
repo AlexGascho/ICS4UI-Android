@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Event {
     public String title;
+    public String eventId;
     public String description;
     public String location;
     public String group;
@@ -25,6 +26,15 @@ public class Event {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
 
     public String getDescription() {
         return description;
@@ -78,4 +88,5 @@ public class Event {
 
         return result;
     }
+
 }
