@@ -10,6 +10,7 @@ import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.ics4ui.android.databinding.FragmentEventBinding;
+
+import org.w3c.dom.CDATASection;
 
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
@@ -53,18 +56,44 @@ public class EventFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        FirebaseUser user = auth.getCurrentUser();
+        eventKey = this.getArguments().getString("eventKey");
+        formatedDate = this.getArguments().getString("date");
+
         binding = FragmentEventBinding.inflate(inflater, container, false);
         binding.eventNameCloseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();
+                Toast.makeText(getContext(),"Under Construction",Toast.LENGTH_SHORT);
+                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new DayFragment()).commit();
+            }
+        });
+        binding.editEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"Under Construction",Toast.LENGTH_SHORT);
+            }
+        });
+        binding.deleteEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseUser user = auth.getCurrentUser();
+                Query query = dbase.child("users").child(user.getUid()).child("events").child(formatedDate).child(eventKey);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        snapshot.getRef().removeValue();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getContext(),"Error",Toast.LENGTH_SHORT);
+                    }
+                });
             }
         });
         // Inflate the layout for this fragment
 
-        FirebaseUser user = auth.getCurrentUser();
-        eventKey = this.getArguments().getString("eventKey");
-        formatedDate = this.getArguments().getString("date");
 
 
         binding = FragmentEventBinding.inflate(inflater, container, false);
