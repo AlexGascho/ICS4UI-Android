@@ -84,6 +84,7 @@ public class EventFragment extends Fragment {
 
         binding = FragmentEventBinding.inflate(inflater, container, false);
         Map<String, String> eventInfo = new HashMap<>();
+
         Query query = dbase.child("users").child(user.getUid()).child("events").child(formatedDate).child(eventKey);
         query.addValueEventListener(new ValueEventListener() {
             @Override

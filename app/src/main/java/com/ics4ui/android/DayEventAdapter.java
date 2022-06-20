@@ -1,6 +1,7 @@
 package com.ics4ui.android;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -25,10 +28,12 @@ import java.util.Locale;
 public class DayEventAdapter extends  RecyclerView.Adapter<DayEventAdapter.ViewHolder> {
     ArrayList<Event> eventList;
     Boolean isClubGroupEvent;
+    Context context;
 
-    public DayEventAdapter(ArrayList<Event> eventList, Boolean isClubGroupEvent) {
+    public DayEventAdapter(ArrayList<Event> eventList, Boolean isClubGroupEvent, Context context) {
         this.eventList = eventList;
         this.isClubGroupEvent = isClubGroupEvent;
+        this.context = context;
     }
 
     @Override
@@ -38,7 +43,7 @@ public class DayEventAdapter extends  RecyclerView.Adapter<DayEventAdapter.ViewH
         holder.eventTitle.setText(eventList.get(position).getTitle());
         holder.eventTime.setText(eventTimeString);
 
-        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isClubGroupEvent) {
@@ -51,10 +56,10 @@ public class DayEventAdapter extends  RecyclerView.Adapter<DayEventAdapter.ViewH
                     EventFragment eventFragment = new EventFragment();
                     eventFragment.setArguments(bundle);
 
-                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, eventFragment).detach(eventFragment);
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, eventFragment).attach(eventFragment).commit();
+                    FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
+                    manager.beginTransaction().replace(R.id.fragmentContainerView, eventFragment).attach(eventFragment).commit();
                 }
+
             }
         });
     }

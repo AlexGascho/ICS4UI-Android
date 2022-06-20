@@ -76,7 +76,7 @@ public class DayFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 eventList.add(snapshot.getValue(Event.class));
-                dayEventAdapter = new DayEventAdapter(eventList, false);
+                dayEventAdapter = new DayEventAdapter(eventList, false, getContext());
                 binding.eventRecycler.setAdapter(dayEventAdapter);
             }
             @Override
@@ -95,7 +95,7 @@ public class DayFragment extends Fragment {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                     eventList.add(snapshot.getValue(Event.class));
-                    dayEventAdapter = new DayEventAdapter(eventList, true);
+                    dayEventAdapter = new DayEventAdapter(eventList, true, getContext());
                     binding.eventRecycler.setAdapter(dayEventAdapter);
                 }
                 @Override
