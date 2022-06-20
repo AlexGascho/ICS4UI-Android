@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.CalendarContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,7 @@ public class EventFragment extends Fragment {
         binding.eventCloseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new DayFragment()).commit();            }
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new CalendarFragment()).commit();            }
         });
         binding.editEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,12 +82,10 @@ public class EventFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("eventKey", eventKey);
         bundle.putString("date", formatedDate);
-
-        binding = FragmentEventBinding.inflate(inflater, container, false);
-        Map<String, String> eventInfo = new HashMap<>();
+        binding.textView.setText(formatedDate);
 
         Query query = dbase.child("users").child(user.getUid()).child("events").child(formatedDate).child(eventKey);
-        query.addValueEventListener(new ValueEventListener() {
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){

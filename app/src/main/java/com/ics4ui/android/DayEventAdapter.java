@@ -49,9 +49,10 @@ public class DayEventAdapter extends  RecyclerView.Adapter<DayEventAdapter.ViewH
                 if (isClubGroupEvent) {
                     Toast.makeText(view.getContext(), "Event info for club/group events is under construction.", Toast.LENGTH_LONG).show();
                 } else {
+                    SimpleDateFormat databaseDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
                     Bundle bundle = new Bundle();
                     bundle.putString("eventKey", eventList.get(position).getEventId());
-                    bundle.putString("date", timeFormat.format(eventList.get(position).getStartTime()));
+                    bundle.putString("date", databaseDateFormat.format(eventList.get(position).getStartTime()));
 
                     EventFragment eventFragment = new EventFragment();
                     eventFragment.setArguments(bundle);
